@@ -7,8 +7,6 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Ottelutulos- ja maaliveikkaussovellus kesällä 2015 pelattavaa jalkapallon Copa America -turnausta varten. Sovelluksella käyttäjä voi veikata kunkin pelattavan ottelun lopputulosta ja maalien tekijöitä. Oikein menneistä veikkauksista käyttäjä saa pisteitä sovitun pistelaskujärjestelmän mukaisesti. Turnauksen edetessä kaikki rekisteröityneet käyttäjät sijoitetaan paremmuusjärjestyksessä ns. leaderboardille. Yhteiskilpailun lisäksi, käyttäjät voivat muodostaa kaveriporukoidensa kanssa omia ryhmiä, jonka jäsenet kilpailevat ryhmänsä sisäisestä paremmuusjärjestyksestä.
-
-Veikkaustoimintojen lisäksi, sovellus sisältää koko turnauksen kattavan otteluohjelman, tiedot jokaisesta joukkueesta sekä joukkuiden pelaajista. Turnauksen edetessä, pelattujen otteluiden tulokset, sekä käyttäjien tekemät veikkaukset ovat niin ikään käyttäjien luettavissa.
+Ottelutulos- ja maaliveikkaussovellus kesällä 2015 pelattavaa jalkapallon Copa America -turnausta varten. Sovelluksen avulla, käyttäjät voivat veikata kunkin pelattavan ottelun lopputulosta sekä maalien tekijöitä. Oikein menneistä veikkauksista käyttäjät ansaitsevat pisteitä sovitun pistelaskujärjestelmän mukaisesti, jonka perusteella heidät myös rankataan leaderboardille. Halutessaan, käyttäjät voivat myös muodostaa kaveriryhmiä, jonka jäsenet kilpailevat ryhmän sisäisestä paremmuusjärjestyksestä. Veikkaustoimintojen lisäksi, sovellus tulee tarjoamaan koko turnauksen kattavan otteluohjelman, tulospalvelun sekä tiedot jokaisesta joukkueesta ja pelaajasta.
 
 Sovellus tulee toimimaan kaikilla nykyaikaisilla web-selaimilla, sekä tietokoneissa että mobiililaiteissa.
