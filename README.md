@@ -3,6 +3,9 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://jesruuth.users.cs.helsinki.fi/tsoha)
+* [Linkki etusivulle](https://jesruuth.users.cs.helsinki.fi/tsoha)
+* [Linkki listaussivulle](https://jesruuth.users.cs.helsinki.fi/tsoha/list)
+* [Linkki muokkaussivulle](https://jesruuth.users.cs.helsinki.fi/tsoha/edit)
 * [Linkki dokumentaatiooni](https://github.com/zesbr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe

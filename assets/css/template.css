@@ -1,0 +1,1775 @@
+﻿html { margin: 0; padding: 0;  }
+body { margin: 0; padding: 0;  }
+
+.container { display: block; margin: auto; }
+.container { width: 100%; }
+.container { max-width: 1200px; }
+.container { padding-left: 48px; padding-right: 48px; }
+
+
+.row { width: 100%; }
+.row { height: auto; }
+
+.colspan_1  { width: 78px;   }
+.colspan_2  { width: 180px;  }
+.colspan_3  { width: 282px;  }
+.colspan_4  { width: 384px;  }
+.colspan_5  { width: 486px;  }
+.colspan_6  { width: 588px;  }
+.colspan_7  { width: 690px;  }
+.colspan_8  { width: 792px;  }
+.colspan_9  { width: 894px;  }
+.colspan_10 { width: 996px;  }
+.colspan_11 { width: 1098px; }
+.colspan_12 { width: 1200px; }
+.colspan_1, .colspan_2, .colspan_3, .colspan_4, 
+.colspan_5, .colspan_6, .colspan_7, .colspan_8, 
+.colspan_9, .colspan_10, .colspan_11, .colspan_12 { float: left; }	
+.colspan_1, .colspan_2, .colspan_3, .colspan_4, 
+.colspan_5, .colspan_6, .colspan_7, .colspan_8, 
+.colspan_9, .colspan_10, .colspan_11 { margin-right: 24px; } 
+.colspan_12 { margin-right: 0xp; }
+
+.rowspan_1  { height: 78px;   }
+.rowspan_2  { height: 180px;  }
+.rowspan_3  { height: 282px;  }
+.rowspan_4  { height: 384px;  } 
+.rowspan_5  { height: 486px;  }
+.rowspan_6  { height: 588px;  }
+.rowspan_7  { height: 690px;  }
+.rowspan_8  { height: 792px;  }
+.rowspan_9  { height: 894px;  }
+.rowspan_10 { height: 996px;  }
+.rowspan_11 { height: 1098px; }
+.rowspan_12 { height: 1200px; }
+
+.last { margin-right: 0px; }
+
+.clear { clear: both; float: none; height: 24px; }
+
+.clear_0  { clear: both; float: none; height: 0px; }
+.clear_6  { clear: both; float: none; height: 6px; }
+.clear_12 { clear: both; float: none; height: 12px; }
+.clear_24 { clear: both; float: none; height: 24px; }
+.clear_48 { clear: both; float: none; height: 48px; }
+.clear_64 { clear: both; float: none; height: 64px; }
+.clear_96 { clear: both; float: none; height: 96px; }
+
+.blue           { background-color: #0096FF; color: #FFFFFF; }
+.orange         { background-color: #FFC800; color: #FFFFFF; }
+.green          { background-color: #009664; color: #FFFFFF; text-shadow: 0px 0px 1px #FFFFFF; }
+.green-inverse  { background-color: #FFFFFF; color: #6DBA3C; text-shadow: 0px 0px 1px #6DBA3C; }
+.red            { background-color: #E93636; color: #FFFFFF; }
+.dark-gray      { background-color: #474747; color: #FFFFFF; }
+.light-gray     { background-color: #E0E0E0; color: #333333; }
+.white          { background-color: #FFFFFF; color: #000000; text-shadow: 0px 0px 1px #000000; }
+.black          { background-color: #000000; color: #FFFFFF; }
+	
+
+html { font-size: 16px; }
+body { font-family: arial, helvetica neue, helvetica, sans-serif; }
+
+h1 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+h2 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+h3 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+h4 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+h5 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+h6 { font-family: arial, helvetica neue, helvetica, sans-serif; }
+p  { font-family: arial, helvetica neue, helvetica, sans-serif; }
+
+body { font-size: 1em;}
+
+h1 { font-size: 3.0em; }
+h2 { font-size: 2.4em; }
+h3 { font-size: 2.0em; }
+h4 { font-size: 1.6em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.0em; }
+p  { font-size: 1em; }
+
+.push-right-1 	{ margin-left: 102px; }
+.push-right-2 	{ margin-left: 204px; }
+.push-right-3 	{ margin-left: 306px; }
+.push-right-4 	{ margin-left: 408px; }
+.push-right-5 	{ margin-left: 510px; }
+.push-right-6 	{ margin-left: 612px; }
+.push-right-7 	{ margin-left: 714px; }
+.push-right-8 	{ margin-left: 814px; }
+.push-right-9 	{ margin-left: 918px; }
+.push-right-10 	{ margin-left: 1020px; }
+.push-right-11 	{ margin-left: 1122px; }
+
+
+
+.push-left-1 { margin-left: -102px; }
+.push-left-2 { margin-left: -204px; }
+.push-left-3 { margin-left: -306px; }
+.push-left-4 { margin-left: -408px; }
+.push-left-5 { margin-left: -510px; }
+.push-left-6 { margin-left: -612px; }
+	
+.fweight_100 { font-weight: 100; }
+.fweight_200 { font-weight: 200; }
+.fweight_300 { font-weight: 300; }
+.fweight_400 { font-weight: 400; }
+.fweight_500 { font-weight: 500; }
+.fweight_600 { font-weight: 600; }
+.fweight_700 { font-weight: 700; }
+.fweight_800 { font-weight: 800; }
+.fweight_900 { font-weight: 900; }
+
+
+
+
+/*	Animations
+-------------------------------------------------------------------------------------- */
+
+@-webkit-keyframes intro {
+	0%   { opacity: 0.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	40%  { opacity: 1.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	60%  { opacity: 1.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	70%  { opacity: 1.0; width: 608px; height: 608px; margin-top: -304px; margin-left: -304px; }
+    80%  { opacity: 0.0; }
+	100% { opacity: 0.0; width: 0px;   height: 0px;   margin-top: 0px;    margin-left: 0px; }
+}
+
+@keyframes intro {
+	0%   { opacity: 0.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	40%  { opacity: 1.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	60%  { opacity: 1.0; width: 588px; height: 588px; margin-top: -294px; margin-left: -294px; }
+	70%  { opacity: 1.0; width: 608px; height: 608px; margin-top: -304px; margin-left: -304px; }
+    80%  { opacity: 0.0; }
+	100% { opacity: 0.0; width: 0px;   height: 0px;   margin-top: 0px;    margin-left: 0px; }
+}
+
+@-webkit-keyframes initialize {
+	0%  	{ opacity: 0.0; }
+	100% 	{ opacity: 1.0; }
+}
+
+@keyframes initialize {
+	0%  	{ opacity: 0.0; }
+	100% 	{ opacity: 1.0; }
+}
+
+
+
+/*	Animation classes
+-------------------------------------------------------------------------------------- */
+
+.intro {
+    animation: intro 1.75s;
+    animation-fill-mode: forwards;
+    -webkit-animation: intro 1.75s;
+    -webkit-animation-fill-mode: forwards;   	
+}
+
+.container {
+	opacity: 0.0;
+	animation: initialize 0.75s;
+	animation-fill-mode: forwards;
+	-webkit-animation: initialize 0.75s;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.module {   
+	opacity: 0.0;
+	animation: initialize 0.75s;
+	animation-fill-mode: forwards;	
+	-webkit-animation: initialize 0.75s;
+	-webkit-animation-fill-mode: forwards;		
+}
+
+.anim-delay_000 { animation-delay: 0.00s; }
+.anim-delay_025	{ animation-delay: 0.25s; }
+.anim-delay_050	{ animation-delay: 0.50s; }
+.anim-delay_075	{ animation-delay: 0.75s; }
+.anim-delay_100	{ animation-delay: 1.00s; }
+.anim-delay_125	{ animation-delay: 1.25s; }
+.anim-delay_150	{ animation-delay: 1.50s; }
+.anim-delay_175	{ animation-delay: 1.75s; }
+.anim-delay_200	{ animation-delay: 2.00s; }
+.anim-delay_225	{ animation-delay: 2.25s; }
+.anim-delay_250	{ animation-delay: 2.50s; }
+.anim-delay_275	{ animation-delay: 2.75s; }
+.anim-delay_300	{ animation-delay: 3.00s; }
+
+.anim-delay_000 { -webkit-animation-delay: 0.00s; }
+.anim-delay_025	{ -webkit-animation-delay: 0.25s; }
+.anim-delay_050	{ -webkit-animation-delay: 0.50s; }
+.anim-delay_075	{ -webkit-animation-delay: 0.75s; }
+.anim-delay_100	{ -webkit-animation-delay: 1.00s; }
+.anim-delay_125	{ -webkit-animation-delay: 1.25s; }
+.anim-delay_150	{ -webkit-animation-delay: 1.50s; }
+.anim-delay_175	{ -webkit-animation-delay: 1.75s; }
+.anim-delay_200	{ -webkit-animation-delay: 2.00s; }
+.anim-delay_225	{ -webkit-animation-delay: 2.25s; }
+.anim-delay_250	{ -webkit-animation-delay: 2.50s; }
+.anim-delay_275	{ -webkit-animation-delay: 2.75s; }
+.anim-delay_300	{ -webkit-animation-delay: 3.00s; }
+
+
+
+
+
+
+
+
+
+/*	LOGIN
+	TODO: - FIX FONT FAMILIES
+-------------------------------------------------------------------------------------- */
+
+	.login
+	{
+		
+	}
+
+		.login > img
+		{
+			width: 384px;
+			height: 384px;
+		}
+		
+		.login > form
+		{
+			
+		}
+
+			.login > form > .text-box 
+			{ 
+				font-family: open sans;
+				font-size: 1em; 
+				font-weight: 100;
+				text-indent: 12px;
+				color: #000000;
+				text-shadow: 0px 0px 1px #000000;
+				background-color: #F5F5F5;
+				border: solid 1px #CCCCCC;
+				height: 36px;
+				width: 99%;
+				margin-top: 6px;
+				margin-bottom: 6px;
+			}
+
+			.login > form > .button
+			{ 
+				font-family: open sans;
+				font-size: 1em; 
+				font-weight: 700;
+				text-align: center;
+				text-transform: uppercase;
+				color: #FFFFFF;
+				text-shadow: 0px 0px 1px #FFFFFF;
+				height: 48px; 
+				width: 99%;
+				margin-top: 6px;
+				margin-bottom: 6px;
+				border: none 0px #0096FF;
+			}
+
+			.login > form > .button:hover 
+			{ 
+				opacity: 0.9; cursor: pointer; 
+			}
+				
+/* ----------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html {
+	
+	background-color: white;
+	background-image: url("../assets/images/backdrop.jpg");
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size: cover;
+	
+}
+
+.container 
+{
+	background-image: url("../assets/images/shader_white_096.png");
+	background-repeat: repeat;
+	height: auto;
+	min-height: 720px;
+	overflow: hidden;
+	border: solid 1px #CCCCCC;
+}
+
+.row, .module, .clear, .clear_24, .clear_96
+{
+	overflow: hidden;
+}
+
+.page-title 
+{
+    font-family: open sans;
+    font-size: 1.5em;
+    font-weight: 100;
+	
+	color: #009664;	
+	text-shadow: 0px 0px 1px #009664;
+	border-bottom: solid 1px #CCCCCC; 
+}
+.page-title > .wrapper
+{
+	font-family: open sans;
+	font-weight: 700;
+	color: #009664;	
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	margin-left: -24px;
+	text-transform: uppercase;
+}
+
+
+
+
+
+
+
+.home > .row > .next-match
+{
+	margin-bottom: 24px;
+}
+.home > .row > .next-match > .title > .wrapper
+{  
+	font-family: open sans;
+	font-weight: 700;
+	font-size: 1.2em;	    
+	color: #FFC800;
+	text-shadow: 0px 0px 1px #FFC800;	
+}
+.home > .row > .next-match > .teams .wrapper {
+	font-family: open sans;
+	font-size: 2em;
+	font-weight: 700;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-transform: uppercase;
+	margin-left: -3px;     
+}
+.home > .row > .next-match > .teams .wrapper > img {
+	
+	position: relative;
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+	padding-right: 12px;    
+}
+.home > .row > .next-match > .date-and-stadium > .wrapper {
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 0.9em;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+}
+.home > .row > .next-match > .stadium > .wrapper {
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 0.9em;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+    margin-bottom: 30px; 
+}
+.home > .row > .next-match > .bet
+{
+	text-align: center;
+}
+	
+.home > .row > .next-match > .bet > .wrapper {
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 400;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+
+}
+.home > .row > .next-match > .bet > .wrapper > a {
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 900;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding-left: 8px;
+}
+.home > .row > .next-match > .bet > .wrapper > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+.home > .row > .bets > .wrapper
+{
+	opacity: 0.9;
+	text-align: center;
+}
+.home > .row > .bets > .wrapper > a
+{
+	text-align: center;
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 900;
+	color: #FFFFFF;
+	text-shadow: 0px 0px 1px #FFFFFF;
+	text-decoration: none;
+	opacity: 0.9;
+}
+.home > .row > .bets > .wrapper > a:hover
+{
+	opacity: 1.0;
+}
+
+.users > .wrapper > img {
+
+	position: relative;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+	padding-right: 12px;
+}
+
+.users > .wrapper > a
+{
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 100;
+	text-decoration: none;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+}
+.users > .wrapper > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+
+
+
+.groups > .page-title
+{
+
+	
+	
+}
+
+
+
+
+
+
+.home > .row > .upcoming-matches > .wrapper { }
+
+.home > .row > .upcoming-matches > .wrapper > .title { 
+
+	font-family: open sans;
+	font-weight: 900;
+	font-size: 1.2em;	    
+	color: #FFC800;
+	padding-bottom: 12px;
+}
+
+
+
+
+.container {
+
+}
+
+.intro {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 588px;
+	height: 588px;
+	margin-top: -294px;
+	margin-left: -294px;
+}
+
+/*	Navigation
+-------------------------------------------------------------------------------------- */
+
+
+nav
+{
+	
+}
+
+nav 
+{
+	display: block;
+	margin: auto;	
+	width: 100%;
+	height: 43px;
+}
+
+nav > .nav-item 
+{
+    float: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+nav > .nav-item > a 
+{
+    font-family: open sans;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+nav > .nav-item > a:hover 
+{
+    background-color: #009664;
+    color: #FFFFFF;
+}
+
+nav > .active > a
+{
+     background-color: #009664;
+    color: #FFFFFF;
+}
+
+.logout 
+{ 
+	
+	float: right; 
+	margin-top: -12px; 
+}
+nav > .logout > a
+{
+	color: #FF9999; 
+}
+
+nav > .logout > a:hover 
+{ 
+	background-color: #FF9999; 
+	color: #FFFFFF; 
+}
+
+
+.main { float: left; }
+
+.side { float: right; }
+
+
+
+.module { /* margin-bottom: 24px; */ }
+
+
+
+/* Home view
+-------------------------------------------------------------------------------------- */
+
+	.current-date 
+	{
+	    font-family: open sans;
+	    font-weight: 100;
+	    font-size: 1.5em;	 	       
+	    padding-bottom: 12px;
+	}
+
+	.next-match-title 
+	{  
+	    font-family: open sans;
+	    font-weight: 900;
+	    font-size: 1em;	    
+	    padding-bottom: 12px;
+	}
+	
+	.next-match-teams 
+	{
+	    font-family: open sans;
+	    font-size: 3em;
+	    font-weight: 100;	    
+	    text-transform: uppercase;
+	    margin-left: -3px;     
+	}
+	
+	.bet-score
+	{ 
+	    font-family: open sans;
+	    font-size: 0.8em;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    text-align: center;
+	    width: 64px;
+	    text-shadow: 0px 0px 1px #000000; 
+	    background-color: #E0E0E0;
+	    border: none 0px #E0E0E0;
+	    padding-top: 4px;
+	    padding-bottom: 4px;
+	}
+
+
+
+
+.next-match-teams > img
+{
+   
+    position: relative;
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+    margin-top: -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    
+    
+}
+
+.home-team
+{
+    text-align: right;
+}
+.away-team
+{
+    text-align: left;
+}
+
+.home-team > img, .away-team > img
+{
+    position: relative;
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+    margin-top: -12px;
+
+}
+.home-team > img
+{     
+    padding-left: 12px; 
+}
+.away-team > img
+{
+    padding-right: 12px;    
+}
+
+.scores-divider
+{
+    padding-left: 12px; 
+    padding-right: 12px;    
+}
+
+next-match-squad {
+     margin-bottom: 30px; 
+}
+.button {
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 0.8em;
+    text-align: center;
+    text-decoration: none;
+  
+    padding: 8px;
+    padding-left: 24px;   
+    padding-right: 24px; 
+    margin-bottom: 24px;
+}
+
+.next-match-bets-by-user 
+{
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 1em;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.next-match-bets-by-others
+{
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 0.8em;
+    padding-bottom: 6px;
+}
+.score {
+    
+    font-family: open sans extrabold;
+}
+
+
+
+.next-match-place-bets {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+
+.space_12
+{
+    padding-left: 12px;
+}
+
+
+
+
+
+
+.module > .title
+{
+	font-family: open sans, arial, helvetica neue, sans-serif;
+	font-size: 1em;
+	font-weight: 700;
+}
+
+
+
+
+
+
+/* HOME */
+
+
+
+.side-logo
+{
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 588px;
+    vertical-align: middle;
+}
+
+table, tr, th, td { padding: 6px; font-family: open sans; font-weight: 100; }
+table, tr, th, td { padding-left: 0px; }
+table, tr, th, td { text-align: left; }
+
+			@media (max-width: 1247px) 
+			{
+			
+				.container { display: block; margin: auto; }
+				.container { width: 100%; }
+				.container { max-width: 792px; }
+				.container { padding-left: 48px; padding-right: 48px; }
+				
+				.colspan_1  { width: 78px;   }
+				.colspan_2  { width: 180px;  }
+				.colspan_3  { width: 282px;  }
+				.colspan_4  { width: 384px;  }
+				.colspan_5  { width: 486px;  }
+				.colspan_6  { width: 588px;  }
+				.colspan_7  { width: 690px;  }
+				.colspan_8  { width: 792px;  }
+				.colspan_9  { width: 792px;  }
+				.colspan_10 { width: 792px;  }
+				.colspan_11 { width: 792px;  }
+				.colspan_12 { width: 792px;  }
+				
+				.push-right-1 	{ margin-left: 102px; }
+				.push-right-2 	{ margin-left: 204px; }
+				.push-right-3 	{ margin-left: 306px; }
+				.push-right-4 	{ margin-left: 408px; }
+				.push-right-5 	{ margin-left: 510px; }
+				.push-right-6 	{ margin-left: 612px; }
+				.push-right-7 	{ margin-left: 714px; }
+				.push-right-8 	{ margin-left: 814px; }
+				.push-right-9 	{ margin-left: 918px; }
+				.push-right-10 	{ margin-left: 1020px; }
+				.push-right-11 	{ margin-left: 1122px; }
+				
+				.push-right-4 
+				{
+					margin-left: 204px; 
+				}
+
+				.hidden-tablet
+				{
+					display: none;
+				} 
+				.hidden-phone 
+				{
+					display: none;
+				}   
+			}
+
+		
+
+.homeinfo
+{
+  	/*background-color: white;*/
+	background-image: url("../assets/images/arena-2.jpg");
+	background-repeat: no-repeat;
+        /*
+	background-attachment:fixed;
+	background-size: cover; */ 
+}
+
+.wrapper {
+    width: auto;
+    height: auto;
+    padding: 24px;
+    /*background-image: url("../assets/images/shader_06.png");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+
+
+
+
+
+
+
+
+fieldset { border: solid 1px #CCCCCC; padding-bottom: 24px; }
+legend{
+	height: 36px; 
+	font-family: open sans;
+	color: #0096FF; 
+	font-size: 1.6em; 
+	text-indent: 12px; 
+}
+
+input {
+    
+}
+
+
+#p1{ display: none; }
+
+.input-score
+{
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 36px;
+	width: 96px;
+	font-family: open sans;
+	font-size: 1.2em; 
+	text-indent: 12px;
+        border: solid 1px #CCCCCC; 
+}
+.input-goal
+{
+        height: 36px;
+	width: 100%;
+	font-family: open sans;
+	font-size: 1.2em; 
+	text-indent: 12px;
+        border: solid 1px #CCCCCC; 
+        float: none;
+        margin-bottom: 12px;
+}
+
+
+
+/* Groups View
+----------------------------------------------------------------------------------------- */
+
+.group
+{
+    
+    
+}
+
+    .module-title
+    {
+        font-family: open sans;
+        font-weight: 700;
+        font-size: 1.1em;
+        text-transform: uppercase;
+		color: #000000;
+			text-shadow: 0px 0px 1px #000000;
+    }
+    
+    .group-teams
+    {
+        margin-top: 24px;
+    }
+    
+        .group-team
+        {
+            font-family: open sans;
+            font-weight: 100;
+            font-size: 1.2em;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        .group-team > a
+        {
+            text-decoration: none;
+            color: #000000;
+			text-shadow: 0px 0px 1px #000000;
+        }
+        .group-team > a:hover
+        {
+            color: #0096FF;
+			text-shadow: 0px 0px 1px #0096FF;
+        }
+        
+            .group-team > img
+            {
+                position: relative;
+                vertical-align: middle;
+                width: 32px;
+                height: 32px;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+
+
+
+
+
+/* Matches View
+----------------------------------------------------------------------------------------- */
+
+.matches > .row > .module > .wrapper > .matches > .matchday . > .match-date {
+
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 100;
+	
+	color: red;
+	
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 48px;
+    margin-top: 24px;
+    margin-left: -4px;
+}
+
+/* Teams
+----------------------------------------------------------------------------------------- */
+.teams > .team
+{
+    clear: both;
+    float: none;  
+    padding-bottom: 64px;
+}
+.teams > .team > .logo
+{
+    float: left;
+}
+.teams > .team > .name
+{
+    float: left;
+}
+.teams > .team > .name > a
+{
+    text-decoration: none;
+    color: #000000;
+}
+.teams > .team > .name > a:hover
+{
+    color: #0096FF;
+    text-shadow: 0px 0px 1px #0096FF;
+}
+
+.teams > .team > .logo > img
+{
+    position: relative;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
+    padding-left: 0px;
+    padding-right: 24px;
+}
+
+.teams > .team > .name
+{
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 1.2em;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+
+.page-logo
+{
+    position: relative;
+    vertical-align: middle;
+    width: 65px;
+    height: 65px;
+    padding-left: 0px;
+    padding-right: 24px;
+    float: left;
+	margin-top: -12px;
+}
+.page-title
+{
+    float: left;
+}
+
+.players > .player
+{
+    clear: both;
+    float: none;   
+    font-family: open sans;
+    font-weight: 100;
+    font-size: 0.9em;
+    margin-top: 12px;
+    margin-bottom: 12px; 
+    padding-top: 6px;
+    padding-bottom: 6px;
+    
+}
+
+.players > table > tr > td
+{
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+}
+
+.players > .player
+{
+color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	}
+
+.players > .player > .number
+{
+    float: left;  
+    width: 54px;
+    margin-right: 12px;
+}
+.players > .player > .position
+{
+    float: left; 
+    width: 58px;
+    margin-right: 12px;
+}
+.players > .player > .name
+{
+    float: left;
+    min-width: 384px;
+    margin-right: 12px; 
+}
+.players > .player > .age
+{
+    width: 180px;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* "My Bets" view
+----------------------------------------------------------------------------------------- */
+
+.matches
+{
+
+}
+
+.matches > .match
+{
+	
+}
+
+.matches > .match > .details 
+{
+	margin-top: -12px;
+}
+
+.matches > .match > .details > .detail 
+{
+	font-family: open sans;
+    font-size: 0.7em;
+    text-align: left;
+	color: #000000;
+
+}
+
+.matches >  .match > .teams > .home-team, .matches >  .match > .teams > .away-team 
+{
+ 	font-family: open sans;
+    font-size: 1.2em;
+    font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+}
+
+
+.matches >  .match > .teams > .home-team > a, .matches >  .match > .teams > .away-team > a 
+{
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+}
+
+.matches >  .match > .teams > .home-team > a:hover, .matches >  .match > .teams > .away-team > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+.matches >  .match > .teams > .home-team > img, .matches >  .match > .teams > .away-team > img
+{
+    position: relative;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
+    padding-left: 12px;
+    padding-right: 12px;    
+}
+
+.matches > .match > .teams > .scores 
+{   
+    font-family: open sans;
+    font-weight: 100;
+    text-align: center; 
+}
+.matches > .match > .teams > .scores > .msg
+{
+	font-family: open sans;
+    font-size: 0.7em;
+    padding: 6px;	
+}
+
+.matches > .match > .teams > .scores > .msg > a
+{	
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+	text-decoration: none;
+}
+
+.matches > .match > .teams > .scores > .msg > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF; 
+	text-decoration: underline;
+}
+.matches > .match > .teams > .scores > .correct
+{
+	color: #6DBA3C;
+	text-shadow: 0px 0px 1px #6DBA3C;
+}
+.matches > .match > .teams > .scores > .incorrect
+{
+	color: #FF9999;
+	text-shadow: 0px 0px 1px #FF9999;
+}
+
+.matches > .match > .teams > .scores > input
+{
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 100;
+	background-color: #F5F5F5;
+	border: solid 1px #CCCCCC;		
+}
+
+
+
+
+
+
+
+
+
+
+
+.scores > a
+{
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+}
+.scores  > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+
+
+.goals > .goal
+{
+	font-family: open sans;
+    font-size: 0.8em;
+	margin-left: -36px;
+}
+
+
+
+
+
+
+
+
+.goals > .goal > img
+{
+    width: 16px;
+    height: 16px;
+	position: relative;
+    vertical-align: middle;
+    padding-right: 12px;
+}
+
+.goalmsg
+{	
+	font-family: open sans;
+	font-size: 0.7em;
+	font-weight: 100;
+	text-decoration: none;
+	padding: 6px;
+	text-align: center;
+	color: #CCCCCC;
+	text-shadow: 0px 0px 1px #CCCCCC;
+	text-decoration: none;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 	Single Bet View
+----------------------------------------------------------------------------------------- */
+
+.single-match { }
+ 
+.single-match > .match { font-size: 16px; }
+
+.single-match > .match > .teams { }
+
+.single-match > .match > .teams > .home-team { text-align: right; }
+
+.single-match > .match > .teams > .away-team { text-align: left; }
+
+.single-match > .match > .teams > .home-team > a, .single-match > .match > .teams > .away-team > a
+{
+    font-family: open sans;
+    font-size: 1.4em;
+    font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.single-match > .match > .teams > .home-team > a:hover, .single-match > .match > .teams > .away-team > a:hover 
+{ 
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+			
+.single-match > .match > .teams > .home-team > img, .single-match > .match > .teams > .away-team > img  
+{   
+    width: 48px;
+    height: 48px;
+    position: relative;
+    padding-left: 12px;
+    padding-right: 12px;
+    vertical-align: middle;
+}
+
+.single-match > .match > .teams > .scores {  margin-top: -9px; }
+
+.single-match > .match > .teams > .scores > input, .match > .teams > .scores > input 
+{ 
+		font-family: open sans;
+	    font-size: 1.2em;
+	    font-weight: 100;
+	    text-transform: uppercase;
+	    text-align: center;
+	    width: 58px;
+	    text-shadow: 0px 0px 1px #000000; 
+	    background-color: #E0E0E0;
+	    border: solid 1px #CCCCCC;
+		padding-top: 4px;
+		padding-bottom: 4px;
+}
+.score-divider
+{
+	font-family: open sans;
+	font-size: 2em;
+	font-weight: 400;
+	text-align: center;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.goals { }
+.goals > .homegoals, .goals > .homegoals { min-height: 1px; }
+
+.goals > .homegoals > .goal, .goals > .awaygoals > .goal 
+{ 
+	margin-top: 18px; 
+	margin-bottom: 18px;
+	clear: both;
+}
+
+.goals > .homegoals > .goal > img, .goals > .awaygoals > .goal > img
+{ 
+    width: 24px;
+    height: 24px;
+    position: relative;
+	padding-left: 0px;
+    padding-right: 12px;
+    vertical-align: middle;
+    clear: none;
+}
+
+.single-match > .match > .goals > .homegoals .goal > input, .single-match > .match > .goals > .awaygoals .goal > input
+{
+	width: 242px;
+	
+	font-family: open sans;
+    font-size: 0.9em;
+    font-weight: 100;
+	text-indent: 12px;
+    text-shadow: 0px 0px 1px #CCCCCC;
+    background-color: #E0E0E0;
+    border: solid 1px #CCCCCC;	
+    padding-top: 6px;
+    padding-bottom: 6px;
+	
+}
+
+
+.players 
+{ 
+
+	
+
+}
+.players > .hometeam 
+{ 
+
+	text-align: right;
+	
+	
+}
+
+.players > .awayteam 
+{ 
+
+	text-align: left;
+		
+	
+}
+
+.players > .hometeam > .player, .players > .awayteam > .player  
+{ 
+
+	font-family: open sans;
+    font-size: 0.9em;
+    font-weight: 100;
+
+}
+
+
+
+.line
+{
+	height: 1px;
+	border-bottom: solid 1px #CCCCCC;
+}
+
+
+
+
+
+.submit > input
+{
+	display: block;
+	margin: auto;
+}
+
+
+
+/* ----------------------------------------------------------------------------------- */
+
+.large-button
+{
+	font-family: open sans;
+	font-size: 0.8em;
+	font-weight: 100;
+	padding: 12px;
+	padding-left: 36px;
+	padding-right: 36px;
+	box-shadow: 0px 0px 1px 1px #CCCCCC;
+	border: none 0px transparent;
+	text-decoration: none;
+}
+
+.large-button:hover
+{
+	cursor: pointer;
+	opacity: 0.9;
+}
+.large-button:active
+{	
+	opacity: 1.0;
+}
+
+
+
+
+.bt
+{
+	
+	border: none 0px transparent;
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-shadow: 0px 0px 1px #FFFFFF;
+	text-decoration: none;
+	text-align: center
+	
+}
+.bt:hover
+{
+	cursor: pointer;
+	opacity: 0.9;
+	border: none 0px transparent;
+
+}
+.bt > .wrapper > a
+{
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-shadow: 0px 0px 1px #FFFFFF;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.questions
+{
+	
+	
+	
+}
+
+.questions > .question
+{
+	
+	margin-bottom: 24px;
+	
+}
+
+.questions > .question > label
+{
+	
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	clear:both;	
+}
+
+.questions > .question > input
+{
+	
+		font-family: open sans;
+		font-size: 0.9em; 
+		font-weight: 100;
+		text-indent: 12px;
+		color: #000000;
+		text-shadow: 0px 0px 1px #000000;
+		background-color: #F5F5F5;
+		border: solid 1px #CCCCCC;
+		height: 36px;
+		width: 100%;
+		max-width: 384px;
+		margin-top: 6px;
+		margin-bottom: 6px;	
+}
+
+.hint
+{
+	font-family: open sans;
+	font-size: 0.7em; 
+	font-weight: 100;
+	color: #434343;
+	text-shadow: 0px 0px 1px #434343;
+}
+
+.tournament
+{
+	font-family: open sans;
+	font-size: 1em;
+	font-weight: 100;
+
+}
+.tournament > a
+{
+	font-size: 0.9em;
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+	text-decoration: none;
+}
+
+.tournament > .team-1
+{
+	padding-top: 12px;
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	padding-bottom: 12px;
+}
+
+.tournament > .team-1> img
+{
+	width: 48px;
+    height: 48px;
+    position: relative;
+    vertical-align: middle;
+    clear: none;
+	margin-top: -12px;
+	padding-right: 12px;
+}
+.tournament > .team-1 > a
+{
+	
+	font-family: open sans;
+	font-size: 1.4em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	
+}
+.tournament > .team-1 > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+
+
+.tournament > .team-2
+{
+	padding-top: 12px;
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	padding-bottom: 12px;
+}
+
+.tournament > .team-2 > img
+{
+	width: 48px;
+    height: 48px;
+    position: relative;
+    vertical-align: middle;
+    clear: none;
+	margin-top: -12px;
+	padding-right: 12px;
+}
+.tournament > .team-2 > a
+{
+	
+	font-family: open sans;
+	font-size: 1.4em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	
+}
+.tournament > .team-2 > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+
+
+
+
+
+.tournament > .topscorer
+{
+	padding-top: 12px;
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	padding-bottom: 12px;
+}
+
+.tournament > .topscorer > img
+{
+	width: 36px;
+    height: 36px;
+    position: relative;
+    vertical-align: middle;
+    clear: none;
+	margin-top: -8px;
+	padding-right: 12px;
+}
+.tournament > .topscorer > .player
+{
+	
+	font-family: open sans;
+	font-size: 1.2em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	
+}
+
+
+
+
+
+
+
+
+
+.tournament > .team-3
+{
+	padding-top: 12px;
+	font-family: open sans;
+	font-size: 0.9em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	padding-bottom: 12px;
+}
+
+.tournament > .team-3 > img
+{
+	width: 48px;
+    height: 48px;
+    position: relative;
+    vertical-align: middle;
+    clear: none;
+	margin-top: -12px;
+	padding-right: 12px;
+}
+.tournament > .team-3 > a
+{
+	
+	font-family: open sans;
+	font-size: 1.4em;
+	font-weight: 100;
+	color: #000000;
+	text-shadow: 0px 0px 1px #000000;
+	text-decoration: none;
+	
+}
+.tournament > .team-3 > a:hover
+{
+	color: #0096FF;
+	text-shadow: 0px 0px 1px #0096FF;
+}
+
+
+
+
+
+
+
+
+
+/* MISC */
+
+
+
+
+
+
+
+
+
+.space_12
+{
+    padding-left: 12px;
+}
+
+
+
+
+
+
+.placeholder
+{
+	min-height: 1px;
+}
+.space
+{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+
+.correct
+{
+	color: #6DBA3C;
+	text-shadow: 0px 0px 1px #6DBA3C;
+}
+.incorrect
+{
+	color: #FF9999;
+	text-shadow: 0px 0px 1px #FF9999;
+}
+
+

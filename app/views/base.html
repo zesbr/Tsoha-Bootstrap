@@ -15,8 +15,14 @@
       <!-- Bootstrap (tyylitiedosto) -->
       <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Oma tyylitiedostomme -->
+      <!-- Omat tyylitiedostomme -->
       <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+      <link href="{{base_path}}/assets/css/my.css" rel="stylesheet">
+      <link href="{{base_path}}/assets/css/template.css" rel="stylesheet">
+
+      <!-- Open Sans Web Font -->
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+
     {% endblock %}
   </head>
 
@@ -33,13 +39,15 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}">Tsoha Bootstrap</a>
+          <a class="navbar-brand" href="{{base_path}}">
+          <img src="./assets/img/logo-copa-128.png" alt="" />
+          </a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
-            <li><a href="{{base_path}}">Etusivu</a></li>
+            <!--<li><a href="{{base_path}}">Etusivu</a></li>-->
           </ul>
         </div>
       </div>
