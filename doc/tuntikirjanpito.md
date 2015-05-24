@@ -28,3 +28,25 @@ Työmäärä: 5 h
 * Käyttötapauskaavion parantelu
 
 Työmäärä: 1h
+
+## Launantai 23.5.2015
+
+* Tietosisällönkartoitus
+* Käsitkaavion suunnittelu
+* Käsikaavion piirtäminen
+* Tietosisällön kuvausten kirjoittaminen
+
+Työmäärä: 6 h
+
+## Sunnuntai 24.5.2015
+
+* Käsitkaavion parantelu
+* Tietosisällöm kuvausten tarkentaminen
+* Tietokantatoteutuksen suunnittelu
+* Tietokantakaavion piirtäminen
+* Create/Drop Table -lauseiden luonti
+* Testidatan luonti
+* Etusivu-, listaus- ja muokkausnäkymän suunnittelu
+* Staattisten etusivu-, muokkaus ja muokkausnäkymien html draftit 
+
+Työmäärä: 14 h
