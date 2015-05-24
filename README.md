@@ -2,10 +2,10 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://jesruuth.users.cs.helsinki.fi/tsoha)
-* [Linkki etusivulle](https://jesruuth.users.cs.helsinki.fi/tsoha)
-* [Linkki listaussivulle](https://jesruuth.users.cs.helsinki.fi/tsoha/list)
-* [Linkki muokkaussivulle](https://jesruuth.users.cs.helsinki.fi/tsoha/edit)
+* [Linkki sovellukseeni](http://jesruuth.users.cs.helsinki.fi/tsoha)
+* [Linkki etusivulle](http://jesruuth.users.cs.helsinki.fi/tsoha)
+* [Linkki listaussivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/list)
+* [Linkki muokkaussivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/edit)
 * [Linkki dokumentaatiooni](https://github.com/zesbr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
