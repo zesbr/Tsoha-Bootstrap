@@ -1,0 +1,729 @@
+/**********************************************************************************************************************
+	Basic HTML blocks
+**********************************************************************************************************************/
+body {
+	padding: 0;
+	margin: 0;
+	background-color: rgb(220, 220, 220);
+	min-height: 900px; /* <-- Korjaa tämä */
+}
+header {
+	background-color: rgba(33, 33, 33, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+section {
+	height: auto;
+	clear: both;
+}
+footer {
+	background-color: rgba(33, 33, 33, 1.0);
+}
+/**********************************************************************************************************************
+	---
+**********************************************************************************************************************/
+.container {
+	display: block;
+	margin: auto;
+	max-width: 1200px;
+}
+.wrapper {	
+	margin: auto;
+	max-width: 1200px;
+	padding: 64px 0px 64px 0px;
+	clear: both;
+	height: 100%;
+}
+/**********************************************************************************************************************
+	Navigation
+**********************************************************************************************************************/
+/*nav {
+	background-color: rgba(33, 33, 33, 1.0);
+	padding: 24px 0px 24px 0px;
+	border-bottom: 1px solid rgba(33, 33, 33, 0.3);
+}
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+}
+nav a {
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-weight: 700;
+	font-size: 1.5em;
+	color: rgba(0, 0 , 0, 0.3);
+	text-decoration: none;
+	padding: 12px 24px 14px 24px;
+}
+nav a:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255 , 255, 0.9);
+}
+nav ul li {
+	display: inline;
+}
+*/
+/**********************************************************************************************************************
+	---
+**********************************************************************************************************************/
+.column {
+	margin: 0;
+	padding: 0;
+}
+.row {
+	padding: 0px 0px 12px 0px;
+	width: 100%; 
+	height: 100%;
+	clear: both;
+}
+/**********************************************************************************************************************
+	Colspan selectors (1200px)
+	WARNING: Replaced by 960px grid selectors at the bottom of this document
+**********************************************************************************************************************/
+.colspan_1, .colspan_2, .colspan_3, .colspan_4, .colspan_5, .colspan_6, 
+.colspan_7, .colspan_8, .colspan_9, .colspan_10, .colspan_11, .colspan_12 {
+	float: left;
+	margin-right: 12px;
+}
+.colspan_1 {
+	width: 89px;
+}
+.colspan_2 {
+	width: 190px;
+}
+.colspan_3 {
+	width: 291px;
+}
+.colspan_4 {
+	width: 392px;
+}
+.colspan_5 {
+	width: 493px;
+}
+.colspan_6 {
+	width: 594px;
+}
+.colspan_7 {
+	width: 695px;
+}
+.colspan_8 {
+	width: 796px;
+}
+.colspan_9 {
+	width: 897px;
+}
+.colspan_10 {
+	width: 998px;
+}
+.colspan_11 {
+	width: 1099px;
+}
+.colspan_12 {
+	width: 1200px;
+}
+.last {
+	margin-right: 0px;
+}
+/**********************************************************************************************************************
+	Rowspan selectors
+**********************************************************************************************************************/
+.rowspan_1 {
+	height: 89px;
+}
+.rowspan_2 {
+	height: 190px;
+}
+.rowspan_3 {
+	height: 291px;
+}
+.rowspan_4 {
+	height: 392px;
+}
+.rowspan_5 {
+	height: 493px;
+}
+.rowspan_6 {
+	height: 594px;
+}
+.rowspan_7 {
+	height: 695px;
+}
+.rowspan_8 {
+	height: 796px;
+}
+.rowspan_9 {
+	height: 897px;
+}
+.rowspan_10 {
+	height: 998px;
+}
+.rowspan_11 {
+	height: 1099px;
+}
+.rowspan_12 {
+	height: 1200px;
+}
+/**********************************************************************************************************************
+	Pushers and pullers
+**********************************************************************************************************************/
+.push_right_1 { 
+	margin-left: 101px; /* TODO: @colspan_1 + @margin */
+}
+.push_right_2 { 
+
+}
+.push_right_3 { 
+	
+}
+.push_right_4 { 
+	
+}
+.push_right_5 { 
+	
+}
+.push_right_6 { 
+	
+}
+.push_right_7 { 
+	
+}
+.push_right_8 { 
+	
+}
+.push_right_9 { 
+	
+}
+.push_right_10 { 
+	
+}
+.push_right_11 { 
+	
+}
+.push_right_12 { 
+	
+}
+
+/**********************************************************************************************************************
+	Typography
+**********************************************************************************************************************/
+h1, h2, h3, h4, h5, h6, p {
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	padding: 0;
+	margin: 0;
+}
+h1 { 
+	font-size: 5.0em;
+	font-weight: 100;
+	letter-spacing: -4px;
+}
+h2 { 
+	font-size: 2.4em;
+}
+h3 { 
+	font-size: 2.0em;
+}
+h4 { 
+	font-size: 1.6em;
+}
+h5 { 
+	font-size: 1.2em;
+}
+h6 { 
+	font-size: 1.0em;
+}
+p  { 
+	font-size: 1em;
+}
+.emphasis {
+	font-weight: 700;
+}
+
+/**********************************************************************************************************************
+	Misc.
+**********************************************************************************************************************/
+.break {
+	height: 12px;
+	clear: both;
+}
+.clearfix {
+	height: 0px;
+	clear: both;
+}
+
+
+/*	=====================================================================================
+		Color themes
+========================================================================================= */
+
+.white-on-blue{
+	background-color: rgba(0, 110, 255, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.blue-on-white  {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(0, 110, 255, 1.0); 
+}
+.white-on-red {
+	background-color: rgba(255, 77, 77, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.red-on-white {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(255, 77, 77, 1.0); 
+}
+.white-on-green {
+	background-color: rgba(0, 153, 51, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+.green-on-white {
+	background-color: rgba(255, 255, 255, 1.0);
+	color: rgba(0, 153, 51, 1.0);
+}
+.orange-on-white {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(245, 129, 33, 1.0);
+}
+.white-on-orange {
+	background-color: rgba(245, 129, 33, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.white-on-gray {
+	background-color: rgba(175, 175, 175, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+
+.black-on-yellow {
+	background-color: rgba(255, 230, 0, 1.0); 
+	color: 20, 20, 20, 1.0;
+}
+.yellow-on-black {
+	background-color: rgba(20, 20, 20, 1.0); 
+	color: rgba(255, 230, 0, 1.0);
+}
+.white-on-dark-purple {
+	background-color: rgba(87, 40, 59, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.dark-purple-on-white {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(87, 40, 59, 1.0);
+}
+.black-on-white {
+
+}
+.white-on-black {
+
+}
+
+.white-on-dark-blue {
+	background-color: rgba(0, 30, 60, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+
+.white-text {
+	color: rgba(255, 255, 255, 1.0);
+}
+
+
+.purple { }
+.lightpurple { }
+.darkpurple { }
+
+
+
+
+.bg-red { background-color: rgba(255, 77, 77, 1.0); }
+.bg-green { }
+.bg-blue { background-color: rgba(0, 110, 255, 1.0); color: rgba(255, 255, 255, 1.0); }
+.bg-orange { background-color: rgba(245, 129, 33, 1.0); color: rgba(255, 255, 255, 1.0); }
+.bg-black { background-color: rgba(0, 0, 0, 1.0); }
+.bg-white { background-color: rgba(255, 255, 255, 1.0); }
+.bg-darkgray { background-color: rgba(50, 50, 50, 1.0); }
+.bg-lightgray { background-color: rgba(225, 225, 225, 1.0); }
+.bg-yellow { background-color: rgba(255, 230, 0, 1.0); }
+
+.white-on-darker {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255, 255, 1.0) !important;
+}
+.white-on-lighter {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 1.0) !important;
+}	
+::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.2) !important;
+}
+
+
+
+/*	=====================================================================================
+	Form elemrnt selectors
+=========================================================================================
+	<form>		Defines an HTML form for user input
+	<input>		Defines an input control
+	<textarea>	Defines a multiline input control (text area)
+	<label>		Defines a label for an <input> element
+	<fieldset>	Groups related elements in a form
+	<legend>	Defines a caption for a <fieldset> element
+	<select>	Defines a drop-down list
+	<optgroup>	Defines a group of related options in a drop-down list
+	<option>	Defines an option in a drop-down list
+	<button>	Defines a clickable button
+	<datalist>	Specifies a list of pre-defined options for input controls
+	<keygen>	Defines a key-pair generator field (for forms)
+	<output>	Defines the result of a calculation
+========================================================================================= */
+/*
+button: A push button with no default behavior.
+checkbox: A check box. You must use the value attribute to define the value submitted by this item. Use the checked attribute to indicate whether this item is selected. You can also use the indeterminate attribute to indicate that the checkbox is in an indeterminate state (on most platforms, this draws a horizontal line across the checkbox).
+color: HTML5 A control for specifying a color. A color picker's UI has no required features other than accepting simple colors as text (more info).
+date: HTML5 A control for entering a date (year, month, and day, with no time).
+datetime: HTML5 A control for entering a date and time (hour, minute, second, and fraction of a second) based on UTC time zone.
+datetime-local: HTML5 A control for entering a date and time, with no time zone.
+email: HTML5 A field for editing an e-mail address. The input value is validated to contain either the empty string or a single valid e-mail address before submitting. The :valid and :invalid CSS pseudo-classes are applied as appropriate.
+file: A control that lets the user select a file. Use the accept attribute to define the types of files that the control can select.
+hidden: A control that is not displayed, but whose value is submitted to the server.
+image: A graphical submit button. You must use the src attribute to define the source of the image and the alt attribute to define alternative text. You can use the height and width attributes to define the size of the image in pixels.
+month: HTML5 A control for entering a month and year, with no time zone.
+number: HTML5 A control for entering a floating point number.
+password: A single-line text field whose value is obscured. Use the maxlength attribute to specify the maximum length of the value that can be entered.
+radio: A radio button. You must use the value attribute to define the value submitted by this item. Use the checked attribute to indicate whether this item is selected by default. Radio buttons that have the same value for the name attribute are in the same "radio button group"; only one radio button in a group can be selected at one time.
+range: HTML5 A control for entering a number whose exact value is not important.
+reset: A button that resets the contents of the form to default values.
+search: HTML5 A single-line text field for entering search strings; line-breaks are automatically removed from the input value.
+submit: A button that submits the form.
+tel: HTML5 A control for entering a telephone number; line-breaks are automatically removed from the input value, but no other syntax is enforced. You can use attributes such as pattern and maxlength to restrict values entered in the control. The :valid and :invalid CSS pseudo-classes are applied as appropriate.
+text: A single-line text field; line-breaks are automatically removed from the input value.
+time: HTML5 A control for entering a time value with no time zone.
+url: HTML5 A field for editing a URL. The input value is validated to contain either the empty string or a valid absolute URL before submitting. Line-breaks and leading or trailing whitespace are automatically removed from the input value. You can use attributes such as pattern and maxlength to restrict values entered in the control. The :valid and :invalid CSS pseudo-classes are applied as appropriate.
+week: HTML5 A control for entering a date consisting of a week-year number and a week number with no time zone.
+*/
+input 					{ }
+input[type="button"] 	{ }
+input[type="password"] 	{ }
+input[type="range"] 	{ }
+input[type="submit"] 	{ }
+input[type="text"] 		{ }
+input[type="textarea"] 	{ }
+textarea 				{ }
+label 					{ }
+output 					{ }
+select 					{ }
+option 					{ }
+
+
+
+
+input, textarea {
+	background-color: rgba(255, 255, 255, 1.0);
+	border: none;
+	box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+	color: rgba(0, 0, 0, 1.0);
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-weight: 100;
+	font-size: 1.2em;
+	margin: 12px 0px 12px 0px;
+	padding: 12px 24px 12px 24px;
+	resize: none;
+	width: 100%;
+}
+
+label, output {
+	color: rgba(255,255,255,0.2);
+	padding: 0px 12px 0px 12px;
+
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-weight: 100;
+	font-size: 1.2em;
+}
+
+::-webkit-input-placeholder {
+	color: rgba(255,255,255,1);
+}
+:-moz-placeholder {
+   color: rgba(255,255,255,1);
+   opacity:  1;
+}
+::-moz-placeholder {
+   color: rgba(255,255,255,1);
+   opacity:  1;
+}
+:-ms-input-placeholder {
+   color: rgba(255,255,255,1);
+}
+
+
+input:focus, textarea:focus {
+	outline: none;
+}
+
+
+
+
+input[type="button"], input[type="submit"] {
+	border: none;
+	font-weight: 700;
+	padding: 12px 72px 14px 72px;
+	margin: 12px 0px 0px 0px;
+	width: auto;
+}
+input[type="button"]:hover, input[type="submit"]:hover {
+	cursor: pointer;
+}
+
+
+
+input[type="checkbox"], input[type="radio"] {
+	margin: 12px 0px 12px 24px;
+	width: auto;
+}
+input[type=range] {  
+	height: 6px;
+	width: 100%;
+	padding: 0;
+	border: none;
+	border-radius: 3px;
+    -webkit-appearance: none  
+}
+input[type=range]:hover {  cursor: pointer; }
+
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: rgba(200, 200, 200, 1.0);
+	box-shadow: 0px 0px 1px 0px rgba(0,0,0,1.0);
+	border: none;
+	width: 32px;
+	height: 32px;
+	border-radius: 16px;
+	cursor: pointer;
+}
+.firefox input[type=range]::-moz-range-thumb {  
+    background-color: rgba(225, 225, 225, 1.0);
+    border: none;
+    /* border: 1px solid #bdc3c7; */
+	width: 32px;
+	height: 32px;
+    border-radius: 16px;  
+    cursor: pointer;  
+}
+
+.switch {
+	height: 32px !important;
+	width: 89px !important;
+	border-radius: 16px !important;
+}
+
+
+
+
+
+
+
+
+
+
+/**********************************************************************************************************************
+	---
+**********************************************************************************************************************/
+.icon {
+	margin-left: -1px;
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/**********************************************************************************************************************
+	---
+**********************************************************************************************************************/
+.featured-item {}
+.featured-item-icon {}
+.featured-item-texts {}
+/*********************************************************************************************************************/
+.featured-item {
+	clear: both;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 32px 0px 32px 0px;
+}
+.no-separator {
+		border-bottom: none;
+}
+	.featured-item-icon {
+		background-color: rgba(0, 0, 0, 0.1) !important;
+		height: 100%;
+		width: 100%;
+	}
+		.featured-item-icon > img {
+			height: 50%;
+			width: 50%;
+		}
+	.featured-item-texts {
+		padding: 0px 24px 0px 24px;
+	}
+		.featured-item-texts > h3 {
+			font-size: 3em;
+			font-weight: 100;
+			padding-bottom: 24px;
+			vertical-align: center;
+
+		}
+		.featured-item-texts > p {
+			font-size: 1.5em;
+			font-weight: 100;
+			vertical-align: center;
+		}
+
+/**********************************************************************************************************************
+	Vertical and horizontal alignment selectors
+**********************************************************************************************************************/
+.vertical-align-top {
+	position: relative;
+	top: 0%;
+}
+.vertical-align-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+}
+.vertical-align-bottom {
+	position: relative;
+	top: 100%;
+	transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+  	-ms-transform: translateY(-100%);
+}
+.horizontal-align-left {
+	display: block;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+}
+.horizontal-align-center {
+	display: block;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.horizontal-align-right {
+	display: block;
+	margin-left: auto !important;
+	margin-right: 0 !important;
+}
+
+.divider {
+	height: 1px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.2);
+	margin: 32px 0px 32px 0px;
+}
+
+/**********************************************************************************************************************
+	Supreme Contact Form
+**********************************************************************************************************************/
+#supreme-contact input, #supreme-contact textarea {
+	background-color: rgba(0, 0, 0, 0.2) !important;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+#supreme-contact ::-webkit-input-placeholder {
+	color: rgba(255,255,255,1.0) !important;
+}
+#supreme-contact input[type="submit"] { color: rgba(255, 255, 255, 0.8) !important; }
+#supreme-contact input[type="submit"]:hover {
+	background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.rename-me {
+	width: 30%;
+	height: 30%;
+	padding: 0px 0px 24px 0px;
+}
+/**********************************************************************************************************************
+	Modules, components and blocks naming conventions
+**********************************************************************************************************************/
+
+/**********************************************************************************************************************
+	Big
+**********************************************************************************************************************/
+.big {
+	padding: 64px 0px 64px 0px;
+}
+.big-title {
+	font-weight: 100;
+	text-align: center;
+	margin: 0px 0px 12px 0px;
+}
+.big-text {
+	text-align: center;
+}
+
+/*	*** Biggie ******************************************************************************
+	***************************************************************************************** */
+	.mega { 
+		text-align: center !important; 
+	}
+	.mega > .wrapper { 
+		padding: 96px 0px 96px 0px; 
+	}
+	.mega-icon { }
+	.mega-title { 
+		font-size: 4em; 
+		padding-bottom: 12px;
+	}
+	.mega-paragraph { 
+		font-weight: 100; 
+		font-size: 2em; 
+		padding-bottom: 24px
+	}
+	.mega-button { 
+		background-color: rgba(255, 255, 255, 1.0) !important; 
+		color: rgba(0, 110, 255, 1.0) !important;
+		padding: 12px 48px 12px 48px !important;
+	}
+	.mega-button:hover {
+		background-color: rgba(255, 255, 255, 0.9) !important; 
+	}
+
+
+
+.featured-list { }
+.featured-list-items { }
+.featured-list-item { }
+
+
+
+
+/* ======================================================================================
+	Module
+   ====================================================================================== */
+	.module { }
+		.module-header { }
+			.module-title { }
+			.module-description { }
+		.module-content { }
+/* ====================================================================================== */
+	.module-header {
+		padding: 0px 0px 24px 0px;
+	}
+	.module-title {
+		font-weight: 100;
+		font-size: 2.5em;
+		padding: 0px 0px 12px 0px;
+	}
+	.module-description {
+		font-weight: 100;
+		font-size: 1.2em;
+	}
+/* ====================================================================================== */
+
+
+ul {
+
+}
+li {
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+

@@ -15,3 +15,7 @@ $routes->get('/list', function() {
 $routes->get('/edit', function() {
 	HelloWorldController::edit();
 });
+
+$routes->get('/test', function() {
+	HelloWorldController::test();
+});

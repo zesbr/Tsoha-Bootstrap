@@ -21,4 +21,8 @@
       View::make('bet/edit.html');
     }
 
+    public static function test(){
+      View::make('home_temp.html');
+    }
+
   }

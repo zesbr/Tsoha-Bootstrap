@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>
-      {% block title %}
-        Tietokantasovellus
-      {% endblock %}
-    </title>
+<title>
+		{% block title %}
+Tietokantasovellus
+{% endblock %}
+</title>
 
-    {% block head %}
-      <!-- Bootstrap (tyylitiedosto) -->
-      <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+{% block head %}
+<!-- Bootstrap (tyylitiedosto) -->
+<link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Omat tyylitiedostomme -->
-      <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
-      <link href="{{base_path}}/assets/css/my.css" rel="stylesheet">
-      <link href="{{base_path}}/assets/css/template.css" rel="stylesheet">
+<!-- Omat tyylitiedostomme -->
+<link href="{{base_path}}/assets/css/bootstrap-fix.css" rel="stylesheet">
+<link href="{{base_path}}/assets/css/my.css" rel="stylesheet">
+<link href="{{base_path}}/assets/css/template.css" rel="stylesheet">
+<link href="{{base_path}}/assets/css/home.css" rel="stylesheet">
+<link href="{{base_path}}/assets/css/grid.css" rel="stylesheet">
 
-      <!-- Open Sans Web Font -->
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+<!-- Open Sans Web Font -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
 
-    {% endblock %}
-  </head>
+{% endblock %}
+</head>
 
-  <body>
+<body>
 
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
+<nav class="navbar navbar-default dark-red" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+			<!-- Logo -->
+			<a class="navbar-brand" href="{{base_path}}">
+				<img src="./assets/img/logo-copa-128.png" alt="" />
+			</a>
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}">
-          <img src="./assets/img/logo-copa-128.png" alt="" />
-          </a>
-        </div>
+		</div>
 
-        <div class="collapse navbar-collapse" id="navigation">
-          <ul class="nav navbar-nav">
-            <!-- Navigaation linkit -->
-            <!--<li><a href="{{base_path}}">Etusivu</a></li>-->
-          </ul>
-        </div>
-      </div>
-    </nav>
+		<div class="collapse navbar-collapse" id="navigation">
+			<!-- Linkit -->
+			<ul class="nav navbar-nav">
+				
+					<!--<li><a href="{{base_path}}">Etusivu</a></li>-->
+					<li><a href="">Ottelut</a></li>
+					<li><a href="">Lohkot</a></li>
+					<li><a href="">Veikkaukset</a></li>
+					<li><a href="">Joukkueet</a></li>
+					<li><a href="">Yhteisöt</a></li>
+					<li><a href="">Pistetilanne</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 
-    <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
-      {% block content %}{% endblock %}
-    </div>
+<!--<div id="main-container">-->
+	{% block content %}{% endblock %}
+<!--</div>-->
 
-    {% block body %}
-      <!-- jQuery -->
-      <script src="{{base_path}}/vendor/jquery.min.js"></script>
+{% block body %}
+<!-- jQuery -->
+<script src="{{base_path}}/vendor/jquery.min.js"></script>
 
-      <!-- Bootstrap (skriptitiedosto) -->
-      <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap (skriptitiedosto) -->
+<script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-      <!-- Oma skriptitiedostomme -->
-      <script src="{{base_path}}/assets/js/site.js"></script>
-    {% endblock %}
-  </body>
+<!-- Oma skriptitiedostomme -->
+<script src="{{base_path}}/assets/js/site.js"></script>
+{% endblock %}
+</body>
 </html>

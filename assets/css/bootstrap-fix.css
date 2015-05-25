@@ -1,0 +1,51 @@
+nav {
+	height: 64px !important;
+}
+.navbar {
+	margin-bottom: 0px !important;
+	border-radius: 0px !important;
+}
+.navbar .container-fluid {
+	max-width: 1200px;
+	max-height: 64px;
+	margin: 0px auto 0px auto !important;
+	padding: 0px !important;
+	border: none;
+}
+.navbar-default {
+/*background-color: rgb(33,33,33);
+height: 96px;*/
+border: none;
+}
+
+.navbar-brand {
+  height: 64px !important;
+  padding: 0px 24px 0px 0px !important;
+}
+
+.navbar-header, .navbar-collapse {
+	color: rgb(255,255,255);
+}
+
+#main-container{
+	max-width: 1200px;
+	padding: 10px 25px;
+	margin: 0px auto;
+}
+
+.nav > li {
+	font-family: "open sans", "arial", "helvetica neue", "sans-serif";
+	font-weight: 600;
+	font-size: 0.9em;
+	color: rgb(255, 255, 255) !important;
+}
+.navbar-default .navbar-nav > li > a {
+	color: rgb(255, 255, 255) !important;
+	line-height: 32px;
+}
+
+
+
+.dark-red {
+	background-color: rgb(171, 31 , 34);
+}
