@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+	<div class="wrapper">
+		<div class="colspan_12">
+			<h1>{{ player.firstname }} {{ player.lastname }}</h1>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Birthday</th>
+						<th>Position</th>
+						<th>Club</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ player.squadnumber }}</td>
+						<td>{{ player.firstname }} {{ player.lastname }}</td>
+						<td>{{ player.dateofbirth }}</td>
+						<td>{{ player.position }}</td>
+						<td>{{ player.club }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+{% endblock %}

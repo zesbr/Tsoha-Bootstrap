@@ -1,7 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-	HelloWorldController::index();
+	HomeController::index();
 });
 
 $routes->get('/hiekkalaatikko', function() {
@@ -17,5 +17,31 @@ $routes->get('/edit', function() {
 });
 
 $routes->get('/test', function() {
-	HelloWorldController::test();
+	HomeController::index();
+});
+
+// Team routes
+
+$routes->get('/teams', function() {
+	TeamController::index();
+});
+
+$routes->get('/team/:id', function($id){
+	TeamController::show($id);
+});
+
+// TODO: Lisää reitit joukkueen nimen ja lyhenteen perusteella
+
+// Match routse
+$routes->get('/matches', function() {
+	MatchController::index();
+});
+
+// Player routes
+$routes->get('/players', function() {
+	PlayerController::index();
+});
+
+$routes->get('/players/:id', function($id){
+	PlayerController::show($id);
 });

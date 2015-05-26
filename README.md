@@ -4,7 +4,7 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://jesruuth.users.cs.helsinki.fi/tsoha)
 * [Linkki etusivulle](http://jesruuth.users.cs.helsinki.fi/tsoha)
-* [Linkki listaussivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/list)
+* [Linkki listaussivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/matches)
 * [Linkki muokkaussivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/edit)
 * [Linkki dokumentaatiooni](https://github.com/zesbr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
