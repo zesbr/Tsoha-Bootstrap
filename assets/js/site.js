@@ -1,3 +1,7 @@
 $(document).ready(function(){
-  //alert('Hello World!');
+	$('.owl-carousel').owlCarousel({
+	    margin:10,
+	    loop:true,
+	    autoWidth:true
+	});
 });

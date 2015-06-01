@@ -2,71 +2,163 @@
 {% block content %}
 <section>
 	<div class="wrapper">
-		<div class="colspan_12">
+		<div class="colspan_8">
 			<div class="row">
-				<div class="card colspan_8 rowspan_5">		
-					
-					<div class="card-header">
-						<div>GROUP A | June 11</div>
-						<div>Estadio Nacional Julio Martínez Prádanos</div>
-						<div>Santiago de Chile</div>
-					</div>
 
-					<div class="card-content">
-						<div class="left">
-							<img src="./assets/img/logo-chi-128.png" alt="" />
-							<span class="text">Chile</span>
-						</div>
-						
-						<div class="right">
-							<img src="./assets/img/logo-ecu-128.png" alt="" />
-							<span class="text">Ecuador</span>
-						</div>
+				<div class="card colspan_8 rowspan_5">	
+					<div class="owl-carousel">
+						{% for match in matches %}
+						<div class="owl-carousel-wrapper">		
+							<div class="loader-bar">
+								<span class="loader-bar-progress"></span>
+							</div>
+							<div class="card-header">
+								<div class="header-icon"></div>
+								<div><b>{{ match.stage }} | {{ match.kickoff|date("F j") }}</b></div> <!-- TODO: Poista <b> ja delegoi boldaus css:lle -->
+								<div>{{ match.stadium }}</div>
+								<div>{{ match.city }}</div>
+							</div>
+							<div class="card-content">
+								<div class="navigator"></div>
+								<div class="left">
+									<img src="./assets/img/logo-{{ match.hometeamcode|lower }}-128.png" alt="" />
+									<span class="text">{{ match.hometeamname }}</span>
+								</div>
+								<div class="right">
+									<img src="./assets/img/logo-{{ match.awayteamcode|lower }}-128.png" alt="" />
+									<span class="text">{{ match.awayteamname }}</span>
+								</div>
+								<div class="navigator"></div>
+								<div class="center">
+									<div class="status">
+										{% if date(match.kickoff) > date("now") %}
+											Upcoming
+										{% else %}
+											Final result
+										{% endif %}
+									</div>
+									<div class="big-score">
+										{% if date(match.kickoff) > date("now") %}
+											<span style="color: gray">v</span>
+										{% else %}
+											{{ match.hometeamgoals }} : {{ match.awayteamgoals }}
+										{% endif %}
+									</div>
+									<div class="user-score">
+										<!-- if user has bets -->
+											<!--YOU EARNED-->
+										<!-- else -->
+											<!-- No bets -->
 
-						<div class="center">
-							<div class="status">
-								<!-- if match is upcoming -->
-									<!-- Upcoming -->
-								<!-- elsif ongoing -->
-									<!-- Waiting for result -->
-								<!-- else -->
-									Final result
+										{% if date(match.kickoff) > date("now") %}
+											NO BETS
+										{% else %}
+											YOU EARNED
+										{% endif %}
+									</div>
+									<div class="points-rewarded">
+										<!-- if winner and score were correct -->
+											<!-- + 9 pts -->
+										<!-- else if winner was correct -->
+											<!-- +3pts -->
+										<!-- else -->
+											<!-- No points gained -->
+
+										{% if date(match.kickoff) > date("now") %}
+											
+										{% else %}
+											+9 PTS
+										{% endif %}
+									</div>
+									<div class="action">
+										<!-- if match is upcoming and user has bet -->
+											<!-- <button>Edit</button> -->
+										<!-- elsif upcoming -->
+											<!-- <button>Bet</button> -->
+									</div>
+								</div>			
 							</div>
-							<div class="big-score">
-								<!-- if match is upcoming or ongoing -->
-									<!-- v -->
-								<!-- else -->
-									2 : 0
-							</div>
-							<div class="user-score">
-								<!-- if user has bets -->
-									2 : 0
-								<!-- else -->
-									<!-- No bets -->
-							</div>
-							<div class="points-rewarded">
-								<!-- if winner and score were correct -->
-									+9pts
-								<!-- else if winner was correct -->
-									<!-- +3pts -->
-								<!-- else -->
-									<!-- No points gained -->
-							</div>
-							<div class="action">
-								<!-- if match is upcoming and user has bet -->
-									<!-- <button>Edit</button> -->
-								<!-- elsif upcoming -->
-									<!-- <button>Bet</button> -->
-							</div>
-						</div>			
+						</div>
+						{% endfor %}
 					</div>
 				</div>
 
-				
 			</div>
+
+
 			<div class="row">
-				
+
+
+				<div class="card group-standings-card colspan_8">
+					<div class="group-standings-card--header">
+						<div>Group A</div>
+					</div>
+					<div class="group-standigs-card--content">
+						<table class="group-standings-table">
+							<thead>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>GP</td>
+									<td>W</td>
+									<td>D</td>
+									<td>L</td>
+									<td>GF</td>
+									<td>GA</td>
+									<td>PTS</td>
+								</tr>
+							</thead>
+							<tbody>
+							{% for team in standings %}
+								<tr>
+									<td id="logo"><img class="team-logo" src="{{ base_path}}/assets/img/logo-{{ team.code|lower }}-128.png" alt="" /></td>
+									<td id="name">{{ team.name }}</td>
+									<td id="played">{{ team.played }}</td>
+									<td id="wins">{{ team.wins }}</td>
+									<td id="draws">{{ team.draws }}</td>
+									<td id="losses">{{ team.losses }}</td>
+									<td id="scored">{{ team.scored }}</td>
+									<td id="conceded">{{ team.conceded }}</td>
+									<td id="points">{{ team.points }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
+
+		</div>
+
+		<div class="colspan_4 last">
+
+			<div class="card profile-card colspan_4 rowspan_5">
+				
+				<div class="profile-card--header">
+					<div><b>Jesper Ruuth</b></div>
+					<div>Helsinki, Finland</div>
+					<div class="profile-icon"></div>
+				</div>
+
+				<div class="profile-card--content">
+					<div class="primary-stats">
+						<div class="stat-title">RANKING</div>
+						<div class="stat-title">POINTS</div>
+						<div id="user--ranking" class="stat-value--primary">1.</div>
+						<div id="user--points" class="stat-value--primary">9</div>
+					</div>
+					<div class="clear_0"></div>
+					<hr/>
+					<div class="stat-title">BETS</div>
+					<div class="stat-value--secondary">1</div>
+					<div class="stat-title">CORRECT</div>
+					<div class="stat-value--secondary">1</div>
+					<div class="stat-title">PERCENTAGE</div>
+					<div class="stat-value--secondary">100%</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 </section>

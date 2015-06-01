@@ -2,8 +2,10 @@
 class HomeController extends BaseController {
 
 	public static function index() {
-		$match = Match::next();
-		View::make('index.html', array('matches' => $match));
+		$matches = Match::all();
+		$standings = Team::getGroupStandings();
+
+		View::make('index.html', array('matches' => $matches, 'standings' => $standings));
 	}
 
 }

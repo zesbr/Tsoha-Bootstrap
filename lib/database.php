@@ -51,4 +51,16 @@ class DB {
     	}
 	}
 
+	/**
+	 * 
+	 */
+	public static function insert($query, $params = array()) {
+		$db = self::connection()->prepare($query);
+		if (empty($params)) {
+	    	$db->execute();
+	    } else {
+	    	$db->execute($params);
+	    }
+	}
+
 }

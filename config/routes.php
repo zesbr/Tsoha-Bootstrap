@@ -45,3 +45,34 @@ $routes->get('/players', function() {
 $routes->get('/players/:id', function($id){
 	PlayerController::show($id);
 });
+
+// Groups
+$routes->get('/groups', function(){
+	GroupController::index();
+});
+
+// Community routes
+
+// Index()
+$routes->get('/communities', function(){
+	CommunityController::index();
+});
+
+// New()
+$routes->get('/communities/new', function(){
+	CommunityController::create();
+});
+
+// Show()
+$routes->get('/communities/:id', function($id){
+	CommunityController::show($id);
+});
+
+// Save()
+$routes->post('/communities', function(){
+	CommunityController::save();
+});
+
+// Update()
+
+// Delete()

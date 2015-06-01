@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+	<div class="wrapper">
+		<div class="colspan_12 last">
+			<div class="row">
+				<h1>Uusi yhteisö</h1>
+				<hr/>
+				<form method="post" action="{{base_path}}/communities">
+				    <div class="form-group">
+				      <label>Name</label>
+				      <input type="text" name="name" class="form-control">
+				    </div>
+				    <div class="form-group">
+				      <button type="submit" class="btn btn-primary">Lisää</button>
+			   		</div>
+			  	</form>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
