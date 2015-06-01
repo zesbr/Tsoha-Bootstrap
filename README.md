@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://jesruuth.users.cs.helsinki.fi/tsoha)
-* [Linkki esimerkki listaus, esittely ja luontisivu](http://jesruuth.users.cs.helsinki.fi/tsoha/communities)
+* [Linkki esimerkki listaus-, esittely- ja luontisivulle](http://jesruuth.users.cs.helsinki.fi/tsoha/communities)
 * [Linkki dokumentaatiooni](https://github.com/zesbr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
