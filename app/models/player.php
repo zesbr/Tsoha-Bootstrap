@@ -1,5 +1,5 @@
 <?php
-class Player extends BaseModel implements ORM {
+class Player extends BaseModel {
 
 	public $id;
 	public $team_id;

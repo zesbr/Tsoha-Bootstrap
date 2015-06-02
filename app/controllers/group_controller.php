@@ -2,10 +2,9 @@
 class GroupController extends BaseController {
 
 	public static function index() {
-		// $groups = Group::all();
+		$groups = Group::all();
 		// echo json_encode($groups);
-		$teams = Team::all();
-		View::make("group/index.html", array("teams" => $teams));
+		View::make("group/index.html", array("groups" => $groups));
 	}
 
 	public static function show($id) {

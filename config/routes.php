@@ -128,3 +128,4 @@ $routes->get('/logout', function(){
 $routes->post('/login', function(){
 	SessionController::handle_login();
 });
+

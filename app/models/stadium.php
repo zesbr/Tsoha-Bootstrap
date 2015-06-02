@@ -1,5 +1,5 @@
 <?php
-class Stadium extends BaseModel implements ORM {
+class Stadium extends BaseModel {
 
 	public $id;
 	public $name;

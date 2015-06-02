@@ -1,5 +1,5 @@
 <?php
-class Membership extends BaseModel implements ORM {
+class Membership extends BaseModel {
 
 	public $id;
 	public $user_id;

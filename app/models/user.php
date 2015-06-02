@@ -1,5 +1,5 @@
 <?php
-class User extends BaseModel implements ORM {
+class User extends BaseModel {
 
 	public $id;
 	public $username;
@@ -132,58 +132,22 @@ class User extends BaseModel implements ORM {
 
 	}
 
-	/*
-	 * TODO: REFAKTOROI TÄSTÄ ALASPÄIN
+	/**
+	 * Autentikoi käyttäjän käyttäjänimen ja salasanan perusteella, sekä palauttaa käyttäjän jos
+	 * tunnistautuminen onnistui
 	 */
-	public static function getUserById($id) {
-		$query = "select * from users where id = :id limit 1";
-		$params = array("id" => $id);
-		$row = DB::execute($query, $params, false);
-		if ($row) {
-			$user = new User($row);
-		}
-		return $user;
-	}
-
-	public static function getUserByUsername($username) {
+	public static function authenticate($username, $password) {
 		$query = "select * from users where username = :username limit 1";
 		$params = array("username" => $username);
 		$row = DB::execute($query, $params, false);
 		if ($row) {
 			$user = new User($row);
 		}
-		return $user;
-	}
-
-	public static function getBetsByUserId($user_id) {
-		$query = "select count(*) as num_of_bets from bets where user_id = :user_id";
-		$params = array("user_id" => $user_id);
-		return DB::execute($query, $params);
-	}
-
-	/**
-	 * Autentikoi käyttäjän käyttäjänimen ja salasanan perusteella
-	 */
-	public static function authenticate($username, $password) {
-		$user = self::getUserByUsername($username);
-		if ($user->username == $username && $user->password_hash == crypt($password, $user->password_salt)) {
+		if (isset($user) && $user->username == $username && $user->password_hash == crypt($password, $user->password_salt)) {
 			return $user;
 		}
 		return null;
 	}
 
-	/**
-	 * TODO: Tämän voisi ehkä laittaa jonnekkin muualle
-	 * Generoi salasanan suojausta parantavan merkkijonon eli ns. suolan
-	 */
-	public static function salt() {
-		$characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		$salt = "";
-		for ($i = 0; $i < 12; $i++) { 
-			$j = rand(0, (strlen($characters)-1));
-			$salt .= $characters[$j];
-		}
-		return $salt;
-	}
 
 }

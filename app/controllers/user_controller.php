@@ -16,8 +16,9 @@ class UserController extends BaseController {
 		View::make("user/registration.html");
 	}
 
-	public static function save() {
-		$salt = User::salt();
+	public static function save() {		
+		$salt = self::get_random_salt(); // TODO: Tämän voisi siirtää lomakkeeseen hidden fieldiksi
+		
 		$user = new User(array(
 			"username" => $_POST["username"], 
 			"password_hash" => crypt($_POST["password"], $salt), 
@@ -30,6 +31,7 @@ class UserController extends BaseController {
 			"last_login" => date("Y-m-d H:i:s")
 		));
 		$user->save();
+
 		Redirect::to('/users', array('message' => 'Peli on lisätty kirjastoosi!'));
 	}
 

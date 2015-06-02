@@ -1,5 +1,5 @@
 <?php
-class Match extends BaseModel implements ORM {
+class Match extends BaseModel {
 
 	public $id;
 	public $stage_id;

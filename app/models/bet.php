@@ -1,5 +1,5 @@
 <?php
-class Bet extends BaseModel implements ORM {
+class Bet extends BaseModel {
 
 	public $id;
 	public $user_id;

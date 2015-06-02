@@ -1,5 +1,5 @@
 <?php
-class Goal extends BaseModel implements ORM {
+class Goal extends BaseModel {
 
 	public $id;
 	public $match_id;

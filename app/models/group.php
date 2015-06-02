@@ -1,5 +1,5 @@
 <?php
-class Group extends BaseModel implements ORM {
+class Group extends BaseModel {
 
 	public $id;
 	public $title;
@@ -32,6 +32,20 @@ class Group extends BaseModel implements ORM {
 			$group = new Group($row);
 		}
 		return $group;
+	}
+
+	/*
+	 * Hakee ja palauttaa lohkossa pelaavat joukkueet
+	 */
+	public function teams() {
+		$query = "select * from teams where group_id = :id";
+		$params = array("id" => $this->id);
+		$rows = DB::execute($query, $params);
+		$teams = array();
+		foreach ($rows as $row) {
+			$teams[] = new Team($row);
+		}
+		return $teams;
 	}
 
 }

@@ -110,17 +110,18 @@
 								</tr>
 							</thead>
 							<tbody>
-							{% for team in standings %}
+							{% for team in teams %}
+								{% set stats = team.stats  %}
 								<tr>
 									<td id="logo"><img class="team-logo" src="{{ base_path}}/assets/img/logo-{{ team.code|lower }}-128.png" alt="" /></td>
 									<td id="name">{{ team.name }}</td>
-									<td id="played">{{ team.played }}</td>
-									<td id="wins">{{ team.wins }}</td>
-									<td id="draws">{{ team.draws }}</td>
-									<td id="losses">{{ team.losses }}</td>
-									<td id="scored">{{ team.scored }}</td>
-									<td id="conceded">{{ team.conceded }}</td>
-									<td id="points">{{ team.points }}</td>
+									<td id="played">{{ stats.played }}</td>
+									<td id="wins">{{ stats.wins }}</td>
+									<td id="draws">{{ stats.draws }}</td>
+									<td id="losses">{{ stats.losses }}</td>
+									<td id="scored">{{ stats.scored }}</td>
+									<td id="conceded">{{ stats.conceded }}</td>
+									<td id="points">{{ stats.points }}</td>
 								</tr>
 							{% endfor %}
 							</tbody>
@@ -151,9 +152,7 @@
 					<hr/>
 					<div class="stat-title">BETS</div>
 					<div class="stat-value--secondary">{{ user.bets|length }}</div>
-					<div class="stat-title">CORRECT WINNERS</div>
-					<div class="stat-value--secondary">-</div>
-					<div class="stat-title">CORRECT SCORES</div>
+					<div class="stat-title">SUCCESSFULL</div>
 					<div class="stat-value--secondary">-</div>
 					<div class="stat-title">PERCENTAGE</div>
 					<div class="stat-value--secondary">-</div>

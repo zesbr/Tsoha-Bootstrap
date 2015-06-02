@@ -1,5 +1,5 @@
 <?php
-class Stage extends BaseModel implements ORM {
+class Stage extends BaseModel {
 
 	public $id;
 	public $name;

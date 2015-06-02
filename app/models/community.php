@@ -1,5 +1,5 @@
 <?php
-class Community extends BaseModel implements ORM {
+class Community extends BaseModel {
 
   	public $id; 
   	public $name; 

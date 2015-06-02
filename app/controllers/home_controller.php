@@ -6,12 +6,12 @@ class HomeController extends BaseController {
 		
 		$matches = Match::all();
 		$user = self::get_user_logged_in(); 
-		$standings = Team::getGroupStandings();
+		$teams = Team::all();
 
 		View::make("index.html", array(
 			"matches" => $matches, 
 			"user" => $user, 
-			"standings" => $standings
+			"teams" => $teams
 		));
 	}
 
