@@ -4,75 +4,127 @@ $routes->get('/', function() {
 	HomeController::index();
 });
 
-$routes->get('/hiekkalaatikko', function() {
-	HelloWorldController::sandbox();
+/*** Groups ***/
+$routes->get('/groups', function() {
+	GroupController::index();
+});
+$routes->get('/group/:id', function($id) {
+	GroupController::show($id);
 });
 
-$routes->get('/list', function() {
-	HelloWorldController::show();
+/*** Stages ***/
+$routes->get('/stages', function() {
+	StageController::index();
+});
+$routes->get('/stage/:id', function($id) {
+	StageController::show($id);
 });
 
-$routes->get('/edit', function() {
-	HelloWorldController::edit();
+/*** Stadiums ***/
+$routes->get('/stadiums', function() {
+	StadiumController::index();
+});
+$routes->get('/stadium/:id', function($id) {
+	StadiumController::show($id);
 });
 
-$routes->get('/test', function() {
-	HomeController::index();
-});
-
-// Team routes
-
+/*** Teams ***/
 $routes->get('/teams', function() {
 	TeamController::index();
 });
-
 $routes->get('/team/:id', function($id){
 	TeamController::show($id);
 });
 
-// TODO: Lisää reitit joukkueen nimen ja lyhenteen perusteella
-
-// Match routse
-$routes->get('/matches', function() {
-	MatchController::index();
-});
-
-// Player routes
+/*** Player ***/
 $routes->get('/players', function() {
 	PlayerController::index();
 });
-
-$routes->get('/players/:id', function($id){
+$routes->get('/player/:id', function($id){
 	PlayerController::show($id);
 });
 
-// Groups
-$routes->get('/groups', function(){
-	GroupController::index();
+/*** Matches ***/
+$routes->get('/matches', function() {
+	MatchController::index();
+});
+$routes->get('/match/:id', function($id) {
+	MatchController::show($id);
 });
 
-// Community routes
+/*** Goals ***/
+$routes->get('/goals', function() {
+	GoalController::index();
+});
+$routes->get('/goal/:id', function($id){
+	GoalController::show($id);
+});
 
-// Index()
+/*** Users ***/
+$routes->get('/users', function(){
+	UserController::index();
+});
+$routes->get('/user/:id', function($id){
+	UserController::show($id);
+});
+$routes->get('/registration', function(){
+	UserController::create();
+});
+$routes->post('/registration', function(){
+	UserController::save();
+});
+
+/*** Bets ***/
+$routes->get('/bets', function() {
+	BetController::index();
+});
+$routes->get('/bet/new/:id', function($id) {
+	BetController::create($id);
+});
+$routes->get('/bet/:id', function($id) {
+	BetController::show($id);
+});
+$routes->post('/bet', function($id) {
+	// TODO
+});
+$routes->put('/bet/:id', function($id) {
+	// TODO
+});
+$routes->delete('/bet/:id', function($id) {
+	// TODO
+});
+
+
+
+/*** Communities ***/
 $routes->get('/communities', function(){
 	CommunityController::index();
 });
-
-// New()
 $routes->get('/communities/new', function(){
 	CommunityController::create();
 });
-
-// Show()
-$routes->get('/communities/:id', function($id){
+$routes->get('/community/:id', function($id){
 	CommunityController::show($id);
 });
-
-// Save()
 $routes->post('/communities', function(){
 	CommunityController::save();
 });
 
-// Update()
+/*** Memberships **/
+$routes->get('/memberships', function(){
+	MembershipController::index();
+});
+$routes->get('/membership/:id', function($id){
+	MembershipController::show($id);
+});
 
-// Delete()
+/*** Sessions ***/
+$routes->get('/login', function(){
+	SessionController::login();
+});
+$routes->get('/logout', function(){
+	SessionController::logout();
+});
+$routes->post('/login', function(){
+	SessionController::handle_login();
+});

@@ -12,21 +12,24 @@
 							<div class="loader-bar">
 								<span class="loader-bar-progress"></span>
 							</div>
+
 							<div class="card-header">
 								<div class="header-icon"></div>
-								<div><b>{{ match.stage }} | {{ match.kickoff|date("F j") }}</b></div> <!-- TODO: Poista <b> ja delegoi boldaus css:lle -->
-								<div>{{ match.stadium }}</div>
+								<div><b>{{ match.stage.name }} | {{ match.kickoff|date("F j") }}</b></div> 
+								<!-- TODO: Poista <b> ja delegoi boldaus css:lle -->
+								<div>{{ match.stadium.name }}</div>
 								<div>{{ match.city }}</div>
 							</div>
+
 							<div class="card-content">
 								<div class="navigator"></div>
 								<div class="left">
-									<img src="./assets/img/logo-{{ match.hometeamcode|lower }}-128.png" alt="" />
-									<span class="text">{{ match.hometeamname }}</span>
+									<img src="./assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+									<span class="text">{{ match.home.name }}</span>
 								</div>
 								<div class="right">
-									<img src="./assets/img/logo-{{ match.awayteamcode|lower }}-128.png" alt="" />
-									<span class="text">{{ match.awayteamname }}</span>
+									<img src="./assets/img/logo-{{ match.away.code|lower }}-128.png" alt="" />
+									<span class="text">{{ match.away.name }}</span>
 								</div>
 								<div class="navigator"></div>
 								<div class="center">
@@ -41,21 +44,19 @@
 										{% if date(match.kickoff) > date("now") %}
 											<span style="color: gray">v</span>
 										{% else %}
-											{{ match.hometeamgoals }} : {{ match.awayteamgoals }}
+											{{ match.homegoals|length }} : {{ match.awaygoals|length }}
 										{% endif %}
 									</div>
 									<div class="user-score">
-										<!-- if user has bets -->
-											<!--YOU EARNED-->
-										<!-- else -->
-											<!-- No bets -->
-
 										{% if date(match.kickoff) > date("now") %}
 											NO BETS
 										{% else %}
 											YOU EARNED
 										{% endif %}
 									</div>
+
+
+
 									<div class="points-rewarded">
 										<!-- if winner and score were correct -->
 											<!-- + 9 pts -->
@@ -135,8 +136,7 @@
 			<div class="card profile-card colspan_4 rowspan_5">
 				
 				<div class="profile-card--header">
-					<div><b>Jesper Ruuth</b></div>
-					<div>Helsinki, Finland</div>
+					<div><b>{{ user.firstname }} {{ user.lastname }}</b></div>
 					<div class="profile-icon"></div>
 				</div>
 
@@ -144,17 +144,19 @@
 					<div class="primary-stats">
 						<div class="stat-title">RANKING</div>
 						<div class="stat-title">POINTS</div>
-						<div id="user--ranking" class="stat-value--primary">1.</div>
-						<div id="user--points" class="stat-value--primary">9</div>
+						<div id="user--ranking" class="stat-value--primary">-</div>
+						<div id="user--points" class="stat-value--primary">-</div>
 					</div>
 					<div class="clear_0"></div>
 					<hr/>
 					<div class="stat-title">BETS</div>
-					<div class="stat-value--secondary">1</div>
-					<div class="stat-title">CORRECT</div>
-					<div class="stat-value--secondary">1</div>
+					<div class="stat-value--secondary">{{ user.bets|length }}</div>
+					<div class="stat-title">CORRECT WINNERS</div>
+					<div class="stat-value--secondary">-</div>
+					<div class="stat-title">CORRECT SCORES</div>
+					<div class="stat-value--secondary">-</div>
 					<div class="stat-title">PERCENTAGE</div>
-					<div class="stat-value--secondary">100%</div>
+					<div class="stat-value--secondary">-</div>
 				</div>
 
 			</div>

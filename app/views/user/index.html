@@ -4,27 +4,32 @@
 	<div class="wrapper">
 		<div class="colspan_12 last">
 			<div class="row">
-				<h1>Yhteisöt</h1>
+				<h1>Users</h1>
 				<hr/>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
+							<td>ID</td>
+							<td>Username</td>
 							<td>Name</td>
-							<td>Created On</td>
+							<td>Email</td>
+							<td>Password</td>
+							<td>Joined on</td>
 						</tr>
 					</thead>
 					<tbody>
-						{% for community in communities %}
+						{% for user in users %}
 						<tr>
-							<td><a href="{{ base_path }}/community/{{ community.id }}">{{ community.name }}</a></td>
-							<td>{{ community.created_on }}</td>
+							<td>{{ user.id }}</td>
+							<td>{{ user.username }}</td>
+							<td>{{ user.firstname }} {{ user.lastname }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.password_hash }}</td>
+							<td>{{ user.joined_on }}</td>
 						</tr>
 						{% endfor %}
 					</tbody>
 				</table>
-				<div>
-					<a href="{{ base_path }}/communities/new" class="btn btn-primary">Luo uusi yhteisö</a>
-				</div>
 			</div>
 		</div>
 	</div>

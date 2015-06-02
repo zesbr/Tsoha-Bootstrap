@@ -18,7 +18,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				{% for player in players %}
+				{% for player in team.players %}
 					<tr>
 						<td>{{ player.squadnumber }}</td>
 						<td>{{ player.firstname }} {{ player.lastname }}</td>
@@ -40,11 +40,11 @@
 					</tr>
 				</thead>
 				<tbody>
-				{% for match in matches %}
+				{% for match in team.matches %}
 					<tr>
-						<td>{{ match.hometeamname }} vs. {{ match.awayteamname }}</td>
+						<td>{{ match.home.name }} vs. {{ match.away.name }}</td>
 						<td>{{ match.kickoff }}</td>
-						<td>{{ match.stadium }}, {{ match.city }}</td>	
+						<td>{{ match.stadium.name }}, {{ match.stadium.city }}</td>	
 					<tr>
 				{% endfor %}
 				</tbody>

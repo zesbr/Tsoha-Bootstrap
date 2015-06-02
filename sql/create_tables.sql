@@ -19,7 +19,7 @@ CREATE TABLE Players (
 	team_id INTEGER REFERENCES Teams(id),
 	firstname VARCHAR(64) NOT NULL,
 	lastname VARCHAR(64) NOT NULL,
-	dateofbirth DATE NOT NULL,
+	birthday DATE NOT NULL,
 	nationality VARCHAR(64) NOT NULL, 
 	squadnumber INTEGER NOT NULL,
 	position VARCHAR(3) NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE Stadiums (
 CREATE TABLE Matches ( 
 	id SERIAL PRIMARY KEY,
 	stage_id INTEGER REFERENCES Stages(id), 
-	home INTEGER REFERENCES Teams(id),
-	away INTEGER REFERENCES Teams(id),
+	home_id INTEGER REFERENCES Teams(id),
+	away_id INTEGER REFERENCES Teams(id),
 	kickoff TIMESTAMP NOT NULL,
 	stadium_id INTEGER REFERENCES Stadiums(id)
 );
@@ -80,8 +80,8 @@ CREATE TABLE Bets (
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER REFERENCES Users(id),
 	match_id INTEGER REFERENCES Matches(id),
-	homescore INTEGER NOT NULL,
-	awayscore INTEGER NOT NULL,
+	home_score INTEGER NOT NULL,
+	away_score INTEGER NOT NULL,
 	points_earned INTEGER NOT NULL,
 	created_on TIMESTAMP NOT NULL,
 	edited_on TIMESTAMP NOT NULL
@@ -98,11 +98,11 @@ CREATE TABLE Communities (
 
 -- Memberships eli jäsenyydet ovat käyttäjien jäsenyyksiä jossain ryhmissä
 CREATE TABLE Memberships (
+	id SERIAL PRIMARY KEY,
 	user_id INTEGER REFERENCES Users(id),
 	community_id INTEGER REFERENCES Communities(id),
 	joined_on TIMESTAMP,
-	is_admin BOOLEAN DEFAULT false NOT NULL,
-	PRIMARY KEY (user_id, community_id)
+	is_admin BOOLEAN DEFAULT false NOT NULL
 );
 
 -- Requests eli pyynnöt ovat käyttäjän lähettämiä jäsenyyspyyntöjä yhteisön ylläpitäjille

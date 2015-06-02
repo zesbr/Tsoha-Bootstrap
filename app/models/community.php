@@ -1,5 +1,5 @@
 <?php
-class Community extends BaseModel {
+class Community extends BaseModel implements ORM {
 
   	public $id; 
   	public $name; 
@@ -11,27 +11,69 @@ class Community extends BaseModel {
 		parent::__construct($attributes);
 	}
 
+	/*
+	 * Hakee ja palauttaa kaikki yhteisöt
+	 */
 	public static function all() {
 		$query = "select * from communities";
-		return DB::execute($query);
+		$rows = DB::execute($query);
+		$communities = array();
+		foreach ($rows as $row) {
+			$communities[] = new Community($row);
+		}
+		return $communities;
 	}
 
+	/*
+	 * Hakee ja palauttaa yhteisön
+	 */
 	public static function find($id) {
 		$query = "select * from communities where id = :id limit 1";
 		$params = array("id" => $id);
-		return DB::execute($query, $params, false);
+		$row = DB::execute($query, $params, false);
+		if ($row) {
+			$community = new Community($row);
+		}
+		return $community;
 	}
 
-	public static function getMembershipsByCommunity($id) {
-		$query = "select * from memberships join users on memberships.user_id = users.id where memberships.community_id = :id";
-		$params = array("id" => $id);
-		return DB::execute($query, $params);
+	/*
+	 * Hakee ja palauttaa yhteisöön kuuluvat jäsenet 
+	 */
+	public function members() {
+		$query = "select users.* from users join memberships on users.id = memberships.user_id where memberships.community_id = :id";
+		$params = array("id" => $this->id);
+		$rows = DB::execute($query, $params);
+		$members = array();
+		foreach ($rows as $row) {
+			$members[] = new User($row);
+		}
+		return $members;
 	}
 
-	public static function insert($community) {
-		$query = "insert into communities (name, created_on, is_private, is_open) values (:name, date_trunc('second', current_timestamp), false, false)";
-		$params = array("name" => $community["name"]);
-		DB::insert($query, $params);
+	/*
+	 * Tallentaa yhteisön
+	 */
+	public function save() {
+		
+		$query = 
+			"insert into communities (name, created_on, is_private, is_open) " .
+			"values (" .
+				":name, ".
+				":created_on, " .
+				":is_private, " .
+				":is_open" .
+			") returning id";
+
+		$params = array(
+			"name" => $this->name,
+			"created_on" => $this->created_on,
+			"is_private" => $this->is_private,
+			"is_open" => $this->is_open
+    	);
+
+		$row = DB::execute($query, $params, false);
+		$this->id = $row['id'];
 	}
 
 }

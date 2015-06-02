@@ -12,6 +12,7 @@
       // Ohjataan käyttäjä annettuun polkuun
       header('Location: ' . BASE_PATH . $path);
 
+
       exit();
     }
 

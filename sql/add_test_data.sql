@@ -10,13 +10,13 @@ INSERT INTO Teams (name, code, group_id)
 INSERT INTO Teams (name, code, group_id) 
 	VALUES ('Bolivia', 'BOL', 1);
 
-INSERT INTO Players (team_id, firstname, lastname, dateofbirth, nationality, squadnumber, position, is_injured, is_suspended, club) 
+INSERT INTO Players (team_id, firstname, lastname, birthday, nationality, squadnumber, position, is_injured, is_suspended, club) 
 	VALUES (1, 'Test', 'Player', '1980-01-01', 'Chile', 1, 'ST', false, false, 'Free Agent');
-INSERT INTO Players (team_id, firstname, lastname, dateofbirth, nationality, squadnumber, position, is_injured, is_suspended, club) 
+INSERT INTO Players (team_id, firstname, lastname, birthday, nationality, squadnumber, position, is_injured, is_suspended, club) 
 	VALUES (2, 'Test', 'Player', '1980-01-01', 'Ecuador', 1, 'ST', false, false, 'Free Agent');
-INSERT INTO Players (team_id, firstname, lastname, dateofbirth, nationality, squadnumber, position, is_injured, is_suspended, club) 
+INSERT INTO Players (team_id, firstname, lastname, birthday, nationality, squadnumber, position, is_injured, is_suspended, club) 
 	VALUES (3, 'Test', 'Player', '1980-01-01', 'Mexico', 1, 'ST', false, false, 'Free Agent');
-INSERT INTO Players (team_id, firstname, lastname, dateofbirth, nationality, squadnumber, position, is_injured, is_suspended, club) 
+INSERT INTO Players (team_id, firstname, lastname, birthday, nationality, squadnumber, position, is_injured, is_suspended, club) 
 	VALUES (4, 'Test', 'Player', '1980-01-01', 'Bolivia', 1, 'ST', false, false, 'Free Agent');
 
 INSERT INTO Stages (name) 
@@ -25,7 +25,7 @@ INSERT INTO Stages (name)
 INSERT INTO Stadiums (name, city) 
 	VALUES ('Estadio Nacional Julio Martínez Prádanos', 'Santiago de Chile');
 
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id) 
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
 	VALUES (1, 1, 2, '2015-05-24 00:00:00', 1);
 
 	INSERT INTO Goals (match_id, player_id, minute, is_owngoal, from_penalty) 
@@ -35,13 +35,13 @@ INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id)
 	INSERT INTO Goals (match_id, player_id, minute, is_owngoal, from_penalty) 
 		VALUES (1, 1, 1, false, false);
 
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id) 
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
 	VALUES (1, 3, 4, '2015-05-24 00:00:00', 1);
 
 	INSERT INTO Goals (match_id, player_id, minute, is_owngoal, from_penalty) 
 		VALUES (2, 4, 1, false, false);
 
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id) 
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
 	VALUES (1, 1, 3, '2015-05-31 00:00:00', 1);
 
 	INSERT INTO Goals (match_id, player_id, minute, is_owngoal, from_penalty) 
@@ -51,13 +51,13 @@ INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id)
 	INSERT INTO Goals (match_id, player_id, minute, is_owngoal, from_penalty) 
 		VALUES (3, 3, 1, true, false);
 
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id)
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id)
 	VALUES (1, 2, 4, '2015-05-31 00:00:00', 1);
 
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id) 
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
 	VALUES (1, 1, 4, '2015-06-07 00:00:00', 1);
 	
-INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id) 
+INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
 	VALUES (1, 2, 3, '2015-06-07 00:00:00', 1);
 
 -- TEAM 			GP 	W 	D 	L 	GF 	GA 	PTS
@@ -67,11 +67,13 @@ INSERT INTO Matches (stage_id, home, away, kickoff, stadium_id)
 -- 2: Ecuador		2  	0 	1 	1 	0 	3 	1
 -- 3: Mexico		2 	0 	0 	2 	0 	4 	0 	
 
+-- Password: asdf
 INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, joined_on, last_login) 
-	VALUES ('admin', '', '', 'admin@test.com', 'System', 'Administrator', true, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
+	VALUES ('admin', 'Z9NjSFGpSWL8U', 'Z9Bg13gRAmt3', 'admin@test.com', 'System', 'Administrator', true, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
 
+-- Password: asdf
 INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, joined_on, last_login) 
-	VALUES ('zesbr', '', '', 'zesbr@test.com', 'Jesper', 'Ruuth', false, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
+	VALUES ('zesbr', 'Z9NjSFGpSWL8U', ' Z9Bg13gRAmt3', 'zesbr@test.com', 'Jesper', 'Ruuth', false, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
 
 INSERT INTO Communities (name, created_on, is_private, is_open) 
 	VALUES ('Test Community 1', '2015-01-01 00:00:00', false, true);
@@ -84,3 +86,18 @@ INSERT INTO Memberships (user_id, community_id, joined_on, is_admin)
 
 INSERT INTO Memberships (user_id, community_id, joined_on, is_admin) 
 	VALUES (2, 2, '2015-01-01 00:00:00', true);
+
+INSERT INTO Bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on)
+	VALUES (1, 1, 3, 0, 0, '2014-01-01 00:00:00', '2014-01-01 00:00:00');
+
+INSERT INTO Bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on)
+	VALUES (1, 2, 0, 0, 0, '2014-01-01 00:00:00', '2014-01-01 00:00:00');
+
+INSERT INTO Bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on)
+	VALUES (1, 3, 1, 0, 0, '2014-01-01 00:00:00', '2014-01-01 00:00:00');
+
+INSERT INTO Bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on)
+	VALUES (2, 1, 2, 1, 0, '2014-01-01 00:00:00', '2014-01-01 00:00:00');
+
+INSERT INTO Bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on)
+	VALUES (2, 2, 3, 1, 0, '2014-01-01 00:00:00', '2014-01-01 00:00:00');

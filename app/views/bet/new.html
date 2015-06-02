@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+	<div class="wrapper">
+		<div class="colspan_12 last">
+			<div class="row">
+			<div class="card colspan_12 rowspan_5 last">		
+					
+					<div class="card-header">
+						<div class="header-icon">
+							
+						</div>
+						<div><b>{{ match.home.group.title }} | {{ match.kickoff }}</b></div>
+						<div>{{ match.stadium.name }}</div>
+						<div>{{ match.stadium.city }}</div>
+					</div>
+
+					
+					<div class="card-content">
+						<div class="navigator">
+							
+						</div>
+						<div class="left">
+							<img src="{{ base_path }}/assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+							<span class="text">{{ match.home.name }}</span>
+						</div>
+						<div class="right">
+							<img src="{{ base_path }}/assets/img/logo-{{ match.away.code|lower }}-128.png" alt="" />
+							<span class="text">{{ match.away.name }}</span>
+						</div>
+						<div class="navigator">
+							
+						</div>
+						<div class="center">
+
+						</div>			
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
