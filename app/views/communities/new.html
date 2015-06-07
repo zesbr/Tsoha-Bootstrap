@@ -1,21 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+
+		<h1>Uusi yhteisö</h1>
+
+	</div>
+</header>
 <section>
 	<div class="wrapper">
 		<div class="colspan_12 last">
-			<div class="row">
-				<h1>Uusi yhteisö</h1>
-				<hr/>
-				<form method="post" action="{{base_path}}/communities">
-				    <div class="form-group">
-				      <label>Name</label>
-				      <input type="text" name="name" class="form-control">
-				    </div>
-				    <div class="form-group">
-				      <button type="submit" class="btn btn-primary">Lisää</button>
-			   		</div>
-			  	</form>
-			</div>
+
+			<div class="form-input colspan_12 last">
+			<form method="post" action="{{base_path}}/community">
+				<div class="row colspan_8 last">
+					<div class="form-input-fields">
+						<label for="name" class="input-label">Yhteisön nimi</label>
+						<input type="text" name="name" placeholder="Yhteisön nimi" value="" autocomplete="off" class="input-text">
+						<label for="description" class="input-label">Kuvaus</label>
+						<textarea data-autoresize rows="1" name="description" placeholder="Kuvaus" autocomplete="off" class="input-textarea"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-input-actions">
+						<input type="submit" value="Tallenna muutokset" class="input-button horizontal-align-right">
+					</div>
+				</div>
+			</form>
+		</div>
+
 		</div>
 	</div>
 </section>

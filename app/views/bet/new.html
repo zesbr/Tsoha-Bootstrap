@@ -4,21 +4,17 @@
 	<div class="wrapper">
 		<div class="colspan_12 last">
 			<div class="row">
-			<div class="card colspan_12 rowspan_5 last">		
-					
+
+			<div class="card colspan_12 last">							
 					<div class="card-header">
-						<div class="header-icon">
-							
+						<div class="header-icon">	
 						</div>
 						<div><b>{{ match.home.group.title }} | {{ match.kickoff }}</b></div>
 						<div>{{ match.stadium.name }}</div>
 						<div>{{ match.stadium.city }}</div>
 					</div>
-
-					
 					<div class="card-content">
 						<div class="navigator">
-							
 						</div>
 						<div class="left">
 							<img src="{{ base_path }}/assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
@@ -31,9 +27,30 @@
 						<div class="navigator">
 							
 						</div>
-						<div class="center">
 
-						</div>			
+						<form method="post" action="{{base_path}}/bet">
+							<div class="bet-input">
+								<div class="bet-input-wrapper">	
+									<div class="bet-input-group">
+										<div id="increase-home-score" class="action-button increase">+</div>
+										<input id="home-score" type="text" name="home_score" value="0" readonly="true" />
+										<div id="decrease-home-score" class="action-button decrease">-</div>
+									</div>
+									<div class="bet-input-group">
+										<div id="increase-away-score" class="action-button increase">+</div>
+										<input id="away-score" type="text" name="away_score" value="0" readonly="true"/>
+										<div id="decrease-away-score" class="action-button decrease">-</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="bet-actions">
+								<input type="hidden" name="match_id" value="{{ match.id }}" hidden="true">
+								<input type="submit" value="CREATE" class="white-on-blue">
+							</div>
+						</form>
+
+
 					</div>
 				</div>
 			</div>

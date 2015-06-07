@@ -1,6 +1,7 @@
 <?php
 class HomeController extends BaseController {
 
+	# GET /
 	public static function index() {
 		self::check_logged_in();
 		

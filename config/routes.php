@@ -70,9 +70,20 @@ $routes->get('/user/:id', function($id){
 $routes->get('/registration', function(){
 	UserController::create();
 });
+$routes->get('/user/edit/:id', function($id){
+	UserController::edit($id);
+});
 $routes->post('/registration', function(){
 	UserController::save();
 });
+$routes->put('/user', function(){
+	UserController::update();
+});
+$routes->delete('/user', function(){
+	UserController::delete();
+});
+
+
 
 /*** Bets ***/
 $routes->get('/bets', function() {
@@ -81,17 +92,20 @@ $routes->get('/bets', function() {
 $routes->get('/bet/new/:id', function($id) {
 	BetController::create($id);
 });
+$routes->get('/bet/edit/:id', function($id) {
+	BetController::edit($id);
+});
 $routes->get('/bet/:id', function($id) {
 	BetController::show($id);
 });
-$routes->post('/bet', function($id) {
-	// TODO
+$routes->post('/bet', function() {
+	BetController::save();
 });
-$routes->put('/bet/:id', function($id) {
-	// TODO
+$routes->put('/bet', function() {
+	BetController::update();
 });
-$routes->delete('/bet/:id', function($id) {
-	// TODO
+$routes->delete('/bet', function() {
+	BetController::delete();
 });
 
 
@@ -106,9 +120,16 @@ $routes->get('/communities/new', function(){
 $routes->get('/community/:id', function($id){
 	CommunityController::show($id);
 });
+$routes->get('/community/edit/:id', function($id){
+	CommunityController::edit($id);
+});
 $routes->post('/communities', function(){
 	CommunityController::save();
 });
+$routes->put('/community', function(){
+	CommunityController::update();
+});
+
 
 /*** Memberships **/
 $routes->get('/memberships', function(){

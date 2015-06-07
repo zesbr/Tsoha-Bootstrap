@@ -9,7 +9,9 @@ class User extends BaseModel {
 	public $firstname;
 	public $lastname;
 	public $is_admin;
+	public $is_locked;
 	public $joined_on;
+	public $edited_on;
 	public $last_login;
 
 	public function __construct($attributes){
@@ -38,8 +40,8 @@ class User extends BaseModel {
 		$row = DB::execute($query, $params, false);
 		if ($row) {
 			$user = new User($row);
+			return $user;
 		}
-		return $user;
 	}
 
 	/**
@@ -48,7 +50,7 @@ class User extends BaseModel {
 	public function save() {
 
 		$query = 
-			"insert into users (username, password_hash, password_salt, email, firstname, lastname, is_admin, joined_on, last_login) values (" .
+			"insert into users (username, password_hash, password_salt, email, firstname, lastname, is_admin, is_locked, joined_on, edited_on, last_login) values (" .
 				":username, " . 
 				":password_hash, " .
 				":password_salt, " . 
@@ -56,7 +58,9 @@ class User extends BaseModel {
 				":firstname, " .
 				":lastname, " .
 				":is_admin, " .
+				":is_locked, " .
 				":joined_on, " .
+				":edited_on, " .
 				":last_login" .
 			") returning id";
 
@@ -68,7 +72,9 @@ class User extends BaseModel {
 			"firstname" => $this->firstname, 
 			"lastname" => $this->lastname, 
 			"is_admin" => $this->is_admin, 
+			"is_locked" => $this->is_locked,
 			"joined_on" => $this->joined_on, 
+			"edited_on" => $this->edited_on,
 			"last_login" => $this->last_login
 		);
 		
@@ -77,21 +83,37 @@ class User extends BaseModel {
 	}
 
 	/**
-	 * TODO
+	 * Päivittää käyttäjän
 	 */
 	public function update() {
 
+		$query =
+			"update users " .
+			"set username = :username, firstname = :firstname, lastname = :lastname, email = :email " .
+			"where id = :id";
+
+		$params = array(
+			"username" => $this->username,
+			"firstname" => $this->firstname,
+			"lastname" => $this->lastname,
+			"email" => $this->email,
+			"id" => $this->id
+		);
+
+		DB::execute($query, $params, false);
 	}
 
 	/**
 	 * TODO
 	 */
 	public function delete() {
-		
+		$query = "delete from users where id = :id";
+		$params = array("id" => $this->id);
+		DB::execute($query, $params, false);
 	}
 
 	/**
-	 * Hakee kaikki käyttäjän veikkaukset ja palauttaa taulukon Bet-olioita
+	 * Hakee kaikki käyttäjän veikkaukset
 	 */
 	public function bets() {
 		$query = "select * from bets where user_id = :user_id";
@@ -105,31 +127,72 @@ class User extends BaseModel {
 	}
 
 	/**
-	 * TODO
+	 * Hakee ja palauttaa kaikki käyttäjän yhteisöt
 	 */
-	public function ranking() {
+	public function communities() {
+		$query = 
+			"select communities.* " .
+			"from communities " .
+			"join memberships on community.id = memberships.community_id " .
+			"where memberships.user_id = :user_id";
+		$params = array("user_id" => $this->id);
+		$rows = DB::execute($query, $params);
 
+		$communities = array();
+		foreach ($rows as $row) {
+			$communities[] = new User($row);
+		}
+		return $communities;
 	}
+
+	/**
+	 * Hakee ja palauttaa kaikki käyttäjän jäsenyydet
+	 */
+	public function memberships() {
+		$query = "select * from memberships where user_id = :user_id";
+		$params = array("user_id" => $this->id);
+		$rows = DB::execute($query, $params);
+		$memberships = array();
+		foreach ($rows as $row) {
+			$memberships[] = new Membership($row);
+		}
+		return $memberships;
+	}
+
 
 	/**
 	 * TODO
 	 */
-	public function points() {
+	public function stats() {
+		
+		$ranking = 0;
+		$points = 0;
+		$bets = 0;
+		$correct = 0;
+		$percentage = 0;
+		
+		foreach ($this->bets() as $bet) {
+			$bets++;
+			$points += $bet->points_earned;
+			if ($bet->points_earned > 0) {
+				$correct++;
+			}
+		}
+		if ($correct > 0) {
+			$percentage = ($bets / $correct);
+		}
+		else {
+			$percentage = 0;
+		}
+		$stats = array(
+			"ranking" => $ranking,
+			"points" => $points,
+			"bets" => $bets,
+			"correct" => $correct,
+			"percentage" => $percentage
+		);
 
-	}
-
-	/**
-	 * TODO
-	 */
-	public function correct() {
-
-	}
-
-	/**
-	 * TODO
-	 */
-	public function percentage() {
-
+		return $stats;
 	}
 
 	/**
@@ -149,5 +212,23 @@ class User extends BaseModel {
 		return null;
 	}
 
+	/**
+	 * TODO
+	 */
+	public function is_valid() {
+		return true;
+	}
+
+	/**
+	 *
+	 */
+	public function has_betted($match) {
+		foreach ($this->bets() as $bet) {
+			if ($bet->id == $match->id) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

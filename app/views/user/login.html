@@ -2,41 +2,27 @@
 {% block content %}
 <section class="white-on-green">
 	<div class="wrapper">
-		<div class="row">
-
+		<div class="colspan_12">
+			<div class="row">
 				<div class="module colspan_8">
-					<h1 class="landing-page-title">
-						bookie
-					</h1>	
-					<p class="landing-page-subtitle">
-						Ottelutulos- ja maaliveikkaussovellus
-					</p>
+					<h1 class="landing-page-title">bookie</h1>	
+					<p class="landing-page-subtitle">Ottelutulos- ja maaliveikkaussovellus</p>
 				</div>
-
 				<div class="module colspan_4 last">
-
 						<div class="msg rowspan_2">
 							{{ message }}
 						</div>
-
 						<form method="post" action="{{base_path}}/login">
-							<!-- Username -->
 							<label for="username">Username</label>
 							<input id="username" type="text" name="username" placeholder="Username" class="white-on-darker">
-							<!-- Password -->
 							<label for="password">Password</label>
 							<input id="password" type="password" name="password" placeholder="Password" class="white-on-darker">
-							<!-- Login button -->
 							<input type="submit" value="Login" class="horizontal-align-left white-on-darker">
 						</form>
-
 						<div class="clear"></div>
-						<p>
-							Doesn't have an account? <a href="{{ base_path }}/registration">Click here</a> to register
-						</p>
-
+						<p>Doesn't have an account? <a href="{{ base_path }}/registration">Click here</a> to register</p>
 					</div>
-
+				</div>
 				</div>
 		</div>	
 		<div class="clearfix"></div>

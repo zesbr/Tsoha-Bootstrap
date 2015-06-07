@@ -71,8 +71,10 @@ CREATE TABLE Users (
 	firstname VARCHAR(64) NOT NULL,
 	lastname VARCHAR(64) NOT NULL,
 	is_admin BOOLEAN DEFAULT false NOT NULL,
+	is_locked BOOLEAN DEFAULT false NOT NULL,
 	joined_on TIMESTAMP NOT NULL,
-	last_login TIMESTAMP NOT NULL
+	edited_on TIMESTAMP NOT NULL,
+	last_login TIMESTAMP
 );
 
 -- Bets eli vedot ovat käyttäjien omistamia veikkauksia ottelun lopputuloksesta
@@ -91,9 +93,10 @@ CREATE TABLE Bets (
 CREATE TABLE Communities (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(64) NOT NULL,
+	description TEXT NOT NULL,
 	created_on TIMESTAMP NOT NULL,
-	is_private BOOLEAN NOT NULL,
-	is_open BOOLEAN NOT NULL
+	edited_on TIMESTAMP NOT NULL,
+	is_private BOOLEAN NOT NULL
 );
 
 -- Memberships eli jäsenyydet ovat käyttäjien jäsenyyksiä jossain ryhmissä

@@ -1,12 +1,13 @@
 
-INSERT INTO Groups (title) VALUES ('Group A');
+INSERT INTO Groups (title) 
+	VALUES ('Lohko A');
 
 INSERT INTO Teams (name, code, group_id) 
 	VALUES ('Chile', 'CHI', 1);
 INSERT INTO Teams (name, code, group_id) 
 	VALUES ('Ecuador', 'ECU', 1);
 INSERT INTO Teams (name, code, group_id) 
-	VALUES ('Mexico', 'MEX', 1);
+	VALUES ('Meksiko', 'MEX', 1);
 INSERT INTO Teams (name, code, group_id) 
 	VALUES ('Bolivia', 'BOL', 1);
 
@@ -20,7 +21,7 @@ INSERT INTO Players (team_id, firstname, lastname, birthday, nationality, squadn
 	VALUES (4, 'Test', 'Player', '1980-01-01', 'Bolivia', 1, 'ST', false, false, 'Free Agent');
 
 INSERT INTO Stages (name) 
-	VALUES ('Group Stage');
+	VALUES ('Lohkovaihe');
 
 INSERT INTO Stadiums (name, city) 
 	VALUES ('Estadio Nacional Julio Martínez Prádanos', 'Santiago de Chile');
@@ -55,10 +56,10 @@ INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id)
 	VALUES (1, 2, 4, '2015-05-31 00:00:00', 1);
 
 INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
-	VALUES (1, 1, 4, '2015-06-07 00:00:00', 1);
+	VALUES (1, 1, 4, '2015-06-11 00:00:00', 1);
 	
 INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id) 
-	VALUES (1, 2, 3, '2015-06-07 00:00:00', 1);
+	VALUES (1, 2, 3, '2015-06-11 00:00:00', 1);
 
 -- TEAM 			GP 	W 	D 	L 	GF 	GA 	PTS
 -- --------------------------------------------
@@ -68,18 +69,18 @@ INSERT INTO Matches (stage_id, home_id, away_id, kickoff, stadium_id)
 -- 3: Mexico		2 	0 	0 	2 	0 	4 	0 	
 
 -- Password: asdf
-INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, joined_on, last_login) 
-	VALUES ('admin', 'Z9NjSFGpSWL8U', 'Z9Bg13gRAmt3', 'admin@test.com', 'System', 'Administrator', true, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
+INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, is_locked, joined_on, edited_on, last_login) 
+	VALUES ('admin', 'Z9NjSFGpSWL8U', 'Z9Bg13gRAmt3', 'admin@test.com', 'System', 'Administrator', true, false, '2015-01-01 00:00:00', '2015-01-01 00:00:00', '2015-01-01 00:00:00');
 
 -- Password: asdf
-INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, joined_on, last_login) 
-	VALUES ('zesbr', 'Z9NjSFGpSWL8U', ' Z9Bg13gRAmt3', 'zesbr@test.com', 'Jesper', 'Ruuth', false, '2015-01-01 00:00:00', '2015-01-01 00:00:00');
+INSERT INTO Users (username, password_hash, password_salt, email, firstname, lastname, is_admin, is_locked, joined_on, edited_on, last_login) 
+	VALUES ('zesbr', 'Z9NjSFGpSWL8U', ' Z9Bg13gRAmt3', 'zesbr@test.com', 'Jesper', 'Ruuth', false, false, '2015-01-01 00:00:00', '2015-01-01 00:00:00', '2015-01-01 00:00:00');
 
-INSERT INTO Communities (name, created_on, is_private, is_open) 
-	VALUES ('Test Community 1', '2015-01-01 00:00:00', false, true);
+INSERT INTO Communities (name, description, created_on, edited_on, is_private) 
+	VALUES ('Test Community 1', 'Testi', '2015-01-01 00:00:00', '2015-01-01 00:00:00', false);
 
-INSERT INTO Communities (name, created_on, is_private, is_open) 
-	VALUES ('Test Community 2', '2015-01-01 00:00:00', false, true);
+INSERT INTO Communities (name, description, created_on, edited_on, is_private) 
+	VALUES ('Test Community 2', 'Tämä on testiyhteisö', '2015-01-01 00:00:00', '2015-01-01 00:00:00', false);
 
 INSERT INTO Memberships (user_id, community_id, joined_on, is_admin) 
 	VALUES (1, 1, '2015-01-01 00:00:00', true);

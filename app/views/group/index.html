@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+
+		<h1>Lohkot</h1>
+
+	</div>
+</header>
 <section>
 	<div class="wrapper">
 		
@@ -9,7 +16,7 @@
 			<div class="card group-standings-card colspan_12 last">
 
 				<div class="group-standings-card--header">
-					<div>Group A</div>
+					<div>{{ group.title }}</div>
 				</div>
 
 				<div class="group-standigs-card--content">

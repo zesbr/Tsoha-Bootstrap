@@ -134,4 +134,14 @@ class Match extends BaseModel {
 		return null;
 	}
 
+	/**
+	 * Tarkistaa onko ottelu tulossa ja palauttaa totuusarvon
+	 */
+	public function is_upcoming() {
+		if (date("Y-m-d H:i:s") < $this->kickoff) {
+			return true;
+		}
+		return false;
+	}
+
 }

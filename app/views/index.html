@@ -33,50 +33,82 @@
 								</div>
 								<div class="navigator"></div>
 								<div class="center">
+
+
+
 									<div class="status">
-										{% if date(match.kickoff) > date("now") %}
-											Upcoming
-										{% else %}
-											Final result
+
+										{% if match.is_upcoming %} 
+											Tulossa
+										{% else %} 
+											Lopputulos
 										{% endif %}
+
 									</div>
+
+
+
 									<div class="big-score">
-										{% if date(match.kickoff) > date("now") %}
+
+										{% if match.is_upcoming %}
+
 											<span style="color: gray">v</span>
+
 										{% else %}
 											{{ match.homegoals|length }} : {{ match.awaygoals|length }}
 										{% endif %}
+
 									</div>
+
+
+
 									<div class="user-score">
-										{% if date(match.kickoff) > date("now") %}
-											NO BETS
+
+										{% if user.has_betted(match) %}
+											{% for bet in user.bets %}
+												{% if bet.match_id == match.id %}
+													{{ bet.home_score }} : {{ bet.away_score }}
+												{% endif %}
+											{% endfor %}
 										{% else %}
-											YOU EARNED
+											NO BETS
 										{% endif %}
+
 									</div>
 
 
 
 									<div class="points-rewarded">
-										<!-- if winner and score were correct -->
-											<!-- + 9 pts -->
-										<!-- else if winner was correct -->
-											<!-- +3pts -->
-										<!-- else -->
-											<!-- No points gained -->
 
-										{% if date(match.kickoff) > date("now") %}
-											
+										{% if match.is_upcoming %}
+
 										{% else %}
-											+9 PTS
+											{% if user.has_betted(match) %}
+												{% for bet in user.bets %}
+													{% if bet.match_id == match.id %}
+														{% if bet.points_earned > 0 %}
+															+9 pts
+														{% else %}
+															0 pts
+														{% endif %}
+													{% endif %}
+												{% endfor %}
+											{% endif %}
 										{% endif %}
+
 									</div>
+
+
+
 									<div class="action">
 										<!-- if match is upcoming and user has bet -->
 											<!-- <button>Edit</button> -->
 										<!-- elsif upcoming -->
 											<!-- <button>Bet</button> -->
 									</div>
+
+
+
 								</div>			
 							</div>
 						</div>
@@ -136,6 +168,8 @@
 
 			<div class="card profile-card colspan_4 rowspan_5">
 				
+				{% set rank = user.stats  %}
+
 				<div class="profile-card--header">
 					<div><b>{{ user.firstname }} {{ user.lastname }}</b></div>
 					<div class="profile-icon"></div>
@@ -143,19 +177,20 @@
 
 				<div class="profile-card--content">
 					<div class="primary-stats">
-						<div class="stat-title">RANKING</div>
-						<div class="stat-title">POINTS</div>
-						<div id="user--ranking" class="stat-value--primary">-</div>
-						<div id="user--points" class="stat-value--primary">-</div>
+						<div class="stat-title">SIJOITUS</div>
+						<div class="stat-title">PISTEITÄ</div>
+						<div id="user--ranking" class="stat-value--primary">{{ rank.ranking }}</div>
+						<div id="user--points" class="stat-value--primary">{{ rank.points }}</div>
 					</div>
-					<div class="clear_0"></div>
+
 					<hr/>
-					<div class="stat-title">BETS</div>
-					<div class="stat-value--secondary">{{ user.bets|length }}</div>
-					<div class="stat-title">SUCCESSFULL</div>
-					<div class="stat-value--secondary">-</div>
-					<div class="stat-title">PERCENTAGE</div>
-					<div class="stat-value--secondary">-</div>
+					
+					<div class="stat-title">VEIKKAUKSIA</div>
+					<div class="stat-value--secondary">{{ rank.bets }}</div>
+					<div class="stat-title">ONNISTUNEITA</div>
+					<div class="stat-value--secondary">{{ rank.correct }}</div>
+					<div class="stat-title">ONNISTUMISPROSENTTI</div>
+					<div class="stat-value--secondary">{{ rank.percentage }}</div>
 				</div>
 
 			</div>

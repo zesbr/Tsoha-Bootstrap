@@ -1,33 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+		<h1>Ottelut</h1>
+	</div>
+</header>
 <section>
 	<div class="wrapper">
 		<div class="colspan_12">
 			{% for match in matches %}
 			<div class="row">
-				<div class="card colspan_12 rowspan_5 last">		
+				<div class="card colspan_8 rowspan_5 last">		
 					
 					<div class="card-header">
 						<div class="header-icon">
 							
 						</div>
-						<div><b>GROUP A | {{ match.kickoff }}</b></div>
-						<div>{{ match.stadium }}</div>
-						<div>{{ match.city }}</div>
+						<div>
+						{% if match.stage_id == 1 %}
+							<b>{{ match.home.group.title }} | {{ match.kickoff|date("F j") }}</b>
+						{% else %}
+							<b>{{ match.stage.name }} | {{ match.kickoff|date("F j") }}</b>
+						{% endif %}
+						</div>
+						<div>{{ match.stadium.name }}</div>
+						<div>{{ match.stadium.city }}</div>
 					</div>
 
 					
 					<div class="card-content">
 						<div class="navigator"></div>
 						<div class="left">
-							<img src="./assets/img/logo-{{ match.hometeamcode|lower }}-128.png" alt="" />
-							<span class="text">{{ match.hometeamname }}</span>
+							<img src="./assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+							<span class="text">{{ match.home.name }}</span>
 						</div>
 						
 						
 						<div class="right">
-							<img src="./assets/img/logo-{{ match.awayteamcode|lower }}-128.png" alt="" />
-							<span class="text">{{ match.awayteamname }}</span>
+							<img src="./assets/img/logo-{{ match.away.code|lower }}-128.png" alt="" />
+							<span class="text">{{ match.away.name }}</span>
 						</div>
 						<div class="navigator"></div>
 
@@ -41,10 +52,11 @@
 									Final result
 							</div>
 							<div class="big-score">
-								<!-- if match is upcoming or ongoing -->
-									<!-- v -->
-								<!-- else -->
-									2 : 0
+								{% if date(match.kickoff) > date("now") %}
+									<span style="color: gray">v</span>
+								{% else %}
+									{{ match.homegoals|length }} : {{ match.awaygoals|length }}
+								{% endif %}
 							</div>
 							<div class="user-score">
 								<!-- if user has bets -->

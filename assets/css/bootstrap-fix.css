@@ -36,7 +36,7 @@ border: none;
 .nav > li {
 	font-family: "open sans", "arial", "helvetica neue", "sans-serif";
 	font-weight: 600;
-	font-size: 0.8em;
+	font-size: 1em;
 	color: rgb(255, 255, 255) !important;
 }
 .navbar-default .navbar-nav > li > a {
@@ -50,5 +50,5 @@ border: none;
 	background-color: rgb(171, 31 , 34);
 }
 .dark-blue {
-	background-color: rgb(18, 71 , 144);
+	background-color: rgb(35,15,210);
 }

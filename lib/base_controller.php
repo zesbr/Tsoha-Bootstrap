@@ -38,4 +38,15 @@ class BaseController{
 		return $salt;
 	}
 
+	/**
+	 * Tarkistaa onko päivämäärä tuleva vai mennyt
+	 * @return totuusarvo, true jos tuleva ja false jos mennyt
+	 */
+	public static function date_is_upcoming($date) {
+		if (date("Y-m-d H:i:s") < date($date)) {
+			return true;
+		}
+		return false;
+	}
+
 }

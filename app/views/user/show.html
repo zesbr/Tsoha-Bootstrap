@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+
+		<h1>{{ user.firstname}} {{ user.lastname }}</h1>
+
+	</div>
+</header>
+<section class="">
+	<div class="wrapper">
+		
+		<div class="colspan_12 last">
+
+			<form method="post" action="{{base_path}}/user">
+				<div class="row colspan_8 last">
+
+				</div>
+				<div class="row">
+					<div class="form-input-actions">
+						<a href="{{ base_path }}/user/edit/{{ user.id }}" class="input-button horizontal-align-right">Muokkaa</a>
+						<form method="post" action="{{base_path}}/user">
+							<input type="hidden" name="id" value="{{ user.id }}"/>
+							<input type="hidden" name="_METHOD" value="DELETE"/>
+							<input type="submit" value="Poista" class="input-button horizontal-align-right">
+						</form>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+</section>
+{% endblock %}

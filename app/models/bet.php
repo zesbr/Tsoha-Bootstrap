@@ -14,7 +14,7 @@ class Bet extends BaseModel {
 		parent::__construct($attributes);
 	}
 
-	/*
+	/**
 	 * Hakee ja palauttaa kaikki veikkaukset
 	 */
 	public static function all() {
@@ -27,7 +27,7 @@ class Bet extends BaseModel {
 		return $bets;
 	}
 
-	/*
+	/**
 	 * Hakee ja palauttaa veikkauksen
 	 */
 	public static function find($id) {
@@ -36,22 +36,89 @@ class Bet extends BaseModel {
 		$row = DB::execute($query, $params, false);
 		if ($row) {
 			$bet = new Bet($row);
+			return $bet;
 		}
-		return $bet;
 	}
 
-	/*
+	/**
 	 * Palauttaa veikkaukseen liittyvän käyttäjän
 	 */
 	public function user() {
 		return User::find($this->user_id);
 	}
 
-	/*
+	/**
 	 * Palauttaa veikkauksen liittyvän ottelun
 	 */
 	public function match() {
 		return Match::find($this->match_id);
 	}
+
+	/**
+	 * Tallentaa veikkauksen
+	 */ 
+	public function save() {
+
+		$query = 
+			"insert into bets (user_id, match_id, home_score, away_score, points_earned, created_on, edited_on) values (" .
+				":user_id, " . 
+				":match_id, " .
+				":home_score, " . 
+				":away_score, " .
+				":points_earned, " .
+				":created_on, " .
+				":edited_on" .
+			") returning id";
+
+		$params = array(
+			"user_id" => $this->user_id,
+			"match_id" => $this->match_id,
+			"home_score" => $this->home_score,
+			"away_score" => $this->away_score,
+			"points_earned" => $this->points_earned,
+			"created_on" => $this->created_on,
+			"edited_on" => $this->edited_on
+		); 
+
+		$row = DB::execute($query, $params, false);
+		$this->id = $row['id'];
+	}
+
+	/**
+	 * Päivittää veikkauksen
+	 */
+	public function update() {
+
+		$query = 
+			"update bets " .
+			"set home_score = :home_score, away_score = :away_score, edited_on = :edited_on " .
+			"where id = :id";
+
+		$params = array(
+			"home_score" => $this->home_score,
+			"away_score" => $this->away_score,
+			"edited_on" => $this->edited_on,
+			"id" => $this->id
+		); 
+
+		DB::execute($query, $params, false);
+	}
+
+	/**
+	 * Poistaa veikkauksen
+	 */
+	public function delete() {
+		$query = "delete from bets where id = :id";
+		$params = array("id" => $this->id);
+		DB::execute($query, $params, false);
+	}
+
+	/**
+	 * TODO: Validoi veikkauksen
+	 */
+	public function is_valid() {
+		return true;
+	}
+
 
 }

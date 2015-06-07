@@ -1,10 +1,4 @@
-﻿html { margin: 0; padding: 0;  }
-body { margin: 0; padding: 0;  }
-
-.container { display: block; margin: auto; }
-.container { width: 100%; }
-.container { max-width: 1200px; }
-.container { padding-left: 48px; padding-right: 48px; }
+﻿
 
 
 
@@ -33,27 +27,6 @@ body { margin: 0; padding: 0;  }
 .white          { background-color: #FFFFFF; color: #000000; text-shadow: 0px 0px 1px #000000; }
 .black          { background-color: #000000; color: #FFFFFF; }
 	
-
-html { font-size: 16px; }
-body { font-family: arial, helvetica neue, helvetica, sans-serif; }
-
-h1 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-h2 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-h3 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-h4 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-h5 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-h6 { font-family: arial, helvetica neue, helvetica, sans-serif; }
-p  { font-family: arial, helvetica neue, helvetica, sans-serif; }
-
-body { font-size: 1em;}
-
-h1 { font-size: 3.0em; }
-h2 { font-size: 2.4em; }
-h3 { font-size: 2.0em; }
-h4 { font-size: 1.6em; }
-h5 { font-size: 1.2em; }
-h6 { font-size: 1.0em; }
-p  { font-size: 1em; }
 
 .push-right-1 	{ margin-left: 102px; }
 .push-right-2 	{ margin-left: 204px; }
@@ -259,25 +232,7 @@ p  { font-size: 1em; }
 
 
 
-html {
-	
-	background-color: white;
-	background-image: url("../assets/images/backdrop.jpg");
-	background-repeat: no-repeat;
-	background-attachment:fixed;
-	background-size: cover;
-	
-}
 
-.container 
-{
-	background-image: url("../assets/images/shader_white_096.png");
-	background-repeat: repeat;
-	height: auto;
-	min-height: 720px;
-	overflow: hidden;
-	border: solid 1px #CCCCCC;
-}
 
 .row, .module, .clear, .clear_24, .clear_96
 {
@@ -785,15 +740,7 @@ table, tr, th, td { text-align: left; }
 	background-size: cover; */ 
 }
 
-.wrapper {
-    width: auto;
-    height: auto;
-    padding: 24px;
-    /*background-image: url("../assets/images/shader_06.png");*/
-    background-repeat: no-repeat;
-    background-size: cover;
-   
-}
+
 
 
 

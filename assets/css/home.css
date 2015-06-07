@@ -10,6 +10,11 @@
 	box-shadow: 0px 2px 15px -5px rgba(0, 0, 0, 1.0);
 }
 
+
+.card-wrapper {
+	margin: 24px;
+}
+
 .loader-bar {
 	width: 100%;
 	height: 6px;
@@ -80,7 +85,7 @@
 	text-align: center;
 	position: absolute;
 	display: block;
-	margin: 50px auto;
+	margin: 50px auto auto auto;
 }
 
 .status {
@@ -154,11 +159,11 @@
 	padding: 40px 30px 50px 50px;
 }
 .primary-stats > .stat-title {
-	width: 40%;
+	width: 50%;
 	float: left;
 }
 .primary-stats > .stat-value--primary {
-	width: 40%;
+	width: 50%;
 	float: left;
 }
 .stat-title {
@@ -241,3 +246,158 @@
 .group-standings-table #points {
 	font-weight: 700;
 }
+
+
+.bet-input {
+	width: 1200px;
+	text-align: center;
+	position: absolute;
+	display: block;
+	margin: 30px auto auto auto;
+}
+.bet-input-wrapper {
+	width: 400px;
+	display: block;
+	margin: auto;
+}
+.bet-input-group {
+	width: 50%; 
+	float: left;
+}
+.bet-input-group input {
+	font-family: "open sans";
+	font-size: 2em;
+	font-weight: 700;
+	width: 50%;
+	margin: auto;
+	text-align: center;
+	padding: 16px 0px 16px 0px;
+	margin: 24px auto 24px auto;
+	outline: none;
+	border: none !important;
+	/* box-shadow: none !important; */
+}
+.bet-actions {
+	padding: 24px;
+
+}
+.bet-actions input {
+	display: block;
+	margin-left: auto !important;
+	margin-right: 0 !important;
+}
+
+
+
+/** **/
+.action-button{
+	font-family: "open sans";
+	font-size: 2em;
+	font-weight: 700;
+	width: 64px;
+	height: 64px;
+	margin: auto;
+	border-radius: 32px;
+	line-height: 64px;
+	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 1.0);
+}
+.action-button:hover {
+	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 1.0);
+	cursor: pointer;
+}
+.action-button:active {
+	margin-top: 1px;
+	box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 1.0);
+	width: 63px;
+	height: 63px;
+	line-height: 63px;
+}
+
+.accept, .increase {
+	background-color: rgba(0, 150, 100, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+.decline, .decrease {
+	background-color: rgba(238, 91, 91, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+
+/*	
+	.action-button {}
+	.action-button--small
+	.action-button--medium
+	.action-button--large
+	.action-button-round--large
+	.action-button-round--medium
+	.action-button-round--small
+*/
+
+
+/*** Alustaa input tekstikentän ***/
+input, textarea {
+	box-shadow: none;
+	border: none;
+	box-sizing: border-box;
+	resize: none;
+}
+
+.input-label {
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-size: 1.1em;
+	font-weight: 600;
+	color: rgb(200, 200, 200);
+	padding: 0px;
+	margin: 0px;
+}
+.input-text {
+	background-color: transparent;
+	border-bottom: 2px solid rgb(200, 200, 200);
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-size: 1.5em;
+	font-weight: 600;
+	padding: 12px 0px 12px 0px;
+	margin: 0px 0px 32px 0px;
+	width: 100%;
+}
+.input-text:focus {
+	border-bottom: 2px solid rgb(200, 15, 160);
+}
+.input-textarea {
+	background-color: transparent;
+	border-bottom: 2px solid rgb(200, 200, 200);
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-size: 1.5em;
+	font-weight: 600;
+	padding: 12px 0px 12px 0px;
+	margin: 0px 0px 32px 0px;
+	width: 100%;
+}
+.input-textarea:focus {
+	border-bottom: 2px solid rgb(200, 15, 160);
+}
+
+.form-input-actions {
+	width: 100%;
+	margin: 24px 0px 24px 0px;
+}
+.input-button {
+	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-size: 1.2em;
+	font-weight: 600;
+	background-color: rgb(0, 150, 100) !important;
+	color: rgb(255, 255, 255);
+	padding: 18px 32px 18px 32px;
+	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 1.0);
+}
+.input-button:hover {
+	box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 1.0);
+}
+
+
+
+
+
+
+
+
+
