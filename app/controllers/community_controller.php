@@ -17,6 +17,7 @@ class CommunityController extends BaseController {
 
 	# GET /community/new
 	public static function create() {
+		
 		View::make('communities/new.html');
 	}
 
@@ -42,21 +43,25 @@ class CommunityController extends BaseController {
 
 		$community = new Community(array(
 			"name" => $_POST["name"],
+			"description" => $_POST["description"],
 			"created_on" => date("Y-m-d H:m:s"), 
 			"edited_on" => date("Y-m-d H:m:s"),
 			"is_private" => 0
     	));
-		$community->save();
 
-		$membership = new Membership(array(
-			"user_id" => $user->id,
-			"community_id" => $community->id,
-			"joined_on" => date("Y-m-d H:m:s"),
-			"is_admin" => 1
-		));
-		$membership->save();
-
-		Redirect::to('/communities', array('message' => 'Uusi yhteisö luotu!'));
+    	if ($community->is_valid()) {
+			$community->save();
+			$membership = new Membership(array(
+				"user_id" => $user->id,
+				"community_id" => $community->id,
+				"joined_on" => date("Y-m-d H:m:s"),
+				"is_admin" => 1
+			));
+			$membership->save();
+			Redirect::to('/communities', array('message' => 'Uusi yhteisö luotu!'));
+		} else {
+			Redirect::to('/communities', array('message' => 'Ei ole validi!'));
+		}
 	}
 
 	# PUT /community
@@ -78,9 +83,14 @@ class CommunityController extends BaseController {
 		}
 	}
 
-	# DELTE /community
+	# DELETE /community
 	public static function delete() {
-
+		$community = Community::find($_POST["id"]);
+		foreach ($community->memberships() as $membership) {
+			$membership->delete();
+		}
+		$community->delete();
+		Redirect::to('/communities', array('message' => 'Muokkaus onnistui'));
 	}
 
 }

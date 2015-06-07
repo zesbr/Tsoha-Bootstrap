@@ -123,11 +123,14 @@ $routes->get('/community/:id', function($id){
 $routes->get('/community/edit/:id', function($id){
 	CommunityController::edit($id);
 });
-$routes->post('/communities', function(){
+$routes->post('/community', function(){
 	CommunityController::save();
 });
 $routes->put('/community', function(){
 	CommunityController::update();
+});
+$routes->delete('/community', function(){
+	CommunityController::delete();
 });
 
 

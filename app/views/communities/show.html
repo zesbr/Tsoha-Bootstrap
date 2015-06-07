@@ -12,22 +12,14 @@
 		<div class="colspan_12 last">
 			<div class="row">
 				<p>{{ community.description }}</p>
-				<table class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<td>Firstname</td>
-							<td>Lastname</td>
-						</tr>
-					</thead>
-					<tbody>
-						{% for member in community.members %}
-						<tr>
-							<td>{{ member.firstname }}</a></td>
-							<td>{{ member.lastname }}</td>
-						</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				<hr/>
+				<p><b>Jäsenet</b></p>
+				<ul>
+				{% for member in community.members %}
+					<li><a href="{{ base_path }}/user/{{ member.id }}">{{ member.firstname }} {{ member.lastname }}</a></li>
+				{% endfor %}
+				</ul>
+				<a href="{{ base_path }}/community/edit/{{ community.id }}" class="btn btn-warning">Muokkaa</a>
 			</div>
 		</div>
 	</div>

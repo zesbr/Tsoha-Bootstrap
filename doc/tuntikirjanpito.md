@@ -1,6 +1,6 @@
 # Tuntikirjanpito
 
-### Maanantai 11.5.2015
+### Maanantai 11.5
 
 * Kehitysympäristön asennus
 * Versionhallinnan konfigurointi
@@ -8,37 +8,37 @@
 
 Työmäärä: 4 h
 
-## Torstai 14.5.2015
+## Torstai 14.5
 
 * Käyttäjäryhmien suunnitelu ja dokuemntointi
 * Käyttötapausten suunnitelu ja dokumentointi
 
 Työmäärä: 4 h
 
-## Perjantai 15.5.2015
+## Perjantai 15.5
 
 * Käyttäjäryhmien parantelu
 * Käyttötapauskaavion piirtäminen  
 * Käyttötapausten parantelu
 
-Työmäärä: 5 h
+Työmäärä: 5h
 
-## Lauantai 16.5.2015
+## Lauantai 16.5
 
 * Käyttötapauskaavion parantelu
 
 Työmäärä: 1h
 
-## Launantai 23.5.2015
+## Launantai 23.5
 
 * Tietosisällönkartoitus
 * Käsitekaavion suunnittelu
 * Käsitekaavion piirtäminen
 * Tietosisältökuvausten kirjoittaminen
 
-Työmäärä: 6 h
+Työmäärä: 6h
 
-## Sunnuntai 24.5.2015
+## Sunnuntai 24.5
 
 * Käsitekaavion parantelu
 * Tietosisältökuvausten tarkentaminen
@@ -49,4 +49,45 @@ Työmäärä: 6 h
 * Etusivu-, listaus- ja muokkausnäkymän suunnittelu
 * Staattisten etusivu-, listaus- ja muokkausnäkymien hötömölö draftit 
 
-Työmäärä: 14 h
+Työmäärä: 12h
+
+## Perjantai 29.5
+
+* Mallien ja kontrollereiden luominen
+
+Työmäärä: 6h
+
+## Lauantai 30.5
+
+* Palveluiden suunnittelu ja totetus
+* Kontrollereiden konffaus
+* Refaktrointia
+
+Työmäärä: 12h
+
+## Sunnuntai 31.5
+
+* Palveluiden suunnittelu ja toteutus
+* Refaktorointia
+
+Työmäärä: 12h
+
+## Maanantai 1.6
+
+* Refaktorointia
+
+Työmäärä: 6h
+
+## Lauantai 6.6
+
+* Palveluiden toteutus
+* Refaktorointia
+
+Työmäärä: 7h
+
+## Sunnuntai 7.6
+
+* Refaktrointia
+* Näkymien suunnittelua
+
+Työmäärä: 9h

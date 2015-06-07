@@ -47,7 +47,7 @@ class Membership extends BaseModel {
 		return Community::find($this->community_id);
 	}
 
-	/*
+	/**
 	 * Tallentaa jäsenyyden
 	 */
 	public function save() {
@@ -69,6 +69,22 @@ class Membership extends BaseModel {
 
 		$row = DB::execute($query, $params, false);
 		$this->id = $row['id'];
+	}
+
+	/**
+	 * Päivittää jäsenyyden
+	 */
+	public function update() {
+		// TODO
+	}
+
+	/**
+	 * Poistaa jäsenyyden
+	 */
+	public function delete() {
+		$query = "delete from memberships where id = :id";
+		$params = array("id" => $this->id);
+		DB::execute($query, $params);
 	}
 
 }

@@ -77,7 +77,15 @@ class UserController extends BaseController {
 	# DELETE /user
 	public static function delete() {
 		self::check_logged_in();
+
+		$logged_user = self::get_user_logged_in();
+
 		$user = User::find($_POST["id"]);
+
+		// TODO: 
+		// - TARKISTA ONKO KIRJAUTUNUT KÄYTTÄJÄ SAMA KUIN POISTETTAVA KÄYTTÄJÄ
+		// - JOS ON, NIIN TARKISTA ONKO KIRJAUTUNEELLA KÄYTTÄJÄLLÄ ADMIN OIKEUDET
+		// - JOS ON, NIIN TARKISTA ETTEI POISTETTAVA KÄYTTÄJÄ MYÖS ADMIN
 
 		// Poistetaan käyttäjän veikkaukset
 		foreach ($user->bets() as $bet) {
@@ -85,19 +93,32 @@ class UserController extends BaseController {
 		}
 
 		// Poistetaan käyttäjän jäsenyydet
-		foreach ($user->memberships as $key => $value) {
-			# code...
+		foreach ($user->memberships() as $membership) {
+			
+			if ($membership->is_admin) { // Jos jäsen on ylläpitäjä, niin ...
+				$community = $membership->community(); 
+				if (count($community->admins()) > 1) { // tarkista jääkö yhteisöön muita ylläpitäjiä.
+					$membership->delete();
+				} else { // Jos ei, niin poista yhteisön muutkin jäsenyydet ja ... 
+					foreach ($community->memberships() as $other_membership) { 
+						$other_membership->delete();
+					}
+					$community->delete(); // poista itse yhteisö
+				}
+			} else {
+				$membership->delete(); // Jäsen ei ole yllpitäjä, joten poistetaan pelkkä jäsenyys
+			}
 		}
-			// Jos käyttäjä on ylläpitäjä
-
-			// Tarkista jääkö yhteisöön
-
-			// Jos ei, niin anna jäsenyys vanhimmalle jäsnelle
-
-			// Jos ei ole muita jäseniä, niin poista yhteisö 
 
 		// Poistetaan käyttäjä
 		$user->delete();
+
+		// Uudelleen ohjataan käyttäjä
+		// TODO
+		// - JOS KÄYTTÄJÄ POISTI TOISEN KÄYTTÄJÄN, NIIN OHJAA KAIKKIEN KÄYTTÄJIEN NÄKYMÄÄN
+		// - MUUTEN KIRJAA ULOS
+		Redirect::to("/users", array("message" => "Käyttäjä poistettiin"));
 	}
+
 
 }

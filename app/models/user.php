@@ -89,7 +89,7 @@ class User extends BaseModel {
 
 		$query =
 			"update users " .
-			"set username = :username, firstname = :firstname, lastname = :lastname, email = :email " .
+			"set username = :username, firstname = :firstname, lastname = :lastname, email = :email, edited_on = :edited_on, last_login = :last_login " .
 			"where id = :id";
 
 		$params = array(
@@ -97,6 +97,8 @@ class User extends BaseModel {
 			"firstname" => $this->firstname,
 			"lastname" => $this->lastname,
 			"email" => $this->email,
+			"edited_on" => $this->edited_on,
+			"last_login" => $this->last_login,
 			"id" => $this->id
 		);
 
@@ -161,7 +163,7 @@ class User extends BaseModel {
 
 
 	/**
-	 * TODO
+	 * Hakee ja palauttaa käyttäjän tilastot
 	 */
 	public function stats() {
 		

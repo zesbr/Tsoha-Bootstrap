@@ -17,6 +17,8 @@ class SessionController extends BaseController {
 				Redirect::to("/login", array("message" => "Salsana tai käyttäjänimi meni väärin!"));
 			} else {
 				$_SESSION["user"] = $user->id;
+				$user->last_login = date("Y-m-d H:m:s");
+				$user->update();
 				Redirect::to("/");
 			}
 		} else {

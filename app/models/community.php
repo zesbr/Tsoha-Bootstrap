@@ -39,7 +39,7 @@ class Community extends BaseModel {
 	}
 
 	/*
-	 * Hakee ja palauttaa yhteisöön kuuluvat jäsenet 
+	 * Hakee ja palauttaa yhteisön jäsenet 
 	 */
 	public function members() {
 		$query = "select users.* from users join memberships on users.id = memberships.user_id where memberships.community_id = :id";
@@ -53,7 +53,7 @@ class Community extends BaseModel {
 	}
 
 	/*
-	 * Hakee ja palauttaa yhteisöön kuuluvat jäsenet 
+	 * Hakee ja palauttaa yhteisön ylläpitäjät
 	 */
 	public function admins() {
 		$query = 
@@ -68,6 +68,20 @@ class Community extends BaseModel {
 			$members[] = new User($row);
 		}
 		return $members;
+	}
+
+	/**
+	 * Hakee ja palauttaa yhteisön jäsenyydet
+	 */
+	public function memberships() {
+		$query = "select * from memberships where community_id = :id";
+		$params = array("id" => $this->id);
+		$rows = DB::execute($query, $params);
+		$memberships = array();
+		foreach ($rows as $row) {
+			$memberships[] = new Membership($row);
+		}
+		return $memberships;
 	}
 
 	/*
@@ -87,6 +101,7 @@ class Community extends BaseModel {
 
 		$params = array(
 			"name" => $this->name,
+			"description" => $this->description,
 			"created_on" => $this->created_on,
 			"edited_on" => $this->edited_on,
 			"is_private" => $this->is_private
@@ -97,7 +112,7 @@ class Community extends BaseModel {
 	}
 
 	/**
-	 * TODO
+	 * Päivittää yhteisön
 	 */
 	public function update() {
 		$query = 
@@ -116,12 +131,17 @@ class Community extends BaseModel {
 	}
 
 	/**
-	 * DELETE
+	 * Poistaa yhteisön
 	 */
 	public function delete() {
-
+		$query = "delete from communities where id = :id";
+		$params = array("id" => $this->id);
+		DB::execute($query, $params);
 	}
 
+	/**
+	 * Tarkistaa onko yhteisö validi
+	 */
 	public function is_valid() {
 		return true;
 	}
