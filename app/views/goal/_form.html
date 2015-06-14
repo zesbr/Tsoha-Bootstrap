@@ -1,0 +1,35 @@
+
+<form action="{{ base_path }}/goal" method="post">
+
+	<input type="hidden" name="match_id" value="{{ match.id }}"/>
+
+	<div class="row">
+
+		<div class="colspan_6">
+			<select id="away-team-players" name="player_id" class="cd-select colspan_4" style="z-index: 33">			
+				{% for player in match.players %}
+					{% set name = (player.firstname ~ ' ' ~ player.lastname)|trim %}
+
+					<option value="-1" selected style="z-index: 33">Valitse maalintekijä</option>
+					<option value="{{ player.id }}" style="z-index: 33">#{{ player.squadnumber }} {{ name|upper }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="colspan_1">
+
+		{{ forms.textbox_with_label_and_errors({ 'for': 'minute', 'theme': 'material', 'label_text': 'Peliminuutti', 'error_text': errors.minute }) }}
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="colspan_12">
+			{{
+				forms.submit({
+					'class': 'button-raised--large blue',
+					'value': 'Tallenna',
+				})
+			}}
+		</div>
+	</div>
+
+</form>

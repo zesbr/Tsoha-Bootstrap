@@ -23,7 +23,6 @@ class BaseController{
 		}
 	}
 
-
 	/**
 	 * TODO: Tämän voisi ehkä laittaa jonnekkin muualle
 	 * Generoi salasanan suojausta parantavan merkkijonon eli ns. suolan
@@ -36,6 +35,19 @@ class BaseController{
 			$salt .= $characters[$j];
 		}
 		return $salt;
+	}
+
+	/**
+	 * Tarkistaa täyttääkö merkkijono (salasana), sille asetetut ehdot ja palauttaa totuusarvon
+	 */
+	public static function password_is_strong($password) {
+		// JOS SALASANA
+			// ON VÄHINTÄÄN 6 MERKKIÄ PITKÄ
+			// TODO: SISÄLTÄÄ PIENIÄ JA ISOJA KIRJAIMIA SEKÄ NUMEROITA
+		if (strlen($password) > 6) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

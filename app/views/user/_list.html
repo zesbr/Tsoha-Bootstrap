@@ -1,0 +1,38 @@
+
+<table class="table">
+
+	<thead>
+		<tr>	
+			<td>Nimi</td>
+			<td>Käyttäjänimi</td>
+			<td>Sähköposti</td>
+			<td>Liittynyt</td>
+			<td colspan="2">Viimeinen kirjautuminen</td>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for user in users %}
+		<tr>
+			<td><a href="{{ base_path }}/user/{{ user.id }}"><span class="round-icon glyphicon glyphicon-user"></span> {{ user.firstname }} {{ user.lastname }}</a></td>
+			<td valign="middle">{{ user.username }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.joined_on|date("F j, Y H:i") }}</td>
+			<td>{{ user.last_login|date("F j, Y H:i") }}</td>
+			<td>
+			{% if user_logged_in.is_admin and not user.is_admin %}
+				{% if user.is_locked %}
+					{{ forms.update_button({ 'class': 'button-flat--x-small blue-text', 'href': 'user/lock', 'name': 'id', 'id': user.id, 'value': 'Avaa tili' }) }}
+				{% else %}
+					{{ forms.update_button({ 'class': 'button-flat--x-small orange-text', 'href': 'user/lock', 'name': 'id', 'id': user.id, 'value': 'Lukitse' }) }}
+				{% endif %}
+				{{ forms.delete_button({ 'class': 'button-flat--x-small red-text', 'href': 'user', 'name': 'id', 'id': user.id, 'value': 'Poista' }) }}	
+			{% endif %}
+			{% if user_logged_in.is_admin and not user.is_admin %}
+			
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

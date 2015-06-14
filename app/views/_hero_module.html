@@ -1,0 +1,81 @@
+
+<div class="card-header flat-header">
+	<div class="flat-header-icon">
+		<span class="glyphicon glyphicon-map-marker"></span>
+	</div>
+	<div class="flat-header-title">
+		{{ match.stage.name }} | {{ match.kickoff|date("F j  H:i", "Europe/Helsinki") }}
+	</div> 
+	<div class="flat-header-subtitle">
+		{{ match.stadium.name }}<br/>
+		{{ match.stadium.city }}
+	</div>
+</div>
+
+<div class="card-content match">
+
+	<div class="match-teams">
+		<div class="card-content-half">
+			<div class="team-logo--large">
+				<img src="./assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+			</div>
+			<div class="team-name--normal">
+				{{ match.home.name }}
+			</div>
+		</div>
+
+		<div class="card-content-half">
+			<div class="team-logo--large">
+				<img src="./assets/img/logo-{{ match.away.code|lower }}-128.png" alt=""/>
+			</div>
+			<div class="team-name--normal">
+				{{ match.away.name }}
+			</div>
+		</div>
+	</div>
+
+	<div class="match-info">
+
+		{% if match.is_confirmed %} 
+			<div class="match-status">Lopputulos</div>
+			<div class="match-result--played"><a href="{{ base_path }}/match/{{ match.id }}"> {{ match.homegoals|length }} : {{ match.awaygoals|length }} </a></div>
+		{% elseif match.has_ended %}
+			<div class="match-status">Odottaa vahvistusta</div>
+			<div class="match-result--upcoming"> v </div>
+		{% elseif match.is_ongoing %}
+			<div class="match-status">Menossa</div>
+			<div class="match-result--upcoming"> v </div>
+		{% else %} 
+			<div class="match-status">Tulossa</div>
+			<div class="match-result--upcoming"> v </div>
+		{% endif %}
+
+		{% if user_logged_in.has_betted(match) %}
+		
+			{% for bet in user_logged_in.bets %}
+				{% if bet.match_id == match.id %}
+					<div class="bet-score">{{ bet.home_score }} : {{ bet.away_score }}</div>
+					{% if match.is_upcoming == true %}
+						<a href="{{ base_path }}/match/{{ match.id }}/bet/edit" class="button-raised--small orange">Muokkaa</a>
+					{% else %}
+						{% if bet.points_earned > 0 %}
+							<div class="bet-points--successful">+ {{ bet.points_earned }} pts</div>
+						{% else %}
+							<div class="bet-status">Ei pisteitä</div>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="bet-status">Ei veikkauksia</div>
+			{% if match.is_upcoming %}
+				<a href="{{ base_path }}/match/{{ match.id }}/bet/new" class="button-raised--small blue">Veikkaa</a>
+			{% else %}
+				
+			{% endif %}
+		{% endif %}
+	</div>	
+
+</div>	
+
+<div class="clearfix"></div>

@@ -1,24 +1,93 @@
-<!--
-Ottelun muokkaus näkymä, josta luodaan mm. ottelun maalit
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+		<h1>Ottelun muokkaus</h1>
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+		<div class="row"> 
+			<div class="card white">
+				<div class="card-wrapper">
 
- - 
- - Kotijoukkueen valinta (input / drop-down)
- - Vierasjoukkueen valinta (input / drop-down)
- - Päivämäärän valinta (calendar)
- - Stadionin valinta (grid selection / drop-down)
- - Ottelun tulos (increase / decrease buttons)
- - Maalin tekijän lisäys (action button)
- 
+					<div class="card-header flat-header">
+						<div class="flat-header-icon">
+							<span class="glyphicon glyphicon-map-marker"></span>
+						</div>
+						<div class="flat-header-title">
+							{{ match.stage.name }} | {{ match.kickoff|date("F j") }}
+						</div> 
+						<div class="flat-header-subtitle">
+							{{ match.stadium.name }}<br/>
+							{{ match.stadium.city }}
+						</div>
+					</div>
 
-Oikeudet: 
-Admin
+					<div class="card-content match">
 
+						<div class="match-teams">
+							<div class="card-content-half">
+								<div class="team-logo--large">
+									<img src="{{ base_path }}/assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+								</div>
+								<div class="team-name--normal">
+									{{ match.home.name }}
+								</div>
+							</div>
+							<div class="card-content-half">
+								<div class="team-logo--large">
+									<img src="{{ base_path }}/assets/img/logo-{{ match.away.code|lower }}-128.png" alt=""/>
+								</div>
+								<div class="team-name--normal">
+									{{ match.away.name }}
+								</div>
+							</div>
+						</div>
 
-VAATIMUKSET:
+						<div class="match-info">
+							{% if match.is_upcoming %} 
+								<div class="match-status">Tulossa</div>
+								<div class="match-result--upcoming"> v </div>
+							{% else %} 
+								<div class="match-status">Lopputulos</div>
+								<div class="match-result--played"> {{ match.homegoals|length }} : {{ match.awaygoals|length }} </div>
+							{% endif %}
+							{% for goal in match.goals %}
+								<div class="match-status">
+								{% set player = goal.player %}
+								{% set name = (player.firstname ~ ' ' ~ player.lastname)|trim %}
+								{% if goal.is_owngoal %}
+									{{ name }} {{ goal.minute }}' (OG) 
+								{% else %}
+									{{ name }} {{ goal.minute }}' 
+								{% endif %}	
+								</div>
+							{% endfor %}
+							<div class="bet-action">
+							<a href="{{ base_path }}/goal/new/{{ match.id }}" class="button-raised--small blue">Lisää maali</a>
+							</div>
+						</div>
 
-1. VAIN OTTELUN TULOSTA TAI STADIONIA VOIDAAN PÄIVITTÄÄ JOS PÄIVÄMÄÄRÄ ON MENNYT.
-2. OTTELUUN EI VOI LIITYÄ MAALEJA ENNEN KUIN OTTELU ON PELATTU.
-3. OTTELUN JOUKKUEITA VOIDAAN PÄIVITTÄÄ VAIN JOS OTTELU EI OLE ALKANUT JA SIIHEN EI LIITY VEIKKAUKSIA.
-4. OTTELU VOIDAAN MYÖS POISTAA JOS SIIHEN EI LIITY VEIKKAUKSIA EIKÄ SE EI OLE ALKANUT.
+					</div>	
 
--->
+					<div class="clearfix"></div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">	
+			<div class="button-wrapper">
+				{{ forms.delete_button({ 'class': 'button-raised--normal red', 'href': 'match/goals', 'name': 'match_id', 'id': match.id, 'value': 'Nollaa maalit' }) }}
+			</div>
+			{% if match.has_ended %}
+				<div class="button-wrapper">
+					{{ forms.update_button({ 'class': 'button-raised--normal orange', 'href': 'match/confirm', 'name': 'match_id', 'id': match.id, 'value': 'Vahvista lopputulos' }) }}	
+				</div>
+			{% endif %}
+		</div>
+
+	</div>
+</section>
+{% endblock %}

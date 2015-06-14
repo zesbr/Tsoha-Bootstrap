@@ -10,38 +10,8 @@
 <section>
 	<div class="wrapper">
 		<div class="colspan_12 last">
-			<div class="row">
-				<table class="table">
-					<thead>
-						<tr>	
-							<td>Name</td>
-							<td>Username</td>
-							<td>Email</td>
-							<td>Joined on</td>
-							<td>Last login</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						{% for user in users %}
-						<tr>
-							<td><a href="{{ base_path }}/user/{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</a></td>
-							<td>{{ user.username }}</td>
-							<td>{{ user.email }}</td>
-							<td>{{ user.joined_on }}</td>
-							<td>{{ user.last_login }}</td>
-							<td>
-								<form method="post" action="{{base_path}}/user">
-									<input type="hidden" name="id" value="{{ user.id }}"/>
-									<input type="hidden" name="_METHOD" value="DELETE"/>
-									<input type="submit" value="Poista" class="btn btn-danger btn-sm">
-								</form>
-							</td>
-						</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
+
+				{% include "user/_list.html" %}
 		</div>
 	</div>
 </section>

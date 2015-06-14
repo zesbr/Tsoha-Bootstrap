@@ -5,12 +5,22 @@ CREATE TABLE Groups (
 	title VARCHAR(64) NOT NULL
 );
 
+-- Coaches eli valmentajat ovat jalkapallojoukkueen valmentajia
+CREATE TABLE Coaches ( 
+	id SERIAL PRIMARY KEY,
+	firstname VARCHAR(64) NOT NULL,
+	lastname VARCHAR(64) NOT NULL,
+	birthday DATE NOT NULL,
+	nationality VARCHAR(64) NOT NULL
+);
+
 -- Teams eli joukkueet ovat pelaajista koostuvia ja jotain maata edustavia jalkapallojoukkueita
 CREATE TABLE Teams (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(64) UNIQUE NOT NULL,
 	code VARCHAR(3) UNIQUE NOT NULL,
-	group_id INTEGER REFERENCES Groups(id)
+	group_id INTEGER REFERENCES Groups(id),
+	head_coach_id INTEGER REFERENCES Coaches(id)
 );
 
 -- Players eli pelaajat ovat jalkapallojoukkueessa pelaavia urheilijoita
@@ -23,6 +33,8 @@ CREATE TABLE Players (
 	nationality VARCHAR(64) NOT NULL, 
 	squadnumber INTEGER NOT NULL,
 	position VARCHAR(3) NOT NULL,
+	caps INTEGER NOT NULL,
+	goals INTEGER NOT NULL,
 	is_injured BOOLEAN DEFAULT false,
 	is_suspended BOOLEAN DEFAULT false,
 	club VARCHAR(64)
@@ -48,7 +60,8 @@ CREATE TABLE Matches (
 	home_id INTEGER REFERENCES Teams(id),
 	away_id INTEGER REFERENCES Teams(id),
 	kickoff TIMESTAMP NOT NULL,
-	stadium_id INTEGER REFERENCES Stadiums(id)
+	stadium_id INTEGER REFERENCES Stadiums(id),
+	is_confirmed BOOLEAN DEFAULT false NOT NULL
 );
 
 -- Goals eli maalit ovat pelaajan ottelussa tekemiä maaleja

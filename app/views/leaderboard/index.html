@@ -1,1 +1,48 @@
-index.html
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+		<h1>Pistetilanne</h1>
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+		<div class="colspan_12 last">
+			<div class="row">
+				
+
+				<table class="table">
+					<thead>
+						<tr>
+							<td>Sija</td>
+							<td>Nimi</td>						
+							<td>Veikkauksia</td>
+							<td>Oikea tulos</td>
+							<td>Oikea joukkue</td>
+							<td>Onnistumisprosentti</td>
+							<td>Pisteitä</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							{% set stats = user.stats %}
+							<tr>
+								<td>{{ loop.index }}.</td>
+								<td><a href="{{ base_path}}/user/{{ user.id }}"><span class="round-icon glyphicon glyphicon-user"></span> {{ user.username }}</a></td>
+								
+								<td>{{ stats.bets }}</td>
+								<td>{{ stats.correct }}</td>
+								<td></td>
+								<td>{{ stats.percentage }} %</td>
+								<td>{{ stats.points }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>	
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

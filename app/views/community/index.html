@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+
+		<h1>Yhteisöt</h1>
+
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+		<div class="colspan_12 last">
+			<div class="row">		
+				{% if coummunities is empty %}
+					{% include "community/_list.html" %}
+				{% else %}
+					Ei yhteisöjä
+				{% endif %}
+				<div>
+					<a href="{{ base_path }}/communities/new" class="button-raised--normal blue">Luo uusi yhteisö</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

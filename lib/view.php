@@ -5,7 +5,7 @@
     public static function make($view, $content = array()){
       // Alustetaan Twig
       $twig = self::get_twig();
-
+      $twig->getExtension('core')->setTimezone('America/Santiago');
       try{
         // Asetetaan uudelleenohjauksen yhteydessä lisätty viesti
         self::set_flash_message($content);

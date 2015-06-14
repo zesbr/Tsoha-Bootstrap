@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+	
+	{% import 'components/form/input.html' as forms %}
+
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +30,10 @@
 
 		<!-- Open Sans Web Font -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,600,700' rel='stylesheet' type='text/css'>
+		<!-- Source Sans Por Web Font -->
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+		<!-- Bulk Web Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700|Roboto:400,100,300,500,700,900|Roboto+Condensed:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 		{% endblock %}
 
 	</head>
@@ -51,23 +58,23 @@
 					<ul class="nav navbar-nav">
 							<li><a href="{{ base_path }}/matches">Ottelut</a></li>
 							<li><a href="{{ base_path }}/groups">Lohkot</a></li>
+							<!--<li><a href="{{ base_path }}/teams">Joukkueet</a></li>-->
 							<li><a href="{{ base_path }}/bets">Veikkaukset</a></li>
-							<li><a href="{{ base_path }}/teams">Joukkueet</a></li>
 							<li><a href="{{ base_path }}/users">Käyttäjät</a></li>
 							<li><a href="{{ base_path }}/communities">Yhteisöt</a></li>
-							<li><a href="">Pistetilanne</a></li>
+							<li><a href="{{ base_path }}/leaderboards">Pistetilanne</a></li>
 							<li><a href="{{ base_path }}/logout">Kirjaudu ulos</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		
-		{% block content %}
-		{% endblock %}
+		{% block content %}{% endblock %}
 
 		{% block body %}
 		<!-- jQuery -->
 		<script src="{{base_path}}/vendor/jquery.min.js"></script>
+		
 
 		<!-- Bootstrap (skriptitiedosto) -->
 		<script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -76,7 +83,12 @@
 		<script src="{{base_path}}/assets/js/owl.carousel.min.js"></script>
 
 		<!-- Oma skriptitiedostomme -->
+		<script src="{{base_path}}/assets/js/modernizr.custom.63321.js"></script>
+		<script src="{{base_path}}/assets/js/jquery.dropdown.js"></script>
 		<script src="{{base_path}}/assets/js/site.js"></script>
+		
+
+
 		{% endblock %}
 
 	</body>

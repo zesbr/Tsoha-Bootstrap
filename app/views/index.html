@@ -2,200 +2,44 @@
 {% block content %}
 <section>
 	<div class="wrapper">
-		<div class="colspan_8">
+
+		<div class="colspan_12 last">
 			<div class="row">
-
-				<div class="card colspan_8 rowspan_5">	
-					<div class="owl-carousel">
+				<div class="card white">	
+					<div class="match-carousel">
 						{% for match in matches %}
-						<div class="owl-carousel-wrapper">		
-							<div class="loader-bar">
-								<span class="loader-bar-progress"></span>
+							<div class="colspan_12 last">
+								{% include "_hero_module.html" %}
 							</div>
-
-							<div class="card-header">
-								<div class="header-icon"></div>
-								<div><b>{{ match.stage.name }} | {{ match.kickoff|date("F j") }}</b></div> 
-								<!-- TODO: Poista <b> ja delegoi boldaus css:lle -->
-								<div>{{ match.stadium.name }}</div>
-								<div>{{ match.city }}</div>
-							</div>
-
-							<div class="card-content">
-								<div class="navigator"></div>
-								<div class="left">
-									<img src="./assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
-									<span class="text">{{ match.home.name }}</span>
-								</div>
-								<div class="right">
-									<img src="./assets/img/logo-{{ match.away.code|lower }}-128.png" alt="" />
-									<span class="text">{{ match.away.name }}</span>
-								</div>
-								<div class="navigator"></div>
-								<div class="center">
-
-
-
-									<div class="status">
-
-										{% if match.is_upcoming %} 
-											Tulossa
-										{% else %} 
-											Lopputulos
-										{% endif %}
-
-									</div>
-
-
-
-									<div class="big-score">
-
-										{% if match.is_upcoming %}
-
-											<span style="color: gray">v</span>
-
-										{% else %}
-											{{ match.homegoals|length }} : {{ match.awaygoals|length }}
-										{% endif %}
-
-									</div>
-
-
-
-									<div class="user-score">
-
-										{% if user.has_betted(match) %}
-											{% for bet in user.bets %}
-												{% if bet.match_id == match.id %}
-													{{ bet.home_score }} : {{ bet.away_score }}
-												{% endif %}
-											{% endfor %}
-										{% else %}
-											NO BETS
-										{% endif %}
-
-									</div>
-
-
-
-									<div class="points-rewarded">
-
-										{% if match.is_upcoming %}
-
-										{% else %}
-											{% if user.has_betted(match) %}
-												{% for bet in user.bets %}
-													{% if bet.match_id == match.id %}
-														{% if bet.points_earned > 0 %}
-															+9 pts
-														{% else %}
-															0 pts
-														{% endif %}
-													{% endif %}
-												{% endfor %}
-											{% endif %}
-										{% endif %}
-
-									</div>
-
-
-
-									<div class="action">
-										<!-- if match is upcoming and user has bet -->
-											<!-- <button>Edit</button> -->
-										<!-- elsif upcoming -->
-											<!-- <button>Bet</button> -->
-									</div>
-
-
-
-								</div>			
-							</div>
-						</div>
 						{% endfor %}
 					</div>
 				</div>
-
 			</div>
+		</div>
 
-
+		<div class="colspan_12 last">
 			<div class="row">
 
-
-				<div class="card group-standings-card colspan_8">
-					<div class="group-standings-card--header">
-						<div>Group A</div>
-					</div>
-					<div class="group-standigs-card--content">
-						<table class="group-standings-table">
-							<thead>
-								<tr>
-									<td></td>
-									<td></td>
-									<td>GP</td>
-									<td>W</td>
-									<td>D</td>
-									<td>L</td>
-									<td>GF</td>
-									<td>GA</td>
-									<td>PTS</td>
-								</tr>
-							</thead>
-							<tbody>
-							{% for team in teams %}
-								{% set stats = team.stats  %}
-								<tr>
-									<td id="logo"><img class="team-logo" src="{{ base_path}}/assets/img/logo-{{ team.code|lower }}-128.png" alt="" /></td>
-									<td id="name">{{ team.name }}</td>
-									<td id="played">{{ stats.played }}</td>
-									<td id="wins">{{ stats.wins }}</td>
-									<td id="draws">{{ stats.draws }}</td>
-									<td id="losses">{{ stats.losses }}</td>
-									<td id="scored">{{ stats.scored }}</td>
-									<td id="conceded">{{ stats.conceded }}</td>
-									<td id="points">{{ stats.points }}</td>
-								</tr>
+				<div class="colspan_8">
+					<div class="card white">
+						<div class="group-standings-carousel">
+							{% for group in groups %}	
+								<div class="owl-carousel-wrapper">
+									{% include "_group_standings.html" %}
+								</div>
 							{% endfor %}
-							</tbody>
-						</table>
+						</div>
 					</div>
 				</div>
-			</div>
 
-		</div>
-
-		<div class="colspan_4 last">
-
-			<div class="card profile-card colspan_4 rowspan_5">
-				
-				{% set rank = user.stats  %}
-
-				<div class="profile-card--header">
-					<div><b>{{ user.firstname }} {{ user.lastname }}</b></div>
-					<div class="profile-icon"></div>
-				</div>
-
-				<div class="profile-card--content">
-					<div class="primary-stats">
-						<div class="stat-title">SIJOITUS</div>
-						<div class="stat-title">PISTEITÄ</div>
-						<div id="user--ranking" class="stat-value--primary">{{ rank.ranking }}</div>
-						<div id="user--points" class="stat-value--primary">{{ rank.points }}</div>
-					</div>
-
-					<hr/>
-					
-					<div class="stat-title">VEIKKAUKSIA</div>
-					<div class="stat-value--secondary">{{ rank.bets }}</div>
-					<div class="stat-title">ONNISTUNEITA</div>
-					<div class="stat-value--secondary">{{ rank.correct }}</div>
-					<div class="stat-title">ONNISTUMISPROSENTTI</div>
-					<div class="stat-value--secondary">{{ rank.percentage }}</div>
+				<div class="colspan_4 last">
+					{% set user = user_logged_in %}
+					{% include "user/_stats.html" %}
 				</div>
 
 			</div>
-
 		</div>
+
 	</div>
 </section>
 {% endblock %}

@@ -1,0 +1,65 @@
+
+{% macro label(attribs) %}
+	<label for="{{ attribs.for }}" class="{{ attribs.class }}">{{ attribs.value }}</label>
+{% endmacro %}
+
+{% macro textbox(attribs) %}
+	<input autocomplete="off" class="{{ attribs.class }}" id="{{ attribs.id }}" name="{{ attribs.name }}" placeholder="{{ attribs.placeholder }}" type="{{ attribs.type|default('text') }}" value="{{ attribs.value }}"/>
+{% endmacro %}
+
+{% macro textarea(attribs) %}
+	<textarea autocomplete="off" class="{{ attribs.class }}" data-autoresize id = "{{ attribs.id }}" name="{{ attribs.name }}" placeholder="{{ attribs.placeholder }}" rows="1">{{ attribs.value }}</textarea>
+{% endmacro %}
+
+{% macro submit(attribs) %}
+	{% if attribs._method == 'PUT' %}
+		<input type="hidden" name="id" value="{{ attribs._id }}"/>
+		<input type="hidden" name="_METHOD" value="PUT"/>
+	{% elseif attribs._method == 'DELETE' %}
+		<input type="hidden" name="id" value="{{ attribs._id }}"/>
+		<input type="hidden" name="_METHOD" value="DELETE"/>
+	{% endif %}
+	<input type="submit" class="{{ attribs.class }}" value="{{ attribs.value }}">
+{% endmacro %}
+
+{% macro hidden(attribs) %}
+	<input type="hidden" name="{{ attribs.name }}" value="{{ attribs.value }}"/>
+{% endmacro %}
+
+{% macro delete_button(attribs) %}
+	<form id="delete" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
+		<input type="hidden" form="delete" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
+		<input type="hidden" form="delete" name="_METHOD" value="DELETE"/>
+		<input type="submit" class="{{ attribs.class }}" form="delete" value="{{ attribs.value }}"/>
+	</form>
+{% endmacro %}
+
+{% macro update_button(attribs) %}
+	<form id="update" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
+		<input type="hidden" form="update" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
+		<input type="hidden" form="update" name="_METHOD" value="PUT"/>
+		<input type="submit" class="{{ attribs.class }}" form="update" value="{{ attribs.value }}"/>
+	</form>
+{% endmacro %}
+
+{% macro error(attribs) %}
+	{% if attribs.value != '' %}
+		<div class="{{ attribs.class }}"><span class="glyphicon glyphicon-warning-sign"></span> {{ attribs.value }}</div>
+	{% else %}
+		<div class="{{ attribs.class }}"></div>
+	{% endif %}
+{% endmacro %}
+
+{% macro textbox_with_label_and_errors(attribs) %}
+	{% import _self as forms %}
+	{{ forms.label({ 'for': attribs.for, 'class': 'label-' ~ attribs.theme, 'value': attribs.label_text }) }}
+	{{ forms.textbox({ 'class': 'textbox-' ~ attribs.theme, 'id': attribs.for, 'name': attribs.for, 'placeholder': '', 'type': attribs.type, 'value': attribs.value }) }}
+	{{ forms.error({ 'class': 'validation-' ~ attribs.theme, 'value': attribs.error_text }) }}
+{% endmacro %}
+
+{% macro textarea_with_label_and_errors(attribs) %}
+	{% import _self as forms %}
+	{{ forms.label({ 'for': attribs.for, 'class': 'label-' ~ attribs.theme, 'value': attribs.label_text }) }}
+	{{ forms.textarea({ 'class': 'textarea-' ~ attribs.theme, 'id': attribs.for, 'name': attribs.for, 'placeholder': '', 'type': attribs.type, 'value': attribs.value }) }}
+	{{ forms.error({ 'class': 'validation-' ~ attribs.theme, 'value': attribs.error_text }) }}
+{% endmacro %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+
+		<h1>{{ community.name }}</h1>
+
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+		<div class="colspan_12 last">
+
+			<div class="row">
+				<p>{{ community.description }}</p>
+			</div>
+
+			<div class="row">
+				{% set users = community.members %}
+					{% include "user/_list.html" %}
+					<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+
+			<div class="row">
+				<div class="button-wrapper">
+				<div class="clearfix"></div>
+					<a href="{{ base_path }}/community/edit/{{ community.id }}" class="button-raised--normal orange">Muokkaa</a>
+				</div>
+				<div class="button-wrapper">
+					<form method="post" action="{{base_path}}/membership">
+						<input type="hidden" name="community_id" value="{{ community.id }}"/>
+						<input type="hidden" name="_METHOD" value="DELETE"/>
+						<input type="submit" value="Poista jäsenyys" class="button-raised--normal red">
+					</form>
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

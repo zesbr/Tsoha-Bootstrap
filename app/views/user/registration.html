@@ -1,46 +1,22 @@
 {% extends "landing.html" %}
 {% block content %}
-<section class="white-on-green">
+<header class="bg-green">
 	<div class="wrapper">
-			
-			<div class="row">
-
-				<div class="module colspan_12 last">
-					<h1 class="landing-page-subtitle">Registration</h1>
-				</div>
-				<div class="clear"></div>
-				<div class="clearfix"></div>
-
+		<h1>Rekisteröityminen</h1>
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+		<div class="row">
+			<div class="module colspan_12 last">
+			{{ message }}
 			</div>
-
-			<div class="row">
-				<div class="module colspan_6 last">
-
-					<form method="post" action="{{base_path}}/registration">
-						<!-- Username -->
-						<label for="username">Username</label>
-						<input type="text" name="username" placeholder="Username" class="white-on-darker">
-						<!-- Firstname -->
-						<label for="firstname">First name</label>
-						<input type="text" name="firstname" placeholder="First name" class="white-on-darker">
-						<!-- Lastname -->
-						<label for="lastname">Last name</label>
-						<input type="text" name="lastname" placeholder="Last name" class="white-on-darker">	
-						<!-- Email -->
-						<label for="email">Email</label>
-						<input type="text" name="email" placeholder="Email" class="white-on-darker">
-						<!-- Password -->
-						<label for="password">Password</label>
-						<input type="password" name="password" placeholder="Password" class="white-on-darker">
-						<!-- Password Confirmation -->
-						<label for="password_confirmation">Confirm password</label>
-						<input type="password" name="password_confirmation" placeholder="Confirm password" class="white-on-darker">
-
-						<input type="submit" value="Register" class="horizontal-align-left white-on-darker">
-					</form>
-					
-				</div>
-		</div>	
+		</div>
+		<div class="row">
+			<div class="module colspan_6 last">
+			{% include "user/_form_registration.html" %}
+			</div>
+		</div>
 		<div class="clearfix"></div>
 	</div>
 </section>

@@ -9,55 +9,15 @@
 </header>
 <section>
 	<div class="wrapper">
-		
-		{% for group in groups %}	
 		<div class="row">
-
-			<div class="card group-standings-card colspan_12 last">
-
-				<div class="group-standings-card--header">
-					<div>{{ group.title }}</div>
+			{% for group in groups %}	
+				<div class="row">
+					<div class="card white">
+						{% include "_group_standings.html" %}
+					</div>
 				</div>
-
-				<div class="group-standigs-card--content">
-					<table class="group-standings-table">
-						<thead>
-							<tr>
-								<td></td>
-								<td></td>
-								<td>GP</td>
-								<td>W</td>
-								<td>D</td>
-								<td>L</td>
-								<td>GF</td>
-								<td>GA</td>
-								<td>PTS</td>
-							</tr>
-						</thead>
-						<tbody>
-						{% for team in group.teams %}
-							{% set stats = team.stats  %}
-							<tr>
-								<td id="logo"><img class="team-logo" src="{{ base_path}}/assets/img/logo-{{ team.code|lower }}-128.png" alt="" /></td>
-								<td id="name">{{ team.name }}</td>
-								<td id="played">{{ stats.played }}</td>
-								<td id="wins">{{ stats.wins }}</td>
-								<td id="draws">{{ stats.draws }}</td>
-								<td id="losses">{{ stats.losses }}</td>
-								<td id="scored">{{ stats.scored }}</td>
-								<td id="conceded">{{ stats.conceded }}</td>
-								<td id="points">{{ stats.points }}</td>
-							</tr>
-						{% endfor %}
-						</tbody>
-					</table>
-				</div>
-				
-			</div>
-
+			{% endfor %}
 		</div>
-		{% endfor %}
-
 	</div>
 </section>
 {% endblock %}

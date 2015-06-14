@@ -7,6 +7,14 @@ class Membership extends BaseModel {
 	public $joined_on;
 	public $is_admin;
 	
+	public function __construct($attributes){
+		parent::__construct($attributes);
+		$this->validators = array(
+			"validate_uniqueness",
+		);
+		$this->errors = array();
+	}
+
 	/*
 	 * Hakee ja palauttaa kaikki jäsenyydet
 	 */
@@ -85,6 +93,26 @@ class Membership extends BaseModel {
 		$query = "delete from memberships where id = :id";
 		$params = array("id" => $this->id);
 		DB::execute($query, $params);
+	}
+
+	/**
+	 * Validoi jäsenyyden käyttäjän
+	 */
+	public function validate_uniqueness() {	
+		$community = $this->community();
+		$user = $this->user();
+
+		if (!isset($community)) {
+			$this->errors["community"] = "Yhteisöä ei ole olemassa";
+		} else if (!isset($user)) {
+			$this->errors["user"] = "Käyttäjää ei ole olemassa";
+		} else {
+			foreach ($user->memberships() as $membership) {
+				if ($membership->community_id == $community->id) {
+					$this->errors["community"] = "Olet jo liittnyt yhteisöön";
+				}
+			}
+		}
 	}
 
 }

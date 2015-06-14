@@ -2,13 +2,13 @@
 	Typography
 **********************************************************************************************************************/
 h1, h2, h3, h4, h5, h6, p {
-	font-family: "open sans", "arial", "helvetica", "sans-serif";
+	font-family: "source sans pro", "arial", "helvetica", "sans-serif";
 	padding: 0;
 	margin: 0;
 }
 h1 { 
-	font-size: 2.0em;
-	font-weight: 600;
+	font-size: 2.5em;
+	font-weight: 400;
 }
 h2 { 
 	font-size: 2.4em;

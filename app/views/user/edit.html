@@ -9,31 +9,11 @@
 </header>
 <section class="">
 	<div class="wrapper">
-		
 		<div class="form-input colspan_12 last">
-			<form method="post" action="{{base_path}}/user">
-				<div class="row colspan_8 last">
-					<div class="form-input-fields">
-						<label for="username" class="input-label">Käyttäjänimi</label>
-						<input type="text" name="username" placeholder="Username" value="{{ user.username }}" autocomplete="off" class="input-text">
-						<label for="firstname" class="input-label">Etunimi</label>
-						<input type="text" name="firstname" placeholder="First name" value="{{ user.firstname }}" autocomplete="off" class="input-text">
-						<label for="lastname" class="input-label">Sukunimi</label>
-						<input type="text" name="lastname" placeholder="Last name" value="{{ user.lastname }}" autocomplete="off" class="input-text">	
-						<label for="email" class="input-label">Sähköposti</label>
-						<input type="text" name="email" placeholder="Email" value="{{ user.email }}" autocomplete="off" class="input-text">
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-input-actions">
-						<input type="hidden" name="id" value="{{ user.id }}"/>
-						<input type="hidden" name="_METHOD" value="PUT"/>
-						<input type="submit" value="Tallenna muutokset" class="input-button horizontal-align-right">
-					</div>
-				</div>
-			</form>
-		</div>
 
+			{% include "user/_form_edit.html" %}
+
+		</div>
 	</div>
 </section>
 {% endblock %}

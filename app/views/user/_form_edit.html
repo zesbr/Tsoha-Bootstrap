@@ -1,0 +1,98 @@
+<form method="post" action="{{base_path}}/user">
+
+	<div class="row colspan_8 last">
+
+		<div class="form-input-fields">
+
+			<!-- Käyttäjänimi -->
+			{{
+				forms.label({
+					'for': 'username',
+					'class': 'label-material',
+					'value': 'Käyttäjänimi'
+				})
+			}}
+			{{
+				forms.textbox({
+					'class': 'textbox-material',
+					'id': 'username',
+					'name': 'username',
+					'placeholder': '',
+					'value': user.username
+				})
+			}}
+
+			<!-- Etunimi -->
+			{{
+				forms.label({
+					'for': 'firstname',
+					'class': 'label-material',
+					'value': 'Etunimi'
+				})
+			}} 
+			{{
+				forms.textbox({
+					'class': 'textbox-material',
+					'id': 'firstname',
+					'name': 'firstname',
+					'placeholder': '',
+					'value': user.firstname
+				})
+			}}
+
+			<!-- Sukunimi -->
+			{{
+				forms.label({
+					'for': 'lastname',
+					'class': 'label-material',
+					'value': 'Sukunimi'
+				})
+			}}
+			{{
+				forms.textbox({
+					'class': 'textbox-material',
+					'id': 'lastname',
+					'name': 'lastname',
+					'placeholder': '',
+					'value': user.lastname
+				})
+			}}
+
+			<!-- Sähköposti -->
+			{{
+				forms.label({
+					'for': 'email',
+					'class': 'label-material',
+					'value': 'Sähköposti'
+				})
+			}}
+			{{
+				forms.textbox({
+					'class': 'textbox-material',
+					'id': 'email',
+					'name': 'email',
+					'placeholder': '',
+					'value': user.email
+				})
+			}}
+			
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="form-input-actions">
+
+			{{
+				forms.submit({
+					'class': 'button-raised orange',
+					'value': 'Tallenna muutokset',
+					'_method': 'PUT',
+					'_id': user.id
+				})
+			}}
+
+		</div>
+	</div>
+
+</form>

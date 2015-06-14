@@ -9,8 +9,8 @@ class TeamController extends BaseController {
 
 	public static function show($id) {
 		$team = Team::find($id);
-		//echo json_encode($matches);
-		View::make('team/show.html', array('team' => $team));
+		echo json_encode($matches);
+		// View::make('team/show.html', array('team' => $team));
 	}
 	
 }

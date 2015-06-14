@@ -16,6 +16,12 @@ class User extends BaseModel {
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array(
+			"validate_username",
+			"validate_email",
+			"validate_firstname"
+		);
+		$this->errors = array();
 	}
 
 	/*
@@ -45,77 +51,7 @@ class User extends BaseModel {
 	}
 
 	/**
-	 * Tallentaa käyttäjän
-	 */
-	public function save() {
-
-		$query = 
-			"insert into users (username, password_hash, password_salt, email, firstname, lastname, is_admin, is_locked, joined_on, edited_on, last_login) values (" .
-				":username, " . 
-				":password_hash, " .
-				":password_salt, " . 
-				":email, " .
-				":firstname, " .
-				":lastname, " .
-				":is_admin, " .
-				":is_locked, " .
-				":joined_on, " .
-				":edited_on, " .
-				":last_login" .
-			") returning id";
-
-		$params = array(
-			"username" => $this->username, 
-			"password_hash" => $this->password_hash, 
-			"password_salt" => $this->password_salt, 
-			"email" => $this->email, 
-			"firstname" => $this->firstname, 
-			"lastname" => $this->lastname, 
-			"is_admin" => $this->is_admin, 
-			"is_locked" => $this->is_locked,
-			"joined_on" => $this->joined_on, 
-			"edited_on" => $this->edited_on,
-			"last_login" => $this->last_login
-		);
-		
-		$row = DB::execute($query, $params, false);
-		$this->id = $row['id'];
-	}
-
-	/**
-	 * Päivittää käyttäjän
-	 */
-	public function update() {
-
-		$query =
-			"update users " .
-			"set username = :username, firstname = :firstname, lastname = :lastname, email = :email, edited_on = :edited_on, last_login = :last_login " .
-			"where id = :id";
-
-		$params = array(
-			"username" => $this->username,
-			"firstname" => $this->firstname,
-			"lastname" => $this->lastname,
-			"email" => $this->email,
-			"edited_on" => $this->edited_on,
-			"last_login" => $this->last_login,
-			"id" => $this->id
-		);
-
-		DB::execute($query, $params, false);
-	}
-
-	/**
-	 * TODO
-	 */
-	public function delete() {
-		$query = "delete from users where id = :id";
-		$params = array("id" => $this->id);
-		DB::execute($query, $params, false);
-	}
-
-	/**
-	 * Hakee kaikki käyttäjän veikkaukset
+	 * Hakee ja palauttaa kaikki käyttäjän veikkaukset
 	 */
 	public function bets() {
 		$query = "select * from bets where user_id = :user_id";
@@ -129,7 +65,7 @@ class User extends BaseModel {
 	}
 
 	/**
-	 * Hakee ja palauttaa kaikki käyttäjän yhteisöt
+	 * Hakee ja palauttaa kaikki yhteisöt, joissa käyttäjä on jäsenenä
 	 */
 	public function communities() {
 		$query = 
@@ -161,17 +97,36 @@ class User extends BaseModel {
 		return $memberships;
 	}
 
+	/**
+	 * Hakee ja palauttaa käyttäjän jäsenyyden
+	 */
+	public function membership($community) {
+		$query = "select * from memberships where user_id = :user_id and community_id = :community_id";
+		$params = array("user_id" => $this->id, "community_id" => $community->id);
+		$row = DB::execute($query, $params, false);
+		if ($row) {
+			$membership = new Membership($row);
+			return $membership;
+		}
+	}
 
 	/**
-	 * Hakee ja palauttaa käyttäjän tilastot
+	 * Tarkistaa onko käyttäjä jäsenenä yhteisössä
+	 */
+	public function is_member_in($community) {
+		foreach ($this->memberships() as $membership) {
+			if ($membership->community_id == $community->id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Hakee ja palauttaa käyttäjän veikkaus tilastot
 	 */
 	public function stats() {
-		
-		$ranking = 0;
-		$points = 0;
-		$bets = 0;
-		$correct = 0;
-		$percentage = 0;
+		$ranking = $points = $bets = $correct = $percentage = 0;
 		
 		foreach ($this->bets() as $bet) {
 			$bets++;
@@ -180,12 +135,13 @@ class User extends BaseModel {
 				$correct++;
 			}
 		}
+
 		if ($correct > 0) {
-			$percentage = ($bets / $correct);
-		}
-		else {
+			$percentage = round(($correct / $bets) * 100, 2);
+		} else {
 			$percentage = 0;
 		}
+
 		$stats = array(
 			"ranking" => $ranking,
 			"points" => $points,
@@ -195,6 +151,98 @@ class User extends BaseModel {
 		);
 
 		return $stats;
+	}
+
+	/**
+	 * Tarkistaa onko käyttäjä veikannut ottelua
+	 */
+	public function has_betted($match) {
+		foreach ($this->bets() as $bet) {
+			if ($bet->match_id == $match->id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Tallentaa käyttäjän
+	 */
+	public function save() {
+
+		$query = 
+			"insert into users (username, password_hash, password_salt, email, firstname, lastname, is_admin, is_locked, joined_on, edited_on, last_login) values (" .
+				":username, " . 
+				":password_hash, " .
+				":password_salt, " . 
+				":email, " .
+				":firstname, " .
+				":lastname, " .
+				":is_admin, " .
+				":is_locked, " .
+				":joined_on, " .
+				":edited_on, " .
+				":last_login" .
+			") returning id";
+
+		$params = array(
+			"username" => $this->username, 
+			"password_hash" => $this->password_hash, 
+			"password_salt" => $this->password_salt, 
+			"email" => $this->email, 
+			"firstname" => $this->firstname, 
+			"lastname" => $this->lastname, 
+			"is_admin" => $this->psql_boolean($this->is_admin), 
+			"is_locked" => $this->psql_boolean($this->is_locked),
+			"joined_on" => $this->joined_on, 
+			"edited_on" => $this->edited_on,
+			"last_login" => $this->last_login
+		);
+		
+		$row = DB::execute($query, $params, false);
+		$this->id = $row["id"];
+	}
+
+	/**
+	 * Päivittää käyttäjän
+	 */
+	public function update() {
+
+		$query =
+			"update users set " .
+				"username = :username, " .
+				"email = :email, " .
+				"firstname = :firstname, " .
+				"lastname = :lastname, " .
+				"is_admin = :is_admin, " .
+				"is_locked = :is_locked, " .
+				"edited_on = :edited_on, " .
+				"last_login = :last_login " .
+			"where id = :id";
+
+		$params = array(
+			"username" => $this->username,
+			"email" => $this->email,
+			"firstname" => $this->firstname,
+			"lastname" => $this->lastname,
+			"is_admin" =>  $this->psql_boolean($this->is_admin),
+			"is_locked" => $this->psql_boolean($this->is_locked),
+			"edited_on" => $this->edited_on,
+			"last_login" => $this->last_login,
+			"id" => $this->id
+		);
+
+		DB::execute($query, $params);
+	}
+
+	/**
+	 * Poistaa käyttäjän
+	 */
+	public function delete() {
+		$query = "delete from users where id = :id";
+		$params = array("id" => $this->id);
+
+		DB::execute($query, $params);
 	}
 
 	/**
@@ -215,22 +263,42 @@ class User extends BaseModel {
 	}
 
 	/**
-	 * TODO
+	 * Validoi käyttäjän käyttäjänimen
 	 */
-	public function is_valid() {
-		return true;
+	public function validate_username() {
+
+		if (strlen($this->username) < 3) {
+			$this->errors["username"] = "Käyttäjänimesi on liian lyhyt";
+		} else if (strlen($this->username) > 15) {
+			$this->errors["username"] = "Käyttäjänimesi on liian pitkä";
+		}	else if (!$this->is_unique("username")) {
+			$this->errors["username"] = "Käyttäjänimi on varattu";
+		}	
+
 	}
 
 	/**
-	 *
+	 * Validoi käyttäjän sähköpostin
 	 */
-	public function has_betted($match) {
-		foreach ($this->bets() as $bet) {
-			if ($bet->id == $match->id) {
-				return true;
-			}
+	public function validate_email() {
+
+		if (!$this->is_unique("email")) {
+			$this->errors["email"] = "Sähköpostiosoite on jo käytössä";
 		}
-		return false;
+
+	}
+
+	/**
+	 * Validoi käyttäjän etunimen
+	 */
+	public function validate_firstname() {
+
+		if (strlen($this->firstname) < 2) {
+			$this->errors["firstname"] = "Etunimi on liian lyhyt";
+		} else if (strlen($this->firstname) > 64) {
+			$this->errors["firstname"] = "Etunimi on liian pitkä";
+		}
+
 	}
 
 }

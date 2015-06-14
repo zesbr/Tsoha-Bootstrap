@@ -5,6 +5,7 @@ class Team extends BaseModel {
 	public $name;
 	public $code;
 	public $group_id;
+	public $head_coach_id;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
@@ -41,6 +42,13 @@ class Team extends BaseModel {
 	 */
 	public function group() {
 		return Group::find($this->group_id);
+	}
+
+	/*
+	 * Hakee ja palauttaa joukkueen valmentajan
+	 */
+	public function head_coach() {
+		return Coach::find($this->head_coach_id);
 	}
 
 	/*
@@ -89,25 +97,14 @@ class Team extends BaseModel {
 	 * Laskee joukkueen tämänhetkisen pistetilaston alkulohkossa
 	 */
 	public function stats() {
-		$played = 0;
-		$wins = 0;
-		$draws = 0;
-		$losses = 0;
-		$scored = 0;
-		$conceded = 0;
-		$points = 0;
+		$played = $wins = $draws = $losses = $scored = $conceded = $points = 0;
 
 		foreach ($this->group_matches() as $match) {
-
-			if (date("Y-m-d H:m:s") > $match->kickoff) {
-
+			if (!$match->is_upcoming()) {
 				$home_goals = count($match->homegoals());
 				$away_goals = count($match->awaygoals());
-
 				$played++;
-
 				if ($match->home_id == $this->id) {
-
 					if ($home_goals > $away_goals) {
 						$wins++;
 					} else if ($home_goals == $away_goals) {
@@ -115,12 +112,9 @@ class Team extends BaseModel {
 					} else {
 						$losses++;
 					}
-
 					$scored += $home_goals;
 					$conceded += $away_goals;
-
 				} else {
-
 					if ($away_goals > $home_goals) {
 						$wins++;
 					} else if ($away_goals == $home_goals) {
@@ -128,7 +122,6 @@ class Team extends BaseModel {
 					} else {
 						$losses++;
 					}
-
 					$scored += $away_goals;
 					$conceded += $home_goals;
 				}
@@ -136,7 +129,6 @@ class Team extends BaseModel {
 		}
 
 		$points = $wins * 3 + $draws;
-
 		$stats = array(
 			"played" => $played,
 			"wins" => $wins,
@@ -151,4 +143,3 @@ class Team extends BaseModel {
 
 
 }
-

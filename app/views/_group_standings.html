@@ -1,0 +1,45 @@
+<div class="card-header bg-blue flat-header">
+	<div class="flat-header-icon"><span class="glyphicon glyphicon-stats white-text"></span></div>
+	<div class="flat-header-title white-text">{{ group.title }}</div> 
+	<div class="flat-header-subtitle white-text">Viimeisin ottelu: -<br>Seuraava ottelu: -</div> 
+</div>
+
+<div class="card-content">
+
+	<div class="card-wrapper">
+
+		<table class="group-standings-table">
+			<thead>
+				<tr class="blue-text">
+					<td></td>
+					<td></td>
+					<td>P</td>
+					<td>W</td>
+					<td>D</td>
+					<td>L</td>
+					<td>GF</td>
+					<td>GA</td>
+					<td>PTS</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for team in group.teams %}
+					{% set stats = team.stats|sort  %}
+					<tr>
+						<td id="logo"><div class="team-logo--normal"><img src="{{ base_path}}/assets/img/logo-{{ team.code|lower }}-128.png" alt="" /></div></td>
+						<td id="name"><div class="team-name--small">{{ team.name }}</div></td>
+						<td id="played">{{ stats.played }}</td>
+						<td id="wins">{{ stats.wins }}</td>
+						<td id="draws">{{ stats.draws }}</td>
+						<td id="losses">{{ stats.losses }}</td>
+						<td id="scored">{{ stats.scored }}</td>
+						<td id="conceded">{{ stats.conceded }}</td>
+						<td id="points">{{ stats.points }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

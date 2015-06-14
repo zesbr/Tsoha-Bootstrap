@@ -1,0 +1,74 @@
+<form action="{{ base_path }}/goal" method="post">
+
+	<input type="hidden" name="match_id" value="{{ match.id }}"/>
+
+	<div class="row">
+		<div class="colspan_4">
+			<select id="cd-dropdown" name="" class="cd-select colspan_4">			
+				{% for team in goal.match.teams %}
+					{% if goal.player.team_id == team.id %}
+						<option value="" selected>{{ team.name }}</option>
+					{% else %}
+						<option value="">{{ team.name }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		<div class="colspan_4 last">
+			<select id="away-team-players" name="player_id" class="cd-select colspan_4">			
+				{% for player in goal.match.players %}
+					{% if goal.player_id == player.id %}
+						<option value="{{ player.id }}" selected>{{ player.firstname }} {{ player.lastname }}</option>
+					{% else %}
+						<option value="{{ player.id }}">{{ player.firstname }} {{ player.lastname }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="colspan_1 last">
+			{{
+				forms.label({
+					'for': 'minute',
+					'class': 'label-material',
+					'value': 'Peliminuutti'
+				})
+			}}
+
+			{{
+				forms.textbox({
+					'class': 'textbox-material',
+					'id': 'minute',
+					'name': 'minute',
+					'placeholder': '',
+					'value': goal.minute
+				})
+			}}
+		</div>
+	</div>
+
+	<input type="hidden" name="id" value="{{ goal.id }}"/>
+	<input type="hidden" name="_METHOD" value="PUT"/>
+
+	<div class="row">
+		<div class="colspan_12">
+			{{
+				forms.submit({
+					'class': 'button-raised--large blue',
+					'value': 'Muokkaa',
+				})
+			}}
+			</form>
+			{{ 
+				forms.delete_button({
+					'class': 'button-raised--large red', 
+					'href': 'goal', 
+					'id': goal.id, 
+					'value': 'Poista' 
+				}) 
+			}}
+		</div>
+	</div>
+

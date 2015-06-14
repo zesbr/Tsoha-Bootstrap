@@ -1,16 +1,98 @@
 <?php
 class MatchController extends BaseController {
 	
+	# GET /matches
 	public static function index() {
+		self::check_logged_in();
 		$matches = Match::all();
-		// echo json_encode($matches);
 		View::make('match/index.html', array("matches" => $matches));
 	}
 
+	# GET /match/:id
 	public static function show($id) {
 		$match = Match::find($id);
-		echo json_encode($match);
-		// View::make('match/index.html', array("matches" => $matches));
+		//echo json_encode($match);
+		View::make('match/show.html', array("match" => $match));
+	}
+	
+	# GET /match/new
+	public static function create() {
+		// TODO
+	}
+
+	# GET /match/edit/:id
+	public static function edit($id) {
+		$match = Match::find($id);
+		View::make('match/edit.html', array("match" => $match));
+	}
+
+	# POST /match
+	public static function save() {
+		// TODO
+	}
+
+	# PUT /match
+	public static function update() {
+		// TODO
+	}
+
+	# DELETE /match
+	public static function delete() {
+		self::check_logged_in();
+
+		// if ($match->can_be_deleted()) {
+			// TODO
+		// }
+	}
+
+	# PUT /match/confirm
+	public static function confirm() {
+		self::check_logged_in();
+		$user_logged_in = self::get_user_logged_in();
+		$match = Match::find($_POST['match_id']);
+
+		if (!$user_logged_in->is_admin) {
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+		}
+		if (!isset($match)) {
+			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt'));
+		}
+		if (!$match->has_ended()) {
+			Redirect::to('/matches', array('message' => 'Ottelu ei ole vielä päättynyt'));
+		}
+		
+		$match->is_confirmed = 1;
+		$match->update();
+
+		foreach ($match->bets() as $bet) {
+			$points_earned = $bet->calculate_points();
+			$bet->points_earned = $points_earned;
+			$bet->update();
+		}
+		Redirect::to('/match/show/' . $match->id, array('message' => 'Ottelu päivitetty'));
+	}
+
+	# DELETE /match/goals
+	public static function delete_goals() {
+		self::check_logged_in();
+		$user_logged_in = self::get_user_logged_in();
+		$match = Match::find($_POST['match_id']);
+
+		if (!$user_logged_in->is_admin) {
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+		}
+		if (!isset($match)) {
+			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt'));
+		}
+		if ($match->is_confirmed) {
+			Redirect::to('/matches', array('message' => 'Ottelu on jo vahvistettu'));
+		}
+		
+		foreach ($match->goals() as $goal) {
+			$goal->delete();
+		}
+
+		Redirect::to('/match/edit/' . $match->id, array('message' => 'Ottelu päivitetty'));
 	}
 	
 }

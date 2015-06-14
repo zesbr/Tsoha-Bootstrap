@@ -3,8 +3,10 @@ class UserController extends BaseController {
 
 	# GET /users
 	public static function index() {
+		self::check_logged_in();
+		$user_logged_in = self::get_user_logged_in();
 		$users = User::all();
-		View::make("user/index.html", array("users" => $users));
+		View::make("user/index.html", array("user_logged_in" => $user_logged_in, "users" => $users));
 	}
 
 	# GET /user/:id
@@ -21,9 +23,10 @@ class UserController extends BaseController {
 	# GET /user/edit/:id
 	public static function edit($id) {
 		self::check_logged_in();
-		$user = self::get_user_logged_in();
+		$user = User::find($id);
+		$user_logged_in = self::get_user_logged_in();
 
-		if ($user->is_admin || $user->id == $id) {
+		if ($user_logged_in->is_admin || $user_logged_in->id == $user->id) {
 			View::make("user/edit.html", array("user" => $user));
 		} else {
 			Redirect::to('/login', array('message' => 'Käyttäjällä ei ole oikeuksia!'));
@@ -32,11 +35,19 @@ class UserController extends BaseController {
 
 	# POST /user
 	public static function save() {		
-		$salt = self::get_random_salt(); // TODO: Tämän voisi siirtää lomakkeeseen hidden fieldiksi
-		
+		$salt = self::get_random_salt();
+
+		// TODO testaa password confirmation
+
+		if (self::password_is_strong($_POST["password"])) {
+			$password_hash = crypt($_POST["password"], $salt);
+		} else {
+			Redirect::to('/registration', array('errors' => array('password' => 'Salasanasi on liian heikko!')));
+		}
+
 		$user = new User(array(
 			"username" => $_POST["username"], 
-			"password_hash" => crypt($_POST["password"], $salt), 
+			"password_hash" => $password_hash, 
 			"password_salt" => $salt, 
 			"email" => $_POST["email"], 
 			"firstname" => $_POST["firstname"], 
@@ -47,9 +58,12 @@ class UserController extends BaseController {
 			"edited_on" => date("Y-m-d H:i:s"),
 			"last_login" => null
 		));
-		$user->save();
-
-		Redirect::to('/users', array('message' => 'Peli on lisätty kirjastoosi!'));
+		if ($user->is_valid()) {
+			$user->save();
+			Redirect::to('/login', array('message' => 'Käyttäjätili luotiin onnistuneesti!'));
+		} else {
+			Redirect::to('/registration', array('errors' => $user->errors));
+		}
 	}
 
 	# PUT /user
@@ -66,12 +80,9 @@ class UserController extends BaseController {
 		if ($user->is_valid()) {
 			$user->update();
 			Redirect::to("/users", array("message" => "Käyttäjä päivitettiin"));
+		} else {
+			Redirect::to("/user/edit/{$user->id}", array("message" => "Käyttäjän tiedot eivät olleet valideja"));
 		}
-	}
-
-	# PUT /lock
-	public static function lock() {
-		// TODO
 	}
 
 	# DELETE /user
@@ -108,6 +119,7 @@ class UserController extends BaseController {
 			} else {
 				$membership->delete(); // Jäsen ei ole yllpitäjä, joten poistetaan pelkkä jäsenyys
 			}
+
 		}
 
 		// Poistetaan käyttäjä
@@ -120,5 +132,37 @@ class UserController extends BaseController {
 		Redirect::to("/users", array("message" => "Käyttäjä poistettiin"));
 	}
 
+	# PUT /user/change_password
+	public static function change_password() {
+		// TODO
+	}
+
+	# PUT /user/reset_password
+	public static function reset_password() {
+		// TODO
+	}
+
+	# PUT /user/lock TODO => /toggle_lock
+	public static function toggle_lock() {
+		self::check_logged_in();
+		$user_logged_in = self::get_user_logged_in();
+		$user = User::find($_POST["id"]);
+
+		if ($user_logged_in->is_admin && !$user->is_admin) {
+
+			if ($user->is_locked) {
+				$user->is_locked = FALSE;
+				$user->update();
+				Redirect::to("/users", array("message" => "Käyttäjän {$user->firstname} {$user->lastname} tili avattiin onnistuneesti!"));
+			} else {
+				$user->is_locked = TRUE;
+				$user->update();
+				Redirect::to("/users", array("message" => "Käyttäjän {$user->firstname} {$user->lastname} tili lukittu onnistuneesti!"));
+			}
+
+		} else {
+			Redirect::to("/users", array("message" => "Sinulla ei ole oikeuksia lukita tiliä!"));
+		}
+	}
 
 }

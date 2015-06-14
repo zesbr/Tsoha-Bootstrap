@@ -1,0 +1,86 @@
+
+<form method="post" action="{{ base_path }}/bet">
+	<div class="row">
+		<div class="card white">	
+			<div class="card-wrapper">	
+
+				<!-- TODO: Tee tästä erillinen komponentti esim. {{ modules.match_header() }} -->
+				<div class="card-header flat-header">
+					<div class="flat-header-icon">
+						<span class="glyphicon glyphicon-map-marker"></span>
+					</div>
+					<div class="flat-header-title">{{ match.stage.name }} | {{ match.kickoff|date("F j H.i") }}</div> 
+					<div class="flat-header-subtitle">{{ match.stadium.name }}<br/>{{ match.stadium.city }}</div>
+				</div>
+
+				<div class="card-content match">
+					<div class="match-teams">
+
+						<div class="card-content-half">
+							<div class="team-logo--large"><img src="{{ base_path }}/assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" /></div>
+							<div class="team-name--normal">{{ match.home.name }}</div>
+						</div>
+
+						<div class="card-content-half">
+							<div class="team-logo--large"><img src="{{ base_path }}/assets/img/logo-{{ match.away.code|lower }}-128.png" alt=""/></div>
+							<div class="team-name--normal">{{ match.away.name }}</div>
+						</div>
+
+					</div>
+
+					<div class="bet">
+						<div class="bet-wrapper">	
+							
+							<div class="bet-input-group">
+								<div id="increase-home-score" class="bet-increment-button round green-text horizontal-align-center">+</div>
+								{% if bet.id is empty %}
+									<input id="home-score" type="text" class="textbox-material bet-input" name="home_score" value="0" maxlength="2" autocomplete="off">
+								{% else %}
+									<input id="home-score" type="text" class="textbox-material bet-input" name="home_score" value="{{ bet.home_score }}" maxlength="2" autocomplete="off">
+								{% endif %}
+								<div id="decrease-home-score" class="bet-increment-button round red-text horizontal-align-center">-</div>
+							</div>
+
+							<div class="bet-input-separator">
+								<div class="bet-input">:</div>
+							</div>
+
+							<div class="bet-input-group">
+								<div id="increase-away-score" class="bet-increment-button round green-text horizontal-align-center">+</div>
+								{% if bet.id is empty %}
+									<input id="away-score" type="text" class="textbox-material bet-input" name="away_score" value="0" maxlength="2" autocomplete="off">
+								{% else %}
+									<input id="away-score" type="text" class="textbox-material bet-input" name="away_score" value="{{ bet.away_score }}" maxlength="2" autocomplete="off">
+								{% endif %}
+								<div id="decrease-away-score" class="bet-increment-button round red-text horizontal-align-center">-</div>
+							</div>
+
+						</div>
+					</div>	
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+		<div class="button-wrapper">
+			{% if bet.id is empty %}
+				<input type="hidden" name="match_id" value="{{ match.id }}" hidden="true">
+				<input type="submit" value="Tallenna" class="button-raised--normal blue horizontal-align-right" />
+			{% else %}
+				<input type="hidden" name="match_id" value="{{ match.id }}" hidden="true" />
+				<input type="hidden" name="_METHOD" value="PUT" hidden="true" />
+				<input type="submit" value="Tallenna muutokset" class="button-raised--normal orange horizontal-align-right" />
+			{% endif %}
+		</div>
+	</div>
+
+</form>
+
+
+

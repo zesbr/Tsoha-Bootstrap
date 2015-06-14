@@ -16,10 +16,14 @@ class SessionController extends BaseController {
 			if (!$user) {
 				Redirect::to("/login", array("message" => "Salsana tai käyttäjänimi meni väärin!"));
 			} else {
-				$_SESSION["user"] = $user->id;
-				$user->last_login = date("Y-m-d H:m:s");
-				$user->update();
-				Redirect::to("/");
+				if ($user->is_locked) {
+					Redirect::to("/login", array("message" => "Käyttäjätilisi on lukittu"));
+				} else {
+					$_SESSION["user"] = $user->id;
+					$user->last_login = date("Y-m-d H:m:s");
+					$user->update();
+					Redirect::to("/");
+				}
 			}
 		} else {
 			Redirect::to("/login", array("message" => "Salsanaa tai käyttäjänimeä ei annettu!"));

@@ -2,87 +2,20 @@
 {% block content %}
 <header class="white-on-bright-blue">
 	<div class="wrapper">
-		<h1>Ottelut</h1>
+		<h1>Ottelut ja veikkaukset</h1>
 	</div>
 </header>
 <section>
 	<div class="wrapper">
 		<div class="colspan_12">
 			{% for match in matches %}
-			<div class="row">
-				<div class="card colspan_8 rowspan_5 last">		
-					
-					<div class="card-header">
-						<div class="header-icon">
-							
+				<div class="row"> 
+					<div class="card white">		
+						<div class="card-wrapper">
+								{% include "_hero_module.html" %}
 						</div>
-						<div>
-						{% if match.stage_id == 1 %}
-							<b>{{ match.home.group.title }} | {{ match.kickoff|date("F j") }}</b>
-						{% else %}
-							<b>{{ match.stage.name }} | {{ match.kickoff|date("F j") }}</b>
-						{% endif %}
-						</div>
-						<div>{{ match.stadium.name }}</div>
-						<div>{{ match.stadium.city }}</div>
-					</div>
-
-					
-					<div class="card-content">
-						<div class="navigator"></div>
-						<div class="left">
-							<img src="./assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
-							<span class="text">{{ match.home.name }}</span>
-						</div>
-						
-						
-						<div class="right">
-							<img src="./assets/img/logo-{{ match.away.code|lower }}-128.png" alt="" />
-							<span class="text">{{ match.away.name }}</span>
-						</div>
-						<div class="navigator"></div>
-
-						<div class="center">
-							<div class="status">
-								<!-- if match is upcoming -->
-									<!-- Upcoming -->
-								<!-- elsif ongoing -->
-									<!-- Waiting for result -->
-								<!-- else -->
-									Final result
-							</div>
-							<div class="big-score">
-								{% if date(match.kickoff) > date("now") %}
-									<span style="color: gray">v</span>
-								{% else %}
-									{{ match.homegoals|length }} : {{ match.awaygoals|length }}
-								{% endif %}
-							</div>
-							<div class="user-score">
-								<!-- if user has bets -->
-									YOU EARNED
-								<!-- else -->
-									<!-- No bets -->
-							</div>
-							<div class="points-rewarded">
-								<!-- if winner and score were correct -->
-									+ 9 pts
-								<!-- else if winner was correct -->
-									<!-- +3pts -->
-								<!-- else -->
-									<!-- No points gained -->
-							</div>
-							<div class="action">
-								<!-- if match is upcoming and user has bet -->
-									<!-- <button>Edit</button> -->
-								<!-- elsif upcoming -->
-									<!-- <button>Bet</button> -->
-							</div>
-						</div>			
 					</div>
 				</div>
-
-			</div>
 			{% endfor %}
 		</div>
 	</div>

@@ -4,6 +4,12 @@ $routes->get('/', function() {
 	HomeController::index();
 });
 
+/*** Components ***/
+$routes->get('/components', function() {
+	ComponentController::index();
+});
+
+
 /*** Groups ***/
 $routes->get('/groups', function() {
 	GroupController::index();
@@ -48,17 +54,53 @@ $routes->get('/player/:id', function($id){
 $routes->get('/matches', function() {
 	MatchController::index();
 });
+$routes->get('/match/new', function() {
+	MatchController::create();
+});
+$routes->get('/match/show/:id', function($id) {
+	MatchController::show($id);
+});
+$routes->get('/match/edit/:id', function($id) {
+	MatchController::edit($id);
+});
 $routes->get('/match/:id', function($id) {
 	MatchController::show($id);
 });
+$routes->put('/match', function(){
+	MatchController::update();
+});
+$routes->put('/match/confirm', function(){
+	MatchController::confirm();
+});
+$routes->delete('/match/goals', function(){
+	MatchController::delete_goals();
+});
+
+
 
 /*** Goals ***/
 $routes->get('/goals', function() {
 	GoalController::index();
 });
+$routes->get('/goal/new/:id', function($id){
+	GoalController::create($id);
+});
+$routes->get('/goal/edit/:id', function($id){
+	GoalController::edit($id);
+});
 $routes->get('/goal/:id', function($id){
 	GoalController::show($id);
 });
+$routes->post('/goal', function(){
+	GoalController::save();
+});
+$routes->put('/goal', function(){
+	GoalController::update();
+});
+$routes->delete('/goal', function(){
+	GoalController::delete();
+});
+
 
 /*** Users ***/
 $routes->get('/users', function(){
@@ -79,6 +121,9 @@ $routes->post('/registration', function(){
 $routes->put('/user', function(){
 	UserController::update();
 });
+$routes->put('/user/lock', function(){
+	UserController::toggle_lock();
+});;
 $routes->delete('/user', function(){
 	UserController::delete();
 });
@@ -86,13 +131,15 @@ $routes->delete('/user', function(){
 
 
 /*** Bets ***/
+
 $routes->get('/bets', function() {
 	BetController::index();
 });
-$routes->get('/bet/new/:id', function($id) {
+
+$routes->get('/match/:id/bet/new', function($id) {
 	BetController::create($id);
 });
-$routes->get('/bet/edit/:id', function($id) {
+$routes->get('/match/:id/bet/edit', function($id) {
 	BetController::edit($id);
 });
 $routes->get('/bet/:id', function($id) {
@@ -107,6 +154,8 @@ $routes->put('/bet', function() {
 $routes->delete('/bet', function() {
 	BetController::delete();
 });
+
+
 
 
 
@@ -134,13 +183,24 @@ $routes->delete('/community', function(){
 });
 
 
+
 /*** Memberships **/
-$routes->get('/memberships', function(){
-	MembershipController::index();
+$routes->post('/membership', function(){
+	MembershipController::save();
 });
-$routes->get('/membership/:id', function($id){
-	MembershipController::show($id);
+$routes->put('/membership', function(){
+	MembershipController::update();
 });
+$routes->delete('/membership', function(){
+	MembershipController::delete();
+});
+
+
+/*** TODO **/
+$routes->get('/leaderboards', function(){
+	LeaderboardController::index();
+});
+
 
 /*** Sessions ***/
 $routes->get('/login', function(){
@@ -152,4 +212,3 @@ $routes->get('/logout', function(){
 $routes->post('/login', function(){
 	SessionController::handle_login();
 });
-

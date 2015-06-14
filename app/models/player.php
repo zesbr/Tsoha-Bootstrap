@@ -50,4 +50,25 @@ class Player extends BaseModel {
 		return Team::find($this->team_id);
 	}
 
+	/*
+	 * Tarkistaa pelasiko pelaaja ottelussa
+	 *
+	 * @param id ottelun id
+	 */
+	public function played_in($match) {
+		if (isset($match)) {
+			if ($this->team_id == $match->home_id) {
+				$players = $match->home_team_players();
+			} else {
+				$players = $match->away_team_players();
+			}
+			foreach ($players as $player) {
+				if ($player->id == $this->id) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

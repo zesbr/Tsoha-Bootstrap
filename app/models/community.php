@@ -10,6 +10,10 @@ class Community extends BaseModel {
 	  
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array(
+			"validate_name"
+		);
+		$this->errors = array();
 	}
 
 	/*
@@ -34,8 +38,8 @@ class Community extends BaseModel {
 		$row = DB::execute($query, $params, false);
 		if ($row) {
 			$community = new Community($row);
+			return $community;
 		}
-		return $community;
 	}
 
 	/*
@@ -140,10 +144,12 @@ class Community extends BaseModel {
 	}
 
 	/**
-	 * Tarkistaa onko yhteisö validi
+	 * Validoi yhteisön nimen
 	 */
-	public function is_valid() {
-		return true;
+	public function validate_name() {
+		if (!$this->is_unique("name")) {
+			$this->errors["name"] = "Yhteisön nimi on jo käytössä";
+		}
 	}
 
 }

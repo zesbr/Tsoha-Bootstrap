@@ -196,48 +196,8 @@ a:hover {
 .emphasis {
 	font-weight: 700;
 }
-/**
-
-**/
-input 					{ }
-input[type="button"] 	{ }
-input[type="password"] 	{ }
-input[type="range"] 	{ }
-input[type="submit"] 	{ }
-input[type="text"] 		{ }
-input[type="textarea"] 	{ }
-textarea 				{ }
-label 					{ }
-output 					{ }
-select 					{ }
-option 					{ }
 
 
-
-
-input, textarea {
-	background-color: rgba(255, 255, 255, 1.0);
-	border: none;
-	box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.3);
-	box-sizing: border-box;
-	color: rgba(0, 0, 0, 1.0);
-	font-family: "open sans", "arial", "helvetica", "sans-serif";
-	font-weight: 100;
-	font-size: 1.2em;
-	margin: 12px 0px 12px 0px;
-	padding: 12px 24px 12px 24px;
-	resize: none;
-	width: 100%;
-}
-
-label, output {
-	color: rgba(255,255,255,0.2);
-	padding: 0px 12px 0px 12px;
-
-	font-family: "open sans", "arial", "helvetica", "sans-serif";
-	font-weight: 100;
-	font-size: 1.2em;
-}
 
 ::-webkit-input-placeholder {
 	color: rgba(255,255,255,1);
@@ -257,20 +217,6 @@ label, output {
 
 input:focus, textarea:focus {
 	outline: none;
-}
-
-
-
-
-input[type="button"], input[type="submit"] {
-	border: none;
-	font-weight: 700;
-	padding: 12px 72px 14px 72px;
-	margin: 12px 0px 0px 0px;
-	width: auto;
-}
-input[type="button"]:hover, input[type="submit"]:hover {
-	cursor: pointer;
 }
 
 

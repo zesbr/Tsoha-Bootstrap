@@ -1,3 +1,17 @@
-<!--
-Näyttää ottelun tiedot, pelaajat, maalintekijät ym.
--->
+{% extends "base.html" %}
+{% block content %}
+<header class="white-on-bright-blue">
+	<div class="wrapper">
+		<h1>{{ match.home.name|upper }} v {{ match.away.name|upper }}</h1>
+	</div>
+</header>
+<section>
+	<div class="wrapper">
+
+		<div class="row"> 
+			{% include "match/_item.html" %}
+		</div>
+
+	</div>
+</section>
+{% endblock %}

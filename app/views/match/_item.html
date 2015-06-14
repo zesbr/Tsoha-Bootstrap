@@ -1,0 +1,80 @@
+<div class="card white">
+				<div class="card-wrapper">
+
+					<div class="card-header flat-header">
+						<div class="flat-header-icon">
+							<span class="glyphicon glyphicon-map-marker"></span>
+						</div>
+						<div class="flat-header-title">
+							{{ match.stage.name }} | {{ match.kickoff|date("F j H:i") }}
+						</div> 
+						<div class="flat-header-subtitle">
+							{{ match.stadium.name }}<br/>
+							{{ match.stadium.city }}
+						</div>
+					</div>
+
+					<div class="card-content match">
+
+						<div class="match-teams">
+							<div class="card-content-half">
+								<div class="team-logo--large">
+									<img src="{{ base_path }}/assets/img/logo-{{ match.home.code|lower }}-128.png" alt="" />
+								</div>
+								<div class="team-name--normal">
+									{{ match.home.name }}
+								</div>
+							</div>
+							<div class="card-content-half">
+								<div class="team-logo--large">
+									<img src="{{ base_path }}/assets/img/logo-{{ match.away.code|lower }}-128.png" alt=""/>
+								</div>
+								<div class="team-name--normal">
+									{{ match.away.name }}
+								</div>
+							</div>
+						</div>
+
+						<div class="match-info">
+
+							{% if match.is_confirmed %} 
+								<div class="match-status">Lopputulos</div>
+								<div class="match-result--played"> {{ match.homegoals|length }} : {{ match.awaygoals|length }} </div>
+							{% elseif match.has_ended %}
+							 	<div class="match-status">Odottaa vahvistusta</div>
+								<div class="match-result--upcoming"> {{ match.homegoals|length }} : {{ match.awaygoals|length }} </div>
+							{% elseif match.is_ongoing %} 
+								<div class="match-status">Menossa</div>
+								<div class="match-result--upcoming"> {{ match.homegoals|length }} : {{ match.awaygoals|length }} </div>
+							{% else %}
+								<div class="match-status">Tulossa</div>
+								<div class="match-result--upcoming"> v </div>
+							{% endif %}
+
+							
+							{% set goals = match.goals %}
+							{% if goals is empty %}
+								<div class="match-status">Ei maaleja</div>
+							{% else %}	
+								{% for goal in goals %}
+									<div class="match-status">
+									{% set player = goal.player %}
+									{% set name = (player.firstname ~ ' ' ~ player.lastname)|trim %}
+									{% if goal.is_owngoal %}
+										{{ name }} {{ goal.minute }}' (OG) 
+									{% else %}
+										{{ name }} {{ goal.minute }}' 
+									{% endif %}	
+									</div>
+								{% endfor %}	
+							{% endif %}	
+							
+							
+						</div>
+
+					</div>	
+
+					<div class="clearfix"></div>
+
+				</div>
+			</div>
