@@ -5,10 +5,8 @@ class BetController extends BaseController {
 	public static function index() {
 		self::check_logged_in();
 		$user = self::get_user_logged_in();
-		//$bets = $user->bets();
 		$bets = Bet::all();
 		echo json_encode($bets);
-		// View::make('bet/index.html', array('bets' => $bets));
 	}
 
 	# GET /bet/:id
@@ -24,37 +22,35 @@ class BetController extends BaseController {
 		$match = Match::find($id);
 
 		if (!isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->is_upcoming()) {
-			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut', 'message_type' => 'warning'));
 		}
 		if ($user_logged_in->has_betted($match)) {
-			Redirect::to('/matches', array('message' => 'Olet jo veikannut ottelua'));
+			Redirect::to('/matches', array('message' => 'Olet jo veikannut ottelua', 'message_type' => 'warning'));
 		}
-
 		View::make('bet/new.html', array('match' => $match));	
 	}
 
 	# GET match/:id/bet/edit
 	public static function edit($id) {
-
 		self::check_logged_in();
 		$user_logged_in = self::get_user_logged_in();
 		$match = Match::find($id);
 
 		if (!isset($match)) {
-			Redirect::to('/login', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->is_upcoming()) {
-			Redirect::to('/login', array('message' => 'Ottelu on jo alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut', 'message_type' => 'warning'));
 		}
 		foreach ($user_logged_in->bets() as $bet) {
 			if ($bet->match_id == $match->id) {
 				View::make('bet/edit.html', array('match' => $match, 'bet' => $bet));
 			}
 		}
-		Redirect::to('/bets' . $match->id, array('message' => 'Veikkausta ei löytynyt'));		
+		Redirect::to('/matches' . $match->id, array('message' => 'Veikkausta ei löytynyt', 'message_type' => 'warning'));		
 	}
 
 	# POST /bet
@@ -64,13 +60,13 @@ class BetController extends BaseController {
 		$match = Match::find($_POST['match_id']);
 
 		if (!isset($match)) {
-			Redirect::to('/login', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->is_upcoming()) {
-			Redirect::to('/login', array('message' => 'Ottelu on jo alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut', 'message_type' => 'warning'));
 		}
 		if ($user_logged_in->has_betted($match)) {
-			Redirect::to('/login', array('message' => 'Olet jo veikannut ottelua'));
+			Redirect::to('/matches', array('message' => 'Olet jo veikannut ottelua', 'message_type' => 'warning'));
 		}
 
 		$bet = new Bet(array(
@@ -85,9 +81,14 @@ class BetController extends BaseController {
 
 		if ($bet->is_valid()) {
 			$bet->save();
-			Redirect::to('/bets', array('message' => 'Veikkaus tallennettiin'));
+			Redirect::to('/matches', array('message' => 'Veikkaus tallennettiin onnistuneesti', 'message_type' => 'success'));
 		} else {
-			Redirect::to('/match/{$match->id}/bet/new', array('bet' => $bet, 'errors' => $bet->errors));
+			Redirect::to('/match/' . $match->id . '/bet/new', array(
+				'bet' => $bet, 
+				'message' => 'Veikkauksen tallennus epäonnistui', 
+				'message_type' => 'error',
+				'errors' => $bet->errors
+			));
 		}	
 	}
 
@@ -98,10 +99,10 @@ class BetController extends BaseController {
 		$match = Match::find($_POST['match_id']);
 
 		if (!isset($match)) {
-			Redirect::to('/login', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->is_upcoming()) {
-			Redirect::to('/login', array('message' => 'Ottelu on jo alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut', 'message_type' => 'warning'));
 		}
 		foreach ($user_logged_in->bets() as $bet) {
 			if ($bet->match_id == $match->id) {
@@ -111,9 +112,14 @@ class BetController extends BaseController {
 
 				if ($bet->is_valid()) {
 					$bet->update();
-					Redirect::to('/bets', array('message' => 'Veikkaus tallennettiin'));
+					Redirect::to('/matches', array('message' => 'Veikkaus päivitettiin onnistuneesti', 'message_type' => 'success'));
 				} else {
-					Redirect::to('/match/{$match->id}/bet/edit', array('bet' => $bet, 'errors' => $bet->errors));
+					Redirect::to('/match/' . $match->id . '/bet/edit', array(
+						'bet' => $bet, 
+						'message' => 'Veikkauksen päivittäminen epäonnistui', 
+						'message_type' => 'error',
+						'errors' => $bet->errors
+					));
 				}
 			}
 		}
@@ -127,19 +133,19 @@ class BetController extends BaseController {
 		$match = Match::find($_POST['match_id']);
 
 		if (isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->is_upcoming()) {
-			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo alkanut', 'message_type' => 'warning'));
 		}
 		foreach ($user->bets() as $bet) {
 			if ($bet->match_id == $match->id) {
 				// if ($bet->can_be_deleted())
 				$bet->delete();
-				Redirect::to('/matches', array('message' => 'Veikkaus poistettiin'));
+				Redirect::to('/matches', array('message' => 'Veikkaus poistettiin', 'message_type' => 'success'));
 			}
 		}
-		Redirect::to('/matches' . $match->id, array('message' => 'Veikkausta ei löytynyt'));	
+		Redirect::to('/matches' . $match->id, array('message' => 'Veikkausta ei löytynyt', 'message_type' => 'warning'));	
 	}
 
 }

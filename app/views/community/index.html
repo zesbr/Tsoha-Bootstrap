@@ -2,22 +2,33 @@
 {% block content %}
 <header class="white-on-bright-blue">
 	<div class="wrapper">
-
 		<h1>Yhteisöt</h1>
-
 	</div>
 </header>
 <section>
 	<div class="wrapper">
 		<div class="colspan_12 last">
-			<div class="row">		
+			<div class="row">
+				<div class="module colspan_12 last">
+					{{ forms.message_box(message, message_type) }}
+				</div>
+			</div>
+			<div class="row fade-in">		
 				{% if coummunities is empty %}
 					{% include "community/_list.html" %}
 				{% else %}
 					Ei yhteisöjä
 				{% endif %}
-				<div>
-					<a href="{{ base_path }}/communities/new" class="button-raised--normal blue">Luo uusi yhteisö</a>
+			</div>
+			<div class="row">
+				<div class="button-wrapper">
+					{{ 
+						forms.link_button({ 
+							'class': 'button-raised--large white-on-blue fix-alignment-for-link-button', 
+							'href': 'communities/new', 
+							'value': 'Luo uusi yhteisö' 
+						}) 
+					}}
 				</div>
 			</div>
 		</div>

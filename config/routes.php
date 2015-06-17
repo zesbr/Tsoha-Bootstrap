@@ -85,6 +85,9 @@ $routes->get('/goals', function() {
 $routes->get('/goal/new/:id', function($id){
 	GoalController::create($id);
 });
+$routes->get('/match/:id/new/goal', function($id){
+	GoalController::create($id);
+});
 $routes->get('/goal/edit/:id', function($id){
 	GoalController::edit($id);
 });

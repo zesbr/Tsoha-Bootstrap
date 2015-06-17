@@ -38,11 +38,7 @@ class MatchController extends BaseController {
 
 	# DELETE /match
 	public static function delete() {
-		self::check_logged_in();
-
-		// if ($match->can_be_deleted()) {
-			// TODO
-		// }
+		// TODO
 	}
 
 	# PUT /match/confirm
@@ -52,13 +48,13 @@ class MatchController extends BaseController {
 		$match = Match::find($_POST['match_id']);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$match->has_ended()) {
-			Redirect::to('/matches', array('message' => 'Ottelu ei ole vielä päättynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelu ei ole vielä päättynyt', 'message_type' => 'warning'));
 		}
 		
 		$match->is_confirmed = 1;
@@ -69,7 +65,7 @@ class MatchController extends BaseController {
 			$bet->points_earned = $points_earned;
 			$bet->update();
 		}
-		Redirect::to('/match/show/' . $match->id, array('message' => 'Ottelu päivitetty'));
+		Redirect::to('/match/show/' . $match->id, array('message' => 'Ottelu päivitetty', 'message_type' => 'success'));
 	}
 
 	# DELETE /match/goals
@@ -79,20 +75,20 @@ class MatchController extends BaseController {
 		$match = Match::find($_POST['match_id']);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt', 'message_type' => 'warning'));
 		}
 		if ($match->is_confirmed) {
-			Redirect::to('/matches', array('message' => 'Ottelu on jo vahvistettu'));
+			Redirect::to('/matches', array('message' => 'Ottelu on jo vahvistettu', 'message_type' => 'warning'));
 		}
 		
 		foreach ($match->goals() as $goal) {
 			$goal->delete();
 		}
 
-		Redirect::to('/match/edit/' . $match->id, array('message' => 'Ottelu päivitetty'));
+		Redirect::to('/match/edit/' . $match->id, array('message' => 'Ottelu päivitetty', 'message_type' => 'success'));
 	}
 	
 }

@@ -16,12 +16,12 @@ class CommunityController extends BaseController {
 		$community = Community::find($id);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 		if ($community->is_private) {
 			$membership = $user_logged_in->membership($community);
 			if (!isset($membership)) {
-				Redirect::to('/communities', array('message' => 'Yhteisö on yksityinen'));
+				Redirect::to('/communities', array('message' => 'Yhteisö on yksityinen', 'message_type' => 'warning'));
 			}
 		}
 		View::make('community/show.html', array('community' => $community));
@@ -41,16 +41,16 @@ class CommunityController extends BaseController {
 		$community = Community::find($id);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 		$membership = $user_logged_in->membership($community);
 		if (!isset($membership)) {
-			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen'));
+			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen', 'message_type' => 'warning'));
 		}
 		if ($membership->is_admin) {
 			View::make('community/edit.html', array('community' => $community));
 		}
-		Redirect::to('/communities', array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä'));
+		Redirect::to('/communities', array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä', 'message_type' => 'warning'));
 	}
 
 	# POST /community
@@ -75,9 +75,14 @@ class CommunityController extends BaseController {
 				'is_admin' => 1
 			));
 			$membership->save();
-			Redirect::to('/communities', array('message' => 'Uusi yhteisö luotu!'));
+			Redirect::to('/communities', array('message' => 'Uusi yhteisö luotu!', 'message_type' => 'success'));
 		}
-		Redirect::to('/communities/new', array('community' => $community, 'errors' => $community->errors));
+		Redirect::to('/communities/new', array(
+			'community' => $community, 
+			'message' => 'Yhteisön luominen epäonnistui', 
+			'message_type' => 'error', 
+			'errors' => $community->errors
+		));
 	}
 
 	# PUT /community
@@ -87,14 +92,14 @@ class CommunityController extends BaseController {
 		$community = Community::find($_POST['id']);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 		$membership = $user_logged_in->membership($community);
 		if (!isset($membership)) {
-			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen'));
+			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen', 'message_type' => 'warning'));
 		}
 		if (!$membership->is_admin) {
-			Redirect::to('/community/' . $community->id, array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä'));
+			Redirect::to('/community/' . $community->id, array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä', 'message_type' => 'warning'));
 		}
 
  		$community->name = $_POST['name'];
@@ -103,9 +108,14 @@ class CommunityController extends BaseController {
 
 		if ($community->is_valid()) {
 	 		$community->update();
-		 	Redirect::to('/communities', array('message' => 'Muokkaus onnistui'));
+		 	Redirect::to('/communities', array('message' => 'Muokkaus onnistui', 'message_type' => 'success'));
 		}
-		Redirect::to('/community/edit/' . $community->id, array('community' => $community, 'errors' => $community->errors));
+		Redirect::to('/community/edit/' . $community->id, array(
+			'community' => $community, 
+			'message' => 'Yheisön muokkaus epäonnistui', 
+			'message_type' => 'error', 
+			'errors' => $community->errors
+		));
 	}
 
 	# DELETE /community
@@ -115,21 +125,21 @@ class CommunityController extends BaseController {
 		$community = Community::find($_POST['id']);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 		$membership = $user_logged_in->membership($community);
 		if (!isset($membership)) {
-			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen'));
+			Redirect::to('/communities', array('message' => 'Et ole yhteisön jäsen', 'message_type' => 'warning'));
 		}
 		if (!$membership->is_admin) {
-			Redirect::to('/community/' . $community->id, array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä'));
+			Redirect::to('/community/' . $community->id, array('message' => 'Sinulla ei ole oikeuksia muokata yhteisöä', 'message_type' => 'warning'));
 		}
 
 		foreach ($community->memberships() as $membership) {
 			$membership->delete();
 		}
 		$community->delete();
-		Redirect::to('/communities', array('message' => 'Muokkaus onnistui'));
+		Redirect::to('/communities', array('message' => 'Muokkaus onnistui', 'message_type' => 'success'));
 	}
 
 }

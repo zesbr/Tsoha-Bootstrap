@@ -2,10 +2,14 @@ $(document).ready(function(){
 
 	// Käynnistää Owl-Carouselin
 	$(".match-carousel").owlCarousel({
-	    margin:10,
-	    loop:true,
-	    autoplay: true,
-	    autoWidth:true
+		margin:10,
+		loop:true,
+		autoplay: true,
+		autoWidth:true,
+		stopOnHover: true,
+		navigation: false,
+		slideSpeed: 300,
+		singleItem: true
 	});
 
 	$(".group-standings-carousel").owlCarousel({

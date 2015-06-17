@@ -8,6 +8,11 @@
 <section>
 	<div class="wrapper">
 		<div class="row">
+			<div class="module colspan_12 last">
+				{{ forms.message_box(message, message_type) }}
+			</div>
+		</div>
+		<div class="row">
 			<div class="colspan_8 last">
 				{% include "community/_form.html" %}
 			</div>

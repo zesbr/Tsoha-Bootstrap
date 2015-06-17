@@ -17,8 +17,7 @@
 							<td>Sija</td>
 							<td>Nimi</td>						
 							<td>Veikkauksia</td>
-							<td>Oikea tulos</td>
-							<td>Oikea joukkue</td>
+							<td>Onnistuneita</td>
 							<td>Onnistumisprosentti</td>
 							<td>Pisteitä</td>
 						</tr>
@@ -28,11 +27,9 @@
 							{% set stats = user.stats %}
 							<tr>
 								<td>{{ loop.index }}.</td>
-								<td><a href="{{ base_path}}/user/{{ user.id }}"><span class="round-icon glyphicon glyphicon-user"></span> {{ user.username }}</a></td>
-								
+								<td><a href="{{ base_path}}/user/{{ user.id }}"><span class="round-icon glyphicon glyphicon-user"></span> {{ user.username }}</a></td>	
 								<td>{{ stats.bets }}</td>
 								<td>{{ stats.correct }}</td>
-								<td></td>
 								<td>{{ stats.percentage }} %</td>
 								<td>{{ stats.points }}</td>
 							</tr>

@@ -2,16 +2,19 @@
 {% block content %}
 <header class="white-on-bright-blue">
 	<div class="wrapper">
-
 		<h1>Käyttäjät</h1>
-
 	</div>
 </header>
 <section>
 	<div class="wrapper">
 		<div class="colspan_12 last">
-
-				{% include "user/_list.html" %}
+			<div class="row">
+				{% if users is not empty %}
+					{% include "user/_list.html" %}
+				{% else %}
+					Ei käyttäjiä
+				{% endif %}
+			</div>
 		</div>
 	</div>
 </section>

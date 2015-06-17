@@ -26,21 +26,37 @@
 	<input type="hidden" name="{{ attribs.name }}" value="{{ attribs.value }}"/>
 {% endmacro %}
 
-{% macro delete_button(attribs) %}
-	<form id="delete" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
-		<input type="hidden" form="delete" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
-		<input type="hidden" form="delete" name="_METHOD" value="DELETE"/>
+
+{% macro link_button(attribs) %}
+	<a href="{{ base_path }}/tsoha/{{ attribs.href }}" class="{{ attribs.class }}" draggable="false">{{ attribs.value }}</a>
+{% endmacro %}
+
+{% macro submit_button(attribs) %}
+	<form id="submit" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
+		<input type="hidden" form="submit" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
 		<input type="submit" class="{{ attribs.class }}" form="delete" value="{{ attribs.value }}"/>
 	</form>
 {% endmacro %}
 
-{% macro update_button(attribs) %}
-	<form id="update" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
-		<input type="hidden" form="update" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
-		<input type="hidden" form="update" name="_METHOD" value="PUT"/>
-		<input type="submit" class="{{ attribs.class }}" form="update" value="{{ attribs.value }}"/>
+{% macro delete_button(attribs) %}
+	<form id="delete_{{ attribs.id }}" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
+		<input type="hidden" form="delete_{{ attribs.id }}" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
+		<input type="hidden" form="delete_{{ attribs.id }}" name="_METHOD" value="DELETE"/>
+		<input type="submit" class="{{ attribs.class }}" form="delete_{{ attribs.id }}" value="{{ attribs.value }}"/>
 	</form>
 {% endmacro %}
+
+{% macro update_button(attribs) %}
+	<form id="update_{{ attribs.id }}" action="{{ base_path }}/tsoha/{{ attribs.href }}" method="post" style="float: left">
+		<input type="hidden" form="update_{{ attribs.id }}" name="{{ attribs.name }}" value="{{ attribs.id }}"/>
+		<input type="hidden" form="update_{{ attribs.id }}" name="_METHOD" value="PUT"/>
+		<input type="submit" class="{{ attribs.class }}" form="update_{{ attribs.id }}" value="{{ attribs.value }}"/>
+	</form>
+{% endmacro %}
+
+
+
+
 
 {% macro error(attribs) %}
 	{% if attribs.value != '' %}
@@ -50,10 +66,16 @@
 	{% endif %}
 {% endmacro %}
 
-{% macro textbox_with_label_and_errors(attribs) %}
+{% macro textbox_with_label(attribs) %}
 	{% import _self as forms %}
 	{{ forms.label({ 'for': attribs.for, 'class': 'label-' ~ attribs.theme, 'value': attribs.label_text }) }}
 	{{ forms.textbox({ 'class': 'textbox-' ~ attribs.theme, 'id': attribs.for, 'name': attribs.for, 'placeholder': '', 'type': attribs.type, 'value': attribs.value }) }}
+{% endmacro %}
+
+{% macro textbox_with_label_and_errors(attribs) %}
+	{% import _self as forms %}
+	{{ forms.label({ 'for': attribs.for, 'class': 'label-' ~ attribs.theme, 'value': attribs.label_text }) }}
+	{{ forms.textbox({ 'class': 'textbox-' ~ attribs.theme, 'id': attribs.for, 'name': attribs.for, 'placeholder': attribs.placeholder, 'type': attribs.type, 'value': attribs.value }) }}
 	{{ forms.error({ 'class': 'validation-' ~ attribs.theme, 'value': attribs.error_text }) }}
 {% endmacro %}
 
@@ -62,4 +84,21 @@
 	{{ forms.label({ 'for': attribs.for, 'class': 'label-' ~ attribs.theme, 'value': attribs.label_text }) }}
 	{{ forms.textarea({ 'class': 'textarea-' ~ attribs.theme, 'id': attribs.for, 'name': attribs.for, 'placeholder': '', 'type': attribs.type, 'value': attribs.value }) }}
 	{{ forms.error({ 'class': 'validation-' ~ attribs.theme, 'value': attribs.error_text }) }}
+{% endmacro %}
+
+
+{% macro message_box(message, message_type) %}
+	{% if message is not empty %}
+		{% if message_type is not empty %}
+			{% if message_type == 'success' %}
+				<div class="message green-text"><span class="glyphicon glyphicon-ok-sign"></span>{{ message }}</div>
+			{% elseif message_type == 'warning' %}
+				<div class="message orange-text"><span class="glyphicon glyphicon-warning-sign"></span>{{ message }}</div>
+			{% else %}
+				<div class="message red"><span class="glyphicon glyphicon-exclamation-sign"></span>{{ message }}</div>
+			{% endif %}
+		{% else %}
+			<div class="message"><span class="glyphicon glyphicon-info-sign dark"></span>{{ message }}</div>
+		{% endif %}
+	{% endif %}
 {% endmacro %}

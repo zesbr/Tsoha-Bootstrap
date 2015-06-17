@@ -98,9 +98,8 @@ class Team extends BaseModel {
 	 */
 	public function stats() {
 		$played = $wins = $draws = $losses = $scored = $conceded = $points = 0;
-
 		foreach ($this->group_matches() as $match) {
-			if (!$match->is_upcoming()) {
+			if ($match->is_confirmed) {
 				$home_goals = count($match->homegoals());
 				$away_goals = count($match->awaygoals());
 				$played++;

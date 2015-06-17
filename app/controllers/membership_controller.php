@@ -8,7 +8,7 @@ class MembershipController extends BaseController {
 		$community = Community::find($_POST['community_id']);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 
 		$membership = new Membership(array(
@@ -20,9 +20,9 @@ class MembershipController extends BaseController {
 
 		if ($membership->is_valid()) {
 			$membership->save();
-			Redirect::to('/community/' . $community->id, array('message' => 'Olet liittynyt yhteisöön'));
+			Redirect::to('/community/' . $community->id, array('message' => 'Liittyminen onnistui', 'message_type' => 'success'));
 		}
-		Redirect::to('/communities', array('message' => 'Liittyminen epäonnistui'));
+		Redirect::to('/communities', array('message' => 'Liittyminen epäonnistui', 'message_type' => 'warning'));
 	}
 
 	# PUT /membership
@@ -37,10 +37,10 @@ class MembershipController extends BaseController {
 		$community = Community::find($_POST['community_id']);
 
 		if (!isset($community)) {
-			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt'));
+			Redirect::to('/communities', array('message' => 'Yhteisöä ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$user_logged_in->is_member_in($community)) {
-			Redirect::to('/communities', array('message' => 'Et ole liittynyt yhteisöön'));
+			Redirect::to('/communities', array('message' => 'Et ole liittynyt yhteisöön', 'message_type' => 'warning'));
 		}
 
 		$membership = $user_logged_in->membership($community);
@@ -52,7 +52,7 @@ class MembershipController extends BaseController {
 			}
 			$community->delete();
 		}
-		Redirect::to('/communities', array('message' => 'jäsenyyden poisto onnistui'));
+		Redirect::to('/communities', array('message' => 'Jäsenyytesi poistettiin onnistuneesti', 'message_type' => 'success'));
 	}
 
 }

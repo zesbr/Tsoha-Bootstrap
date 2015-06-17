@@ -7,10 +7,7 @@ class HomeController extends BaseController {
 		$matches = Match::all();
 		$groups = Group::all();
 
-		View::make("index.html", array(
-			"matches" => $matches, 
-			"groups" => $groups
-		));
+		View::make('index.html', array('matches' => $matches, 'groups' => $groups));
 	}
 
 }

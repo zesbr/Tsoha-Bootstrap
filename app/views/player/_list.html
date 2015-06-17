@@ -1,0 +1,22 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Birthday</th>
+			<th>Position</th>
+			<th>Club</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for player in players %}
+		<tr>
+			<td>{{ player.squadnumber }}</td>
+			<td>{{ (player.firstname ~ ' ' ~ player.lastname)|trim }}</td>
+			<td>{{ player.birthday|date('F j, Y') }}</td>
+			<td>{{ player.position }}</td>
+			<td>{{ player.club }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

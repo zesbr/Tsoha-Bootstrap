@@ -1,0 +1,45 @@
+<form method="post" action="{{base_path}}/login">
+
+	{% set theme = 'material' %}
+
+	<div class="row">
+		<div class="login-title"></div>
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label({ 
+				'for': 'username', 
+				'theme': theme,
+				'label_text': 'Käyttäjänimi', 
+				'error_text': errors.username 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'password', 
+				'type': 'password', 
+				'theme': theme, 
+				'label_text': 'Salasana', 
+				'error_text': errors.password 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		<div class="button-wrapper">
+			{{ 
+				forms.submit({ 
+					'class': 'button-flat--large blue-text horizontal-align-right', 
+					'value': 'Kirjaudu sisään' 
+				}) 
+			}}
+		</div>
+		</div>
+	</div>
+
+
+</form>

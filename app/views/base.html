@@ -7,21 +7,23 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<title>{% block title %}Tietokantasovellus{% endblock %}</title>
 
 		{% block head %}
-		<!-- Bootstrap (tyylitiedosto) -->
-		<link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+		<!-- Bootstrap tiedostot -->
+		<link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{base_path}}/vendor/bootstrap/css/bootstrap-overrides.css" rel="stylesheet">
+		<!-- Owl Carousel tiedosto -->
+		<link href="{{base_path}}/vendor/owl-carousel/css/owl.carousel.css" rel="stylesheet">
+		<!-- Codedrops drop-down tiedosto -->
+		<link href="{{base_path}}/vendor/cd-dropdown/css/cd-dropdown.css" rel="stylesheet">
 		<!-- Omat tyylitiedostomme -->
-		<link href="{{base_path}}/assets/css/bootstrap-fix.css" rel="stylesheet">
-		<link href="{{base_path}}/assets/css/owl.carousel.css" rel="stylesheet">
-		
+		<link href="{{base_path}}/assets/css/animations.css" rel="stylesheet">
 		<link href="{{base_path}}/assets/css/grid.css" rel="stylesheet">
 		<link href="{{base_path}}/assets/css/elements.css" rel="stylesheet">
 		<link href="{{base_path}}/assets/css/typography.css" rel="stylesheet">
-		<link href="{{base_path}}/assets/css/colour.css" rel="stylesheet">
+		<link href="{{base_path}}/assets/css/colors.css" rel="stylesheet">
 		<link href="{{base_path}}/assets/css/form.css" rel="stylesheet">
 		<link href="{{base_path}}/assets/css/navigation.css" rel="stylesheet">
 
@@ -58,8 +60,6 @@
 					<ul class="nav navbar-nav">
 							<li><a href="{{ base_path }}/matches">Ottelut</a></li>
 							<li><a href="{{ base_path }}/groups">Lohkot</a></li>
-							<!--<li><a href="{{ base_path }}/teams">Joukkueet</a></li>-->
-							<li><a href="{{ base_path }}/bets">Veikkaukset</a></li>
 							<li><a href="{{ base_path }}/users">Käyttäjät</a></li>
 							<li><a href="{{ base_path }}/communities">Yhteisöt</a></li>
 							<li><a href="{{ base_path }}/leaderboards">Pistetilanne</a></li>
@@ -70,6 +70,8 @@
 		</nav>
 		
 		{% block content %}{% endblock %}
+
+		<footer></footer>
 
 		{% block body %}
 		<!-- jQuery -->
@@ -86,8 +88,6 @@
 		<script src="{{base_path}}/assets/js/modernizr.custom.63321.js"></script>
 		<script src="{{base_path}}/assets/js/jquery.dropdown.js"></script>
 		<script src="{{base_path}}/assets/js/site.js"></script>
-		
-
 
 		{% endblock %}
 

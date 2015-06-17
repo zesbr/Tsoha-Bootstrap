@@ -1,14 +1,12 @@
 
 <div class="card white">
 
-	
-
 	{% set stats = user.stats  %}
 
-		<div class="card-header bg-blue flat-header">
-			<div class="flat-header-icon"><span class="glyphicon glyphicon-user white-text"></span></div>
+		<div class="card-header white-on-blue flat-header">
+			<div class="flat-header-icon white-borders"><span class="glyphicon glyphicon-user white-text"></span></div>
 			<div class="flat-header-title white-text">{{ user.firstname }} {{ user.lastname }}</div> 
-			<div class="flat-header-subtitle white-text">{{ user.username }}<br>Kirjautunut: klo {{ user.last_login|date("H:i") }}</div> 
+			<div class="flat-header-subtitle white-text">Kirjautunut klo {{ user.last_login|date("H:i:s") }}</div> 
 		</div>
 
 		<div class="profile-card--content">
@@ -16,7 +14,7 @@
 				<div class="primary-stats">
 					<div class="stat-title">SIJOITUS</div>
 					<div class="stat-title">PISTEITÄ</div>
-					<div id="user--ranking" class="stat-value--primary">{{ stats.ranking }}</div>
+					<div id="user--ranking" class="stat-value--primary"> - </div>
 					<div id="user--points" class="stat-value--primary">{{ stats.points }}</div>
 				</div>
 			</div>

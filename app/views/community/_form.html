@@ -3,18 +3,48 @@
 	{% set theme = 'material' %}
 
 	<div class="row">
-		{{ forms.textbox_with_label_and_errors({ 'for': 'name', 'theme': theme, 'value': community.name, 'label_text': 'Nimi', 'error_text': errors.name }) }}
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'name', 
+				'theme': theme, 
+				'value': community.name, 
+				'label_text': 'Nimi', 
+				'error_text': errors.name 
+			}) 
+		}}
 	</div>
 
 	<div class="row">
-		{{ forms.textarea_with_label_and_errors({ 'for': 'description', 'theme': theme, 'value': community.description, 'label_text': 'Kuvaus', 'error_text': errors.description }) }}
+		{{ 
+			forms.textarea_with_label_and_errors({ 
+				'for': 'description', 
+				'theme': theme, 
+				'value': community.description, 
+				'label_text': 'Kuvaus', 
+				'error_text': errors.description 
+			}) 
+		}}
 	</div>
 
 	<div class="row">
 		{% if community.id is empty %}
-			{{ forms.submit({ 'class': 'button-raised--normal blue', 'value': 'Tallenna', '_id': user.id }) }}
+			{{ 
+				forms.submit({ 
+					'class': 
+					'button-raised--large white-on-blue', 
+					'value': 'Tallenna', 
+					'_id': user.id 
+				}) 
+			}}
 		{% else %}
-			{{ forms.submit({ 'class': 'button-raised--normal blue', 'value': 'Tallenna muutokset', '_method': 'PUT', '_id': community.id }) }}
+			{{ 
+				forms.submit({ 
+					'class': 'button-raised--large white-on-orange', 
+					'value': 'Tallenna muutokset', 
+					'_method': 'PUT', 
+					'_id': community.id 
+				}) 
+			}}
 		{% endif %}
 	</div>
 	

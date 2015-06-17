@@ -1,0 +1,83 @@
+<form method="post" action="{{base_path}}/registration">
+	
+	{% set theme = 'material' %}
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'username', 
+				'theme': theme, 
+				'placeholder': '',
+				'label_text': 'Käyttäjänimi', 
+				'error_text': errors.username 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'firstname', 
+				'theme': theme, 
+				'label_text': 'Etunimi', 
+				'error_text': errors.firstname 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'lastname', 
+				'theme': theme, 
+				'label_text': 'Sukunimi', 
+				'error_text': errors.lastname 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'email', 
+				'theme': theme, 
+				'label_text': 'Sähköposti', 
+				'error_text': errors.email 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'password', 
+				'type': 'password', 
+				'theme': theme, 
+				'label_text': 'Salasana', 
+				'error_text': errors.password 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.textbox_with_label_and_errors({ 
+				'for': 'password_confirmation', 
+				'type': 'password', 
+				'theme': theme, 
+				'label_text': 'Salasanan vahvistus', 
+				'error_text': errors.password_confirmation 
+			}) 
+		}}
+	</div>
+
+	<div class="row">
+		{{ 
+			forms.submit({ 
+				'class': 'button-raised--large blue', 
+				'value': 'Tallenna', 
+			}) 
+		}}
+	</div>
+
+</form>

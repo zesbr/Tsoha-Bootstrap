@@ -28,7 +28,7 @@ class User extends BaseModel {
 	 * Hakee ja palauttaa kaikki käyttäjät
 	 */
 	public static function all() {
-		$query = "select * from users";
+		$query = "select * from users order by username";
 		$rows = DB::execute($query);
 		$users = array();
 		foreach ($rows as $row) {
@@ -131,7 +131,7 @@ class User extends BaseModel {
 		foreach ($this->bets() as $bet) {
 			$bets++;
 			$points += $bet->points_earned;
-			if ($bet->points_earned > 0) {
+			if ($bet->points_earned > 1) {
 				$correct++;
 			}
 		}

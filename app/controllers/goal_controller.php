@@ -14,33 +14,32 @@ class GoalController extends BaseController {
 	}
 
 	# GET /goal/new:match_id
-	# 		/match/:id/goal/new
+	# 		/match/:id/new/goal
 	public static function create($id) {
 		self::check_logged_in();
 		$user_logged_in = self::get_user_logged_in();
 		$match = Match::find($id);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelua ei löytynyt', 'message_type' => 'warning'));
 		}
 		View::make('goal/new.html', array('match' => $match));
 	}
 
 	# GET /goal/edit/:id
-	#		/goal/:id/edit
 	public static function edit($id) {
 		self::check_logged_in();
 		$user_logged_in = self::get_user_logged_in();
 		$goal = Goal::find($id);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($goal)) {
-			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt', 'message_type' => 'warning'));
 		}
 		View::make('goal/edit.html', array('goal' => $goal));
 	}
@@ -53,19 +52,19 @@ class GoalController extends BaseController {
 		$player = Player::find($_POST['player_id']);
 		
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($match)) {
-			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Ottelu ei löytynyt', 'message_type' => 'warning'));
 		}
 		if ($match->is_upcoming()) {
-			Redirect::to('/matches', array('message' => 'Ottelu ei ole vielä alkanut'));
+			Redirect::to('/matches', array('message' => 'Ottelu ei ole vielä alkanut', 'message_type' => 'warning'));
 		}
 		if (!isset($player)) {
-			Redirect::to('/goal/new/{$match->id}', array('match' => $match, 'message' => 'Pelaaja ei löytynyt'));
+			Redirect::to('/goal/new/{$match->id}', array('match' => $match, 'message' => 'Pelaaja ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$player->played_in($match)) {
-			Redirect::to('/goal/new/{$match->id}', array('match' => $match, 'message' => 'Pelaaja ei pelannut ottelussa'));
+			Redirect::to('/goal/new/{$match->id}', array('match' => $match, 'message' => 'Pelaaja ei pelannut ottelussa', 'message_type' => 'warning'));
 		}
 
 		$goal = new Goal(array(
@@ -78,9 +77,14 @@ class GoalController extends BaseController {
 
 		if ($goal->is_valid()) {
 			$goal->save();
-			Redirect::to('/match/edit/' . $match->id, array('message' => 'Maali tallennettiin onnistuneesti'));
+			Redirect::to('/match/edit/' . $match->id, array('message' => 'Maali tallennettiin onnistuneesti', 'message_type' => 'success'));
 		} else {
-			Redirect::to('/goal/new/' . $match->id, array('match' => $match, 'errors' => $goal->errors));
+			Redirect::to('/goal/new/' . $match->id, array(
+				'match' => $match, 
+				'message' => 'Maalin tallennus epäonnistui', 
+				'message_type' => 'error', 
+				'errors' => $goal->errors
+			));
 		}
 	}
 
@@ -92,16 +96,16 @@ class GoalController extends BaseController {
 		$player = Player::find($_POST['player_id']);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($goal)) {
-			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!isset($player)) {
-			Redirect::to('/goal/edit/{$goal->id}', array('goal' => $goal, 'message' => 'Pelaaja ei löytynyt'));
+			Redirect::to('/goal/edit/' . $goal->id, array('goal' => $goal, 'message' => 'Pelaaja ei löytynyt', 'message_type' => 'warning'));
 		}
 		if (!$player->played_in($match)) {
-			Redirect::to('/goal/edit/{$goal->id}', array('goal' => $goal, 'message' => 'Pelaaja ei pelannut ottelussa'));
+			Redirect::to('/goal/edit/' . $goal->id, array('goal' => $goal, 'message' => 'Pelaaja ei pelannut ottelussa', 'message_type' => 'warning'));
 		}
 
 		$goal->player_id = $player->id;
@@ -111,9 +115,14 @@ class GoalController extends BaseController {
 
 		if ($goal->is_valid()) {
 			$goal->update();
-			Redirect::to('/matches', array('message' => 'Maali päivitettiin onnistuneesti'));
+			Redirect::to('/matches', array('message' => 'Maali päivitettiin onnistuneesti', 'message_type' => 'success'));
 		} else {
-			Redirect::to('/goal/edit/{$goal->id}', array('goal' => $goal, 'errors' => $goal->errors));
+			Redirect::to('/goal/edit/{$goal->id}', array(
+				'goal' => $goal, 
+				'message' => 'Maalin muokkaus epäonnistui', 
+				'message_type' => 'error', 
+				'errors' => $goal->errors
+			));
 		}
 	}
 
@@ -124,19 +133,14 @@ class GoalController extends BaseController {
 		$goal = Goal::find($_POST['id']);
 
 		if (!$user_logged_in->is_admin) {
-			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua'));
+			Redirect::to('/matches', array('message' => 'Sinulla ei ole oikeuksia päivittää ottelua', 'message_type' => 'warning'));
 		}
 		if (!isset($goal)) {
-			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt'));
+			Redirect::to('/matches', array('message' => 'Maalia ei löytynyt', 'message_type' => 'warning'));
 		}
 
-		// TODO: Päivitä veikkaukset ennen poistoa
-		// if ($goal->can_be_deleted()) {
-			$goal->delete();
-			Redirect::to('/matches', array('message' => 'Maali poistettiin onnistuneesti!'));
-		// } else {
-
-		// }
+		$goal->delete();
+		Redirect::to('/matches', array('message' => 'Maali poistettiin onnistuneesti!', 'message_type' => 'success'));
 	}
 
 }

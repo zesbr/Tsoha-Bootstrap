@@ -4,18 +4,32 @@
 	<div class="wrapper">
 		<div class="row">
 			<div class=" colspan_8">
-				<h1 class="landing-page-title">BOOKIE</h1>	
-				<p class="landing-page-subtitle">Ottelutulos- ja maaliveikkaussovellus</p>
+				<div class="row">
+					<div class="landing-page-logo">
+					<img src="{{ base_path }}/assets/img/logo.png" alt="" />
+					</div>
+					<h1 class="landing-page-title">bookie.</h1>
+				</div>	
+
+
+				<div class="row">
+					<p class="landing-page-subtitle">Ottelutulos- ja maaliveikkaussovellus</p>
+				</div>
+				<div class="row">
+					<a href="{{ base_path }}/registration" class="button-raised--normal white-on-orange">Luo itsellesi käyttäjätili</a>
+				</div>
 			</div>
 			<div class="module colspan_4 last">
-				<div class="row">
-					<div class="msg rowspan_2">
-						{{ message }}
+
+				<div class="row card white">
+					<div class="card-wrapper">
+						<div class="card-wrapper">
+							{{ forms.message_box(message, message_type) }}
+							{% include "user/_login.html" %}
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					{% include "user/_form_login.html" %}
-				</div>
+
 			</div>
 		</div>
 		<div class="clearfix"></div>

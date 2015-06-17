@@ -1,0 +1,348 @@
+/*	=====================================================================================
+	VÄRIPALETIT
+========================================================================================= */
+
+.red-on-white, .red-on-white:hover, .red-on-white:active, .red-on-white:focus, .red-on-white:visited {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(255, 77, 77, 1.0); 
+}
+.green-on-white, .green-on-white:hover, .green-on-white:active, .green-on-white:focus, .green-on-white:visited {
+	background-color: rgba(255, 255, 255, 1.0);
+	color: rgba(0, 150, 100, 1.0);
+}
+.blue-on-white, .blue-on-white:hover, .blue-on-white:active, .blue-on-white:focus, .blue-on-white:visited  {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(0, 110, 255, 1.0); 
+}
+.orange-on-white, .orange-on-white:hover, .orange-on-white:active, .orange-on-white:focus, .orange-on-white:visited {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(245, 129, 33, 1.0);
+}
+.purple-on-white, .purple-on-white:hover, .purple-on-white:active, .purple-on-white:focus, .purple-on-white:visited { 
+	background-color: rgba(255, 255, 255, 1.0);
+	color: rgba(35, 15, 210, 1.0); 
+}
+
+
+
+.white-on-red, .white-on-red:hover, .white-on-red:active, .white-on-red:focus, .white-on-red:visited {
+	background-color: rgba(255, 77, 77, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.white-on-green, .white-on-green:hover, .white-on-green:active, .white-on-green:focus, .white-on-green:visited {
+	background-color: rgba(0, 150, 100, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+.white-on-blue, .white-on-blue:hover, .white-on-blue:active, .white-on-blue:focus, .white-on-blue:visited {
+	background-color: rgba(25, 150, 255, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.white-on-orange, .white-on-orange:hover, .white-on-orange:active, .white-on-orange:focus, .white-on-orange:visited {
+	background-color: rgba(245, 129, 33, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.white-on-purple, .white-on-purple:hover, .white-on-purple:active, .white-on-purple:focus, ..white-on-purple:visited { 
+	background-color: rgba(35, 15, 210, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+
+
+.red-on-transparent, .red-on-transparent:hover, .red-on-transparent:active, .red-on-transparent:focus, .red-on-transparent:visited {
+	background-color: transparent;
+	color: rgba(255, 77, 77, 1.0); 
+}
+.green-on-transparent, .green-on-transparent:hover, .green-on-transparent:active, .green-on-transparent:focus, .green-on-transparent:visited {
+	background-color: transparent;
+	color: rgba(0, 150, 100, 1.0);
+}
+.blue-on-transparent, ..blue-on-transparent:hover, .blue-on-transparent:active, .blue-on-transparent:focus, .blue-on-transparent:visited  {
+	background-color: transparent;
+	color: rgba(25, 150, 255, 1.0); 
+}
+.orange-on-transparent, .orange-on-transparent:hover, .orange-on-transparent:active, .orange-on-transparent:focus, .orange-on-transparent:visited {
+	background-color: transparent;
+	color: rgba(245, 129, 33, 1.0); 
+}
+.purple-on-transparent, .purple-on-transparent:hover, .purple-on-transparent:active, .purple-on-transparent:focus, .purple-on-transparent:visited {
+	background-color: transparent;
+	color: rgba(35, 15, 210, 1.0);
+}
+
+
+
+
+
+
+
+
+
+
+
+.white-on-gray {
+	background-color: rgba(175, 175, 175, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+
+.black-on-yellow {
+	background-color: rgba(255, 230, 0, 1.0); 
+	color: 20, 20, 20, 1.0;
+}
+.yellow-on-black {
+	background-color: rgba(20, 20, 20, 1.0); 
+	color: rgba(255, 230, 0, 1.0);
+}
+.white-on-dark-purple {
+	background-color: rgba(87, 40, 59, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.dark-purple-on-white {
+	background-color: rgba(255, 255, 255, 1.0); 
+	color: rgba(87, 40, 59, 1.0);
+}
+.dark-red {
+	background-color: rgb(171, 31 , 34);
+}
+.dark-blue {
+	background-color: rgb(35,15,210);
+}
+
+.white-on-dark-blue {
+	background-color: rgba(0, 30, 60, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+
+.white-text {
+	color: rgba(255, 255, 255, 1.0);
+}
+
+.white-on-bright-blue {
+	background-color: rgb(35,15,210);
+	color: rgb(255, 255, 255);
+}
+
+
+
+.purple { }
+.lightpurple { }
+.darkpurple { }
+
+
+
+
+.bg-red { 
+	background-color: rgba(255, 77, 77, 1.0); 
+}
+.bg-green { }
+.bg-blue { 
+	background-color: rgba(0, 110, 255, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.bg-orange { 
+	background-color: rgba(245, 129, 33, 1.0); 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.bg-black { 
+	background-color: rgba(0, 0, 0, 1.0); 
+}
+.bg-white { 
+	background-color: rgba(255, 255, 255, 1.0); 
+}
+.bg-darkgray { 
+	background-color: rgba(50, 50, 50, 1.0); 
+}
+.bg-lightgray { 
+	background-color: rgba(225, 225, 225, 1.0); 
+}
+.bg-yellow { 
+	background-color: rgba(255, 230, 0, 1.0); 
+}
+.white-on-darker {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255, 255, 1.0) !important;
+}
+.white-on-lighter {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 1.0) !important;
+}
+
+
+
+/*** VÄRIPALETIT ***/
+
+/*** Taustaväri ***/
+.red { 
+	background-color: rgba(255, 77, 77, 1.0);	
+}
+.green { 
+	background-color: rgba(0, 150, 100, 1.0); 
+}
+.blue { 
+	background-color: rgba(25, 150, 255, 1.0); 
+}
+.orange { 
+	background-color: rgba(245, 129, 33, 1.0); 
+}
+.purple 	{ 
+	background-color: rgba(35, 15, 210, 1.0); 
+}
+.white {
+	background-color: rgba(255, 255, 255, 1.0);
+}
+.black {
+	background-color: rgba(0, 0, 0, 1.0);
+}
+
+/*** Tekstin väri ***/
+.red {
+	color: rgba(255, 255, 255, 1.0); 
+}
+.green {
+	color: rgba(255, 255, 255, 1.0);
+}
+.blue { 
+	color: rgba(255, 255, 255, 1.0); 
+}
+.orange {
+	color: rgba(255, 255, 255, 1.0);
+}
+.purple {
+	color: rgba(255, 255, 255, 1.0);
+}
+.white {
+	color: rgba(0, 0, 0, 1.0);
+}
+.black {
+	color: rgba(255, 255, 255, 1.0);
+}
+
+/*** ***/
+.red:hover {
+	background-color: rgba(255, 77, 77, 0.9); 
+}
+.green:hover {
+	background-color: rgba(0, 150, 100, 0.9);
+}
+.blue:hover {
+	background-color: rgba(0, 110, 255, 0.9); 
+}
+.orange:hover {
+	background-color: rgba(245, 129, 33, 0.9); 
+}
+.purple:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+/*** ***/
+.red:active {
+	background-color: rgba(255, 77, 77, 1.0); 
+}
+.green:active {
+	background-color: rgba(0, 150, 100, 0.9);
+}
+.blue:active {
+	background-color: rgba(0, 110, 255, 1.0); 
+}
+.blue:visited {
+	background-color: rgba(0, 110, 255, 1.0); 
+}
+.orange:active {
+	background-color: rgba(245, 129, 33, 1.0);
+}
+.purple:active {
+	background-color: rgba(35, 15, 210, 1.0);
+}
+
+
+.red:visited {
+	background-color: rgba(255, 77, 77, 1.0); 
+}
+.green:hover:visited {
+	background-color: rgba(0, 150, 100, 0.9);
+}
+.blue:visited {
+	background-color: rgba(0, 110, 255, 1.0); 
+}
+.orange:visited {
+	background-color: rgba(245, 129, 33, 1.0);
+}
+.purple:visited {
+	background-color: rgba(35, 15, 210, 1.0);
+}
+
+
+
+.light {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.light:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+.light:active {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.dark:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.dark:focus {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.dark:active {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.bg-red {
+	background-color: rgba(255, 77, 77, 1.0);
+	color: rgba(255, 255, 255, 1.0); 
+}
+.bg-green {
+	background-color: rgba(0, 150, 100, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+.bg-blue {
+	background-color: rgba(0, 110, 255, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.bg-orange {
+	background-color: rgba(245, 129, 33, 1.0); 
+	color: rgba(255, 255, 255, 1.0);
+}
+.bg-purple {
+	background-color: rgba(35, 15, 210, 1.0);
+	color: rgba(255, 255, 255, 1.0);
+}
+.bg-dark {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255, 255, 1.0);
+}
+.bg-white {
+	background-color: rgba(255, 255, 255, 1.0);
+	color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.red-text {
+	color: rgba(255, 77, 77, 1.0) !important; 
+}
+.green-text {
+	color: rgba(0, 150, 100, 1.0) !important;
+}
+.blue-text {
+	color: rgba(25, 150, 255, 1.0) !important; 
+}
+.orange-text {
+	color: rgba(245, 129, 33, 1.0) !important; 
+}
+.purple-text {
+	color: rgba(35, 15, 210, 1.0) !important;
+}
+.white-text {
+	color: rgba(255, 255, 255, 1.0) !important;
+}

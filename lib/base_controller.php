@@ -8,7 +8,14 @@ class BaseController{
 	public static function get_user_logged_in() {
 		if (isset($_SESSION['user'])) {
 			$id = $_SESSION['user'];
-			return User::find($id);
+			$user_logged_in = User::find($id);
+			if (!isset($user_logged_in)) {
+				Redirect::to('/logout', array('message' => 'Tapahtui virhe. Kirjaudu sisään uudelleen', 'message_type' => 'warning'));
+			}
+			if ($user_logged_in->is_locked) {
+				Redirect::to('/logout', array('message' => 'Käyttäjätilisi on lukittu, joten et voi kirjautua sisään', 'message_type' => 'warning'));
+			}
+			return $user_logged_in;
 		}
 		return null;
 	}
@@ -19,7 +26,7 @@ class BaseController{
 	 */
 	public static function check_logged_in() {
 		if (!isset($_SESSION["user"])) {
-			Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
+			Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!', 'message_type' => 'warning'));
 		}
 	}
 

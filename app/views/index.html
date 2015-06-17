@@ -3,13 +3,15 @@
 <section>
 	<div class="wrapper">
 
+		
+
 		<div class="colspan_12 last">
 			<div class="row">
 				<div class="card white">	
 					<div class="match-carousel">
 						{% for match in matches %}
 							<div class="colspan_12 last">
-								{% include "_hero_module.html" %}
+								{% include "match/_list.html" %}
 							</div>
 						{% endfor %}
 					</div>

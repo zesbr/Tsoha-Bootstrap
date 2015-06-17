@@ -1,22 +1,44 @@
 {% extends "landing.html" %}
 {% block content %}
-<header class="bg-green">
+<header class="white-on-green">
 	<div class="wrapper">
-		<h1>Rekisteröityminen</h1>
+
+		<div class="row">
+			<div class="header-logo">
+				<img src="{{ base_path }}/assets/img/logo.png" alt="" />
+			</div>
+			<h1 class="header-title">bookie.</h1>
+		</div>
+		
+		<div class="row">
+			<h1>Rekisteröityminen</h1>
+		</div>
+
 	</div>
 </header>
 <section>
 	<div class="wrapper">
+
 		<div class="row">
 			<div class="module colspan_12 last">
-			{{ message }}
+				{{ forms.message_box(message, message_type) }}
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="module colspan_12 last">
+				<div class="intro-text">
+					Täydennä alla oleva lomake ja luo uusi käyttäjätunnus klikkaamalla lomakkeen alla olevaa painiketta.
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="module colspan_6 last">
-			{% include "user/_form_registration.html" %}
+				{% include "user/_registration.html" %}
 			</div>
 		</div>
+
 		<div class="clearfix"></div>
 	</div>
 </section>

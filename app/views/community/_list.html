@@ -12,7 +12,7 @@
 		{% for community in communities %}
 		{% set members = community.members %}
 		<tr>
-			<td><a href="{{ base_path }}/community/{{ community.id }}" class="blue-text"><span class="round-icon glyphicon glyphicon-link"></span>  {{ community.name }}</a></td>
+			<td><a href="{{ base_path }}/community/{{ community.id }}"><span class="round-icon glyphicon glyphicon-link"></span>  {{ community.name }}</a></td>
 			<td>{{ members|length }}</td>
 			<td>
 				{% if community.is_private %}
@@ -23,27 +23,37 @@
 			</td>
 			<td>{{ community.created_on|date("F j, Y H:i") }}</td>
 			<td>
-
 				{% if user_logged_in.is_member_in(community) %}
 					{% set membership = user_logged_in.membership(community) %}
-					
 					{{ 
 						forms.delete_button({ 
-							'class': 'button-flat--x-small orange-text', 
+							'class': 'button-flat--x-small orange-on-transparent', 
 							'href': 'membership', 
 							'name': 'community_id', 
 							'id': community.id, 
 							'value': 'Eroa' }) 
 					}}	
-
 					{% if membership.is_admin %}
-						{{ forms.delete_button({ 'class': 'button-flat--x-small red-text', 'href': 'community', 'name': 'id', 'id': community.id, 'value': 'Poista' }) }}	
+						{{ 
+							forms.delete_button({ 
+								'class': 'button-flat--x-small red-on-transparent', 
+								'href': 'community', 
+								'name': 'id', 
+								'id': community.id, 
+								'value': 'Poista' 
+							}) 
+						}}	
 					{% endif %}
 				{% else %}
-					<form method="post" action="{{base_path}}/membership">
-						<input type="hidden" name="community_id" value="{{ community.id }}"/>
-						<input type="submit" value="Liity" class="button-flat--x-small blue-text">
-					</form>
+					{{ 
+						forms.submit_button({ 
+							'class': 'button-flat--x-small blue-on-transparent', 
+							'href': 'membership', 
+							'name': 'community_id', 
+							'id': community.id, 
+							'value': 'Liity' 
+						}) 
+					}}
 				{% endif %}
 			</td>
 		</tr>
